@@ -1,0 +1,16 @@
+# Backup files
+*-backup.html
+*-backup.js
+*-backup.css
+*~
+
+# VS Code settings
+.vscode/
+
+# OS metadata files
+Thumbs.db
+Desktop.ini
+desktop.ini
+
+# Logs
+*.log

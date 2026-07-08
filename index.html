@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TacBot</title>
+<meta name="description" content="Revolutionize support with AI-powered workflows. Enhance operations with intelligent, streamlined incident management and automation for optimal efficiency. Experience seamless integration with no complex setup.">
+<meta name="keywords" content="AI Ticketing, Automated Support, AI Helpdesk, Intelligent Ticketing, AI-Powered Workflow, Smart Ticketing System, Support Automation, AI Service Desk, ITSM AI, AI Customer Support, AI Incident Management, AI Helpdesk Automation, AI-Driven Workflows, AI Workflow Management, AI Support Solutions">
+<meta property="og:title" content="AI-Powered Ticketing Workflow | Automate & Optimize Support Operations">
+<meta property="og:description" content="Unlock AI-driven workflows today. Transform support operations with intelligent automation and seamless incident management. Sign up in minutes for immediate results.">
+<link rel="icon" type="image/svg+xml" href="Assets/Logo-jump.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+        </div>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <!-- <a href="product.html">Platform</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <div class="nav-item">
+          <a href="use-cases.html" class="nav-trigger">Solutions <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="use-cases.html#incident">Incident Response</a>
+            <a href="use-cases.html#onboarding">Vendor Onboarding</a>
+            <a href="use-cases.html#sla">SLA Tracking</a>
+            <a href="use-cases.html#renewal">Renewal Leverage</a>
+            <a href="use-cases.html#cloud">Cloud Maintenance</a>
+            <a href="use-cases.html#compliance">Compliance Evidence</a>
+          </div>
+        </div>
+-->
+        <div class="nav-item">
+          <a href="about.html" class="nav-trigger">Company <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="about.html">About Us</a>
+            <a href="careers.html">Career</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta nav-mobile-cta">Request a Demo</a>
+        <div class="nav-menu-footer">
+          <div class="menu-socials">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <p>hello@tacbot.ai</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <a href="contact.html" class="nav-cta nav-desktop-cta">Request a Demo</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero hero--mesh" id="hero">
+  <canvas id="stars-canvas" class="stars-canvas"></canvas>
+  <canvas id="globe-canvas" class="globe-canvas hero-globe-bg"></canvas>
+
+  <div class="hero-content" id="heroContent">
+    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span> AIOps-Driven Vendor Operations Platform</div>
+    <h1><span class="h1-line">End Manual Vendor Support Chaos.</span><span class="h1-line">Orchestrate and Automate.</span></h1>
+    <p class="hero-sub">Tacbot is an AIOps-driven Platform that unifies your entire support ecosystem. One platform for every Vendor ticket, one calendar for every outage, and one source of truth for Vendor Support Excellence.</p>
+    <div class="hero-ctas">
+      <a href="contact.html" class="btn-primary">Request a Demo</a>
+      <button class="btn-secondary">See the Vendor Scorecard</button>
+    </div>
+  </div>
+
+  <div class="hero-diagram-wrap" id="heroDiagramWrap">
+    <iframe
+      src="tacbot-diagram.html?v=7"
+      class="hero-diagram-iframe"
+      id="heroDiagramIframe"
+      title="Tacbot Orchestrator Diagram"
+      scrolling="no"
+      frameborder="0"
+      allowtransparency="true"
+    ></iframe>
+  </div>
+
+  <div class="hero-bottom-fade"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — THE PROBLEM
+════════════════════════════════════════════════════ -->
+<section class="problem-section" id="problem">
+
+  <!-- Animated blob background (same as Tacbot Edge) -->
+  <div class="praha-bg problem-bg">
+    <div class="praha-blob praha-blob-1"></div>
+    <div class="praha-blob praha-blob-2"></div>
+    <div class="praha-blob praha-blob-3"></div>
+  </div>
+  <div class="praha-glass-overlay"></div>
+  <div class="praha-noise"></div>
+
+  <div class="problem-header">
+    <span class="section-eyebrow">The Problem</span>
+    <h2 class="problem-title">Vendor Support Friction is <em>Killing Your SLAs</em></h2>
+  </div>
+
+  <div class="bento-grid">
+
+    <!-- ── CARD 1: Notification Overload (tall left) ── -->
+    <div class="bento-card card-notif" data-bento="1">
+      <div class="card-tag card-tag--red">Notification Overload</div>
+      <div class="card-stat"><span class="stat-num" data-target="40">0</span><span class="stat-unit">%</span></div>
+      <p class="card-desc">Your team spends 40% of their morning sorting through <strong>"Circuit Maintenance"</strong> emails from 50 different carriers.</p>
+
+      <!-- Animated notification stream -->
+      <div class="notif-viewport">
+        <div class="notif-stream" id="notifStream">
+          <div class="notif-item"><span class="notif-vendor">Salesforce</span><span class="notif-subject">Platform Upgrade v62.0 — Sat 2AM window</span></div>
+          <div class="notif-item"><span class="notif-vendor">Jira</span><span class="notif-subject">Data Center migration deadline: 30 days</span></div>
+          <div class="notif-item"><span class="notif-vendor">Workday</span><span class="notif-subject">HCM Suite maintenance window extended</span></div>
+          <div class="notif-item"><span class="notif-vendor">ServiceNow</span><span class="notif-subject">Critical patch SNWL-2024-0891 required</span></div>
+          <div class="notif-item"><span class="notif-vendor">AWS</span><span class="notif-subject">EC2 pricing change effective Q2 2025</span></div>
+          <div class="notif-item"><span class="notif-vendor">Okta</span><span class="notif-subject">Security advisory: session timeout policy</span></div>
+          <div class="notif-item"><span class="notif-vendor">Zendesk</span><span class="notif-subject">API v1 deprecation — migrate by Dec 1</span></div>
+          <div class="notif-item"><span class="notif-vendor">Slack</span><span class="notif-subject">Enterprise Grid compliance update live</span></div>
+          <div class="notif-item"><span class="notif-vendor">Datadog</span><span class="notif-subject">Agent v7 mandatory upgrade — EOL notice</span></div>
+          <div class="notif-item"><span class="notif-vendor">PagerDuty</span><span class="notif-subject">On-call schedule SLA terms revised</span></div>
+          <!-- duplicate for seamless loop -->
+          <div class="notif-item"><span class="notif-vendor">Salesforce</span><span class="notif-subject">Platform Upgrade v62.0 — Sat 2AM window</span></div>
+          <div class="notif-item"><span class="notif-vendor">Jira</span><span class="notif-subject">Data Center migration deadline: 30 days</span></div>
+          <div class="notif-item"><span class="notif-vendor">Workday</span><span class="notif-subject">HCM Suite maintenance window extended</span></div>
+          <div class="notif-item"><span class="notif-vendor">ServiceNow</span><span class="notif-subject">Critical patch SNWL-2024-0891 required</span></div>
+          <div class="notif-item"><span class="notif-vendor">AWS</span><span class="notif-subject">EC2 pricing change effective Q2 2025</span></div>
+          <div class="notif-item"><span class="notif-vendor">Okta</span><span class="notif-subject">Security advisory: session timeout policy</span></div>
+          <div class="notif-item"><span class="notif-vendor">Zendesk</span><span class="notif-subject">API v1 deprecation — migrate by Dec 1</span></div>
+          <div class="notif-item"><span class="notif-vendor">Slack</span><span class="notif-subject">Enterprise Grid compliance update live</span></div>
+          <div class="notif-item"><span class="notif-vendor">Datadog</span><span class="notif-subject">Agent v7 mandatory upgrade — EOL notice</span></div>
+          <div class="notif-item"><span class="notif-vendor">PagerDuty</span><span class="notif-subject">On-call schedule SLA terms revised</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 2: Fragmented Ticketing (top right) ── -->
+    <div class="bento-card card-tickets" data-bento="2">
+      <div class="card-tag card-tag--orange">Fragmented Ticketing</div>
+      <div class="card-stat"><span class="stat-num" data-target="15">0</span><span class="stat-unit"> portals</span></div>
+      <p class="card-desc">Logging into 15 different portals just to check the status of a critical API fix.</p>
+
+      <div class="portal-grid">
+        <div class="portal-chip"><i class="portal-logo fa-brands fa-salesforce"></i><span>Salesforce</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-briefcase"></i><span>ServiceNow</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-brands fa-jira"></i><span>Jira</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-cloud"></i><span>Workday</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-brands fa-aws"></i><span>AWS</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-brands fa-microsoft"></i><span>Azure</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-key"></i><span>Okta</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-headset"></i><span>Zendesk</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-dog"></i><span>Datadog</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-phone"></i><span>PagerDuty</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-server"></i><span>SAP</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-database"></i><span>Oracle</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-brands fa-slack"></i><span>Slack</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-solid fa-video"></i><span>Zoom</span><span class="portal-spinner"></span></div>
+        <div class="portal-chip"><i class="portal-logo fa-brands fa-google"></i><span>GCP</span><span class="portal-spinner"></span></div>
+      </div>
+    </div>
+
+    <!-- ── CARD 3: Invisible SLAs (full-width bottom) ── -->
+    <div class="bento-card card-sla" data-bento="3">
+      <div class="card-sla-inner">
+        <div class="sla-text">
+          <div class="card-tag card-tag--red">Invisible SLAs</div>
+          <p class="card-desc" style="margin-top:12px">Knowing a vendor is <em>"slow"</em> is different from <strong>proving they missed their SLA.</strong> Data is your only leverage.</p>
+          <div class="sla-miss-badge">⚠ SLA MISSED — no evidence on record</div>
+        </div>
+        <div class="sla-chart-wrap">
+          <div class="sla-chart-labels">
+            <span>99.9%</span>
+            <span class="sla-threshold-label">99.5% SLA</span>
+            <span>99.0%</span>
+          </div>
+          <div class="sla-chart-plot">
+            <svg class="sla-svg" viewBox="0 0 500 100" preserveAspectRatio="none">
+              <!-- SLA threshold line -->
+              <line x1="0" y1="33" x2="500" y2="33" class="sla-threshold-line"/>
+              <!-- Breach fill zone -->
+              <path d="M 260,33 L 290,60 L 340,50 L 370,33 Z" class="sla-breach-fill"/>
+              <!-- Uptime line -->
+              <path id="slaPath"
+                d="M 0,10 C 40,10 60,12 100,10 C 140,9 180,11 210,10 C 230,10 245,10 260,33 C 270,50 280,65 295,62 C 310,58 330,52 350,42 C 365,35 375,28 400,12 C 430,8 470,10 500,10"
+                class="sla-line"/>
+            </svg>
+            <!-- Breach dot (HTML, not SVG — preserveAspectRatio="none" stretches SVG circles into ellipses) -->
+            <div class="sla-breach-dot"></div>
+          </div>
+        </div>
+        <div class="sla-chart-bottom">
+          <span>Day 1</span>
+          <span class="breach-label">Day 18 — Breach</span>
+          <span>Day 30</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — VISION
+════════════════════════════════════════════════════ -->
+<section class="vision-section" id="vision">
+  <div class="vision-header">
+    <span class="section-eyebrow">Vision</span>
+    <h2 class="vision-title">Journey to <em>Autonomous TAC</em></h2>
+  </div>
+
+  <div class="vision-container">
+    <!-- Subsection A: Evolution Showcase -->
+    <div class="vision-subsection">
+      <div class="subsection-header">
+        <h3 class="subsection-title">Tacbot: Autonomous Support Evolution</h3>
+        <p class="subsection-subtitle">Evolutionary phases of the AI & NetOps Orchestration Platform</p>
+      </div>
+
+      <div class="evolution-showcase">
+        <div class="evolution-nav">
+          <div class="evolution-nav-item done" data-phase="1">
+            <div class="nav-item-indicator">
+              <span class="node-dot"></span>
+              <svg class="node-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="nav-item-content">
+              <div class="evolution-number">01</div>
+              <h4 class="evolution-card-title">Case Creation</h4>
+              <p class="evolution-card-desc">Automated ticketing and intelligent lifecycle management.</p>
+            </div>
+          </div>
+
+          <div class="evolution-nav-item done" data-phase="2">
+            <div class="nav-item-indicator">
+              <span class="node-dot"></span>
+              <svg class="node-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="nav-item-content">
+              <div class="evolution-number">02</div>
+              <h4 class="evolution-card-title">ITSM Orchestrator</h4>
+              <p class="evolution-card-desc">Seamless workflow integration and cross-platform alignment.</p>
+            </div>
+          </div>
+
+          <div class="evolution-nav-item" data-phase="3">
+            <div class="nav-item-indicator">
+              <span class="node-dot"></span>
+              <svg class="node-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4v16m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="nav-item-content">
+              <div class="evolution-number">03</div>
+              <h4 class="evolution-card-title">AI Ops</h4>
+              <p class="evolution-card-desc">Proactive anomaly detection and deep system insights.</p>
+            </div>
+          </div>
+
+          <div class="evolution-nav-item" data-phase="4">
+            <div class="nav-item-indicator"><span class="node-dot"></span></div>
+            <div class="nav-item-content">
+              <div class="evolution-number">04</div>
+              <h4 class="evolution-card-title">Autonomous NOC</h4>
+              <p class="evolution-card-desc">Fully self-healing infrastructure and closed-loop automation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display Screen / Live Mockups -->
+        <div class="evolution-display">
+          <!-- Mockup 1: Case Creation -->
+          <div class="mockup-panel active" data-panel="1">
+            <div class="mockup-header">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-title">Case Feed (Auto-Created)</span>
+            </div>
+            <div class="mockup-body case-feed">
+              <div class="mockup-ticket-card">
+                <div class="ticket-top">
+                  <span class="ticket-id">TKT-1082</span>
+                  <span class="ticket-status badge-red">Investigating</span>
+                </div>
+                <div class="ticket-subject">AWS S3 Latency Spike</div>
+                <div class="ticket-meta">Auto-Created 2m ago · Priority: P1</div>
+              </div>
+              <div class="mockup-ticket-card">
+                <div class="ticket-top">
+                  <span class="ticket-id">TKT-1081</span>
+                  <span class="ticket-status badge-orange">Awaiting Vendor</span>
+                </div>
+                <div class="ticket-subject">ServiceNow API Timeout</div>
+                <div class="ticket-meta">Auto-Created 15m ago · Priority: P2</div>
+              </div>
+              <div class="mockup-ticket-card">
+                <div class="ticket-top">
+                  <span class="ticket-id">TKT-1080</span>
+                  <span class="ticket-status badge-green">Resolved</span>
+                </div>
+                <div class="ticket-subject">Salesforce Sync Delay</div>
+                <div class="ticket-meta">Auto-Created 1h ago · Priority: P3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup 2: ITSM Integration -->
+          <div class="mockup-panel" data-panel="2">
+            <div class="mockup-header">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-title">ITSM Integration Sync Bridge</span>
+            </div>
+            <div class="mockup-body sync-bridge">
+              <div class="sync-left">
+                <div class="sync-source-card">
+                  <img src="Assets/Logo.svg" alt="Tacbot">
+                  <span>Tacbot Platform</span>
+                </div>
+              </div>
+              <div class="sync-center">
+                <svg class="sync-double-arrow" viewBox="0 0 100 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="var(--blue)"/>
+                      <stop offset="50%" stop-color="#38bdf8"/>
+                      <stop offset="100%" stop-color="var(--blue)"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M8 12H92M8 12L16 6M8 12L16 18M92 12L84 6M92 12L84 18" stroke="url(#arrowGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="sync-right">
+                <div class="sync-dest-card">
+                  <span class="sync-bullet green"></span>
+                  <span>ServiceNow (ITSM)</span>
+                  <span class="sync-state">Linked</span>
+                </div>
+                <div class="sync-dest-card">
+                  <span class="sync-bullet blue"></span>
+                  <span>Jira Software (Dev)</span>
+                  <span class="sync-state">Syncing</span>
+                </div>
+                <div class="sync-dest-card">
+                  <span class="sync-bullet green"></span>
+                  <span>PagerDuty (On-Call)</span>
+                  <span class="sync-state">Linked</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup 3: AI Ops -->
+          <div class="mockup-panel" data-panel="3">
+            <div class="mockup-header">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-title">AI Noise Reduction Engine</span>
+            </div>
+            <div class="mockup-body ai-ops-panel">
+              <div class="ops-stats">
+                <div class="ops-stat-item">
+                  <div class="ops-stat-num">99%</div>
+                  <div class="ops-stat-label">Noise Reduction</div>
+                </div>
+                <div class="ops-stat-item">
+                  <div class="ops-stat-num">1,250</div>
+                  <div class="ops-stat-label">Alerts Ingested</div>
+                </div>
+              </div>
+              <div class="alert-group-card">
+                <div class="alert-group-header">
+                  <span class="badge-alert-status">1 Incident</span>
+                  <span>Circuit Maintenance Outage</span>
+                </div>
+                <p class="alert-group-details">Correlated 25 carrier emails & silenced 99% duplicate notification spam.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mockup 4: Autonomous NOC -->
+          <div class="mockup-panel" data-panel="4">
+            <div class="mockup-header">
+              <span class="mockup-dot red"></span>
+              <span class="mockup-dot yellow"></span>
+              <span class="mockup-dot green"></span>
+              <span class="mockup-title">Autonomous Remediation Console</span>
+            </div>
+            <div class="mockup-body noc-console">
+              <div class="console-logs">
+                <div class="log-line text-red">[02:14:02] ALERT: Cisco Router Port Down (Circuit outage)</div>
+                <div class="log-line text-blue">[02:14:04] AI Agent triggered: Initiating diagnostics...</div>
+                <div class="log-line">[02:14:09] ACTION: Querying Equinix portal via API...</div>
+                <div class="log-line text-green">[02:14:15] RESULT: Confirmed Scheduled Maintenance on Circuit</div>
+                <div class="log-line">[02:14:16] ACTION: Ticket updated & Operations calendar mapped</div>
+                <div class="log-line text-green font-bold">[02:14:17] STATUS: Alert classified as expected maintenance. Self-healed.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsection B: Progressive Autonomy Slider -->
+    <div class="vision-subsection">
+      <div class="subsection-header">
+        <div class="tag-wrapper">
+          <span class="card-tag card-tag--blue">Autonomous TAC (Not NOC)</span>
+        </div>
+        <h3 class="subsection-title">Progressive Autonomy</h3>
+        <p class="subsection-subtitle">Human role shifts up the ladder: reviewer → approver of external side effects → workflow owner & exception handler.</p>
+      </div>
+
+      <div class="autonomy-cards">
+        <!-- L0: Manual -->
+        <div class="autonomy-card autonomy-card--step0 autonomy-card--light">
+          <div class="autonomy-badge badge-l0">L0</div>
+          <h4 class="autonomy-card-title">Manual</h4>
+          <p class="autonomy-card-desc">Organize cases &amp; vendor interactions; users read and act.</p>
+        </div>
+
+        <!-- L1: Assist -->
+        <div class="autonomy-card autonomy-card--step1 autonomy-card--light">
+          <div class="autonomy-badge badge-l1">L1</div>
+          <h4 class="autonomy-card-title">Assist</h4>
+          <p class="autonomy-card-desc">Summarize, explain alerts, draft responses, extract entities.</p>
+        </div>
+
+        <!-- L2: Recommend -->
+        <div class="autonomy-card autonomy-card--step2 autonomy-card--light">
+          <div class="autonomy-badge badge-l2">L2</div>
+          <h4 class="autonomy-card-title">Recommend</h4>
+          <p class="autonomy-card-desc">Suggest severity &amp; next action; detect SLA risk; find gaps.</p>
+        </div>
+
+        <!-- L3: Act w/ approval -->
+        <div class="autonomy-card autonomy-card--step3 autonomy-card--dark">
+          <div class="autonomy-badge badge-l3">L3</div>
+          <h4 class="autonomy-card-title">Act w/ approval</h4>
+          <p class="autonomy-card-desc">Prepare escalation, draft updates, update fields — send after approval.</p>
+        </div>
+
+        <!-- L4: Bounded automation -->
+        <div class="autonomy-card autonomy-card--step4 autonomy-card--dark">
+          <div class="autonomy-badge badge-l4">L4</div>
+          <h4 class="autonomy-card-title">Bounded automation</h4>
+          <p class="autonomy-card-desc">Auto-classify low-risk alerts; request diagnostics — with evals &amp; rollback.</p>
+        </div>
+      </div>
+
+      <p class="staircase-footer"><strong>Autonomy is earned by evidence,</strong> <span class="muted">not assumed from model capability.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 4: ECOSYSTEM INTEGRATIONS ═══════════ -->
+<!-- <section class="eco-section" data-theme="dark">
+  <div class="eco-header">
+    <p class="eco-eyebrow">Ecosystem Integrations</p>
+    <h2 class="eco-title">Works where you work.</h2>
+    <p class="eco-sub">API-first architecture that connects every vendor in your stack — inbound signals, outbound actions, zero custom glue code.</p>
+  </div>
+
+  <div class="eco-hub-wrap">
+    SVG lines layer (drawn by JS)
+    <svg class="eco-svg" id="ecoSvg" aria-hidden="true"></svg>
+
+    Center hub
+    <div class="eco-hub" id="ecoHub">
+      <img src="Assets/Logo-jump.svg" alt="Tacbot" style="width: 48px; height: 58px;">
+    </div>
+
+    Inbound ring (left arc)
+    <div class="eco-ring eco-ring--in" id="ecoRingIn">
+      <div class="eco-node" data-ring="in">
+        <i class="fa-solid fa-briefcase"></i><span>ServiceNow</span>
+      </div>
+      <div class="eco-node" data-ring="in">
+        <i class="fa-brands fa-jira"></i><span>Jira</span>
+      </div>
+      <div class="eco-node" data-ring="in">
+        <i class="fa-brands fa-slack"></i><span>Slack</span>
+      </div>
+      <div class="eco-node" data-ring="in">
+        <i class="fa-solid fa-users"></i><span>Teams</span>
+      </div>
+      <div class="eco-node" data-ring="in">
+        <i class="fa-solid fa-user"></i><span>Human</span>
+      </div>
+    </div>
+
+    Outbound ring (right arc)
+    <div class="eco-ring eco-ring--out" id="ecoRingOut">
+      Cloud
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="Cloud">
+        <i class="fa-brands fa-aws"></i><span>AWS</span>
+      </div>
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="Cloud">
+        <i class="fa-brands fa-microsoft"></i><span>Azure</span>
+      </div>
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="Cloud">
+        <i class="fa-brands fa-google"></i><span>GCP</span>
+      </div>
+      CRM
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="CRM">
+        <i class="fa-brands fa-salesforce"></i><span>Salesforce</span>
+      </div>
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="CRM">
+        <i class="fa-brands fa-hubspot"></i><span>HubSpot</span>
+      </div>
+      ERP
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="ERP">
+        <i class="fa-solid fa-server"></i><span>SAP</span>
+      </div>
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="ERP">
+        <i class="fa-solid fa-database"></i><span>Oracle</span>
+      </div>
+      Security
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="Security">
+        <i class="fa-solid fa-shield-halved"></i><span>CrowdStrike</span>
+      </div>
+      <div class="eco-node eco-node--out" data-ring="out" data-cat="Security">
+        <i class="fa-solid fa-dog"></i><span>Datadog</span>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Category pills -->
+  <!-- <div class="eco-cats">
+    <div class="eco-cat eco-cat--in">
+      <span class="eco-cat-dot"></span>
+      <strong>Inbound</strong> — Cloud, CRM, ERP, Security &amp; more
+    </div>
+    <div class="eco-cat eco-cat--hub">
+      <span class="eco-cat-dot"></span>
+      <strong>Tacbot</strong> — AI orchestration layer
+    </div>
+    <div class="eco-cat eco-cat--out">
+      <span class="eco-cat-dot"></span>
+      <strong>Outbound</strong> — Actions, tickets, alerts
+    </div>
+  </div>
+
+  <p class="eco-api-note">Full API-first architecture · Webhooks · OAuth 2.0 · Custom enterprise workflows</p>
+</section> -->
+
+<!-- ═══════════ SECTION 5: THE TACBOT EDGE ═══════════ -->
+<section class="edge-praha" id="tacbot-edge">
+  
+  <!-- Animated Fluid Background -->
+  <div class="praha-bg">
+    <div class="praha-blob praha-blob-1"></div>
+    <div class="praha-blob praha-blob-2"></div>
+    <div class="praha-blob praha-blob-3"></div>
+    <div class="praha-glass-overlay"></div>
+    <div class="praha-noise"></div>
+  </div>
+
+  <div class="praha-container">
+    <div class="praha-card" id="prahaCard">
+      <!-- Top Decorative Elements -->
+      <div class="praha-card-top">
+        <div class="praha-dot-group">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="praha-eyebrow">The Tacbot Edge</span>
+      </div>
+
+      <div class="praha-content-grid">
+        <!-- Left: Headline -->
+        <div class="praha-left">
+          <h2 class="praha-title">
+            150 Years of <br>
+            <span class="praha-italic">Operational</span> <br>
+            Battle-Scars.
+          </h2>
+          <div class="praha-founders-lockup">
+            <div class="praha-avatars">
+              <div class="p-avatar" style="background-image: url('https://i.pravatar.cc/100?img=11')"></div>
+              <div class="p-avatar" style="background-image: url('https://i.pravatar.cc/100?img=33')"></div>
+              <div class="p-avatar" style="background-image: url('https://i.pravatar.cc/100?img=12')"></div>
+            </div>
+            <span class="p-avatar-text">Built by Operators,<br>for Operators.</span>
+          </div>
+        </div>
+
+        <!-- Right: Copy -->
+        <div class="praha-right">
+          <p class="praha-body">
+            We didn’t build Tacbot in a vacuum. Our founding team has spent over a century scaling multiple successful startups and managing complex enterprise operations at the highest levels.
+          </p>
+          
+          <div class="praha-pain-points">
+            <div class="praha-pain">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              <p>We know the pain of a missed vendor notification during a P1 incident.</p>
+            </div>
+            <div class="praha-pain">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <p>We know the friction of managing 10-person ops teams across 15+ different vendor portals.</p>
+            </div>
+          </div>
+
+          <div class="praha-closing">
+            <p>Tacbot is the tool <span>we wish we had.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="ai-summary-section">
+  <div class="ai-summary-container">
+    <h2 class="ai-summary-title">Ask For AI Summary</h2>
+    <p class="ai-summary-sub">Want to know what it's really like to work with us and the impact we create? Select your favorite AI below and let it tell you everything.</p>
+    <div class="ai-summary-icons">
+      <a href="https://claude.ai/new?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--claude" aria-label="Ask Claude">
+        <img src="https://api.iconify.design/simple-icons/claude.svg?color=%23ffffff" alt="Claude" width="26" height="26">
+      </a>
+      <a href="https://chat.openai.com/?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--chatgpt" aria-label="Ask ChatGPT">
+        <img src="https://api.iconify.design/simple-icons/openai.svg?color=%23ffffff" alt="ChatGPT" width="26" height="26">
+      </a>
+      <a href="https://www.perplexity.ai/search?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--perplexity" aria-label="Ask Perplexity">
+        <img src="https://api.iconify.design/simple-icons/perplexity.svg?color=%23ffffff" alt="Perplexity" width="26" height="26">
+      </a>
+      <a href="https://gemini.google.com/app?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--gemini" aria-label="Ask Gemini">
+        <img src="https://api.iconify.design/simple-icons/googlegemini.svg?color=%23ffffff" alt="Gemini" width="26" height="26">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 6: CTA ═══════════ -->
+<section class="cta-section" id="cta">
+  <div class="cta-bg-elements">
+    <canvas class="stars-canvas"></canvas>
+    <canvas id="cta-canvas" class="globe-canvas" data-flip="true"></canvas>
+    <div class="cta-grid-overlay"></div>
+    <div class="cta-glow cta-glow-left"></div>
+    <div class="cta-glow cta-glow-right"></div>
+  </div>
+  <div class="cta-container">
+    <div class="cta-content">
+      <div class="cta-eyebrow">Start Your Journey</div>
+      <h2 class="cta-title">Ready to Orchestrate<br>Your Enterprise?</h2>
+      <p class="cta-sub">Join the world's most resilient engineering teams. Stop fighting fires across 15+ portals and start shipping with confidence.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary cta-btn">Get Started Now <span class="btn-arrow">→</span></a>
+        <a href="contact.html" class="btn-secondary cta-btn-sec">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer new-footer" data-theme="dark">
+  <div class="nf-top">
+    <!-- Left Column -->
+    <div class="nf-left">
+      <div class="nf-logo">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+      </div>
+      <h3 class="nf-heading">Book a Call For Free Consultation</h3>
+      <p class="nf-desc">Experienced team delivering exceptional digital solutions tailored to your brand.</p>
+      <a href="contact.html" class="nf-cta">Contact Us &rarr;</a>
+    </div>
+    
+    <!-- Right columns -->
+    <div class="nf-right">
+      <div class="nf-col">
+        <h4>Platform</h4>
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Product</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <a href="use-cases.html">Use Cases</a>
+-->
+      </div>
+      <div class="nf-col">
+        <h4>Company</h4>
+        <a href="#about">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nf-col">
+        <h4>Our Social Handles</h4>
+        <div class="nf-socials">
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-instagram"></i></a>
+          <span class="nf-soc-divider"></span>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <span class="theme-toggle-icon">
+              <!-- Sun icon (light mode) -->
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <!-- Moon icon (dark mode) -->
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nf-bottom">
+    <div class="nf-bottom-left">@2026 Tacbot. All Rights Reserved.</div>
+    <div class="nf-bottom-right">
+      <a href="#">Privacy Policy</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Terms of Service</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Security</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+
+<script src="script.js"></script>
+<script>
+/* Hero content visibility — GSAP in script.js handles the animated
+   entrance; this is just a safety net in case GSAP hasn't run yet. */
+document.addEventListener('DOMContentLoaded', function() {
+  var c = document.getElementById('heroContent');
+  if (c) c.style.opacity = '1';
+});
+</script>
+</body>
+</html>

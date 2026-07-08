@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers - TacBot</title>
+<meta name="description" content="Join a transformative community and drive innovation in AI-powered SaaS software. Be part of Tacbot’s mission to modernize and streamline enterprise workflows. Apply today!">
+<meta name="keywords" content="AI Careers, SaaS Jobs, Tech Careers, AI-Powered Software, Software Engineering Jobs, Innovation in SaaS, Workflow Automation Careers, AI Development Jobs, Enterprise Software Careers, Tacbot Jobs, Join Tacbot, AI Startup Careers">
+<meta property="og:title" content="Careers at Tacbot | Drive Innovation in AI-Powered SaaS">
+<meta property="og:description" content="Engage in meaningful work within a transformative community. Join Tacbot to revolutionize enterprise operations with AI-driven software. Apply now!">
+<link rel="icon" type="image/svg+xml" href="Assets/Logo-jump.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="careers.css">
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+        </div>
+      </a>
+    </div>
+    <div class="nav-center">
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Platform</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <div class="nav-item">
+          <a href="use-cases.html" class="nav-trigger">Solutions <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="use-cases.html#incident">Incident Response</a>
+            <a href="use-cases.html#onboarding">Vendor Onboarding</a>
+            <a href="use-cases.html#sla">SLA Tracking</a>
+            <a href="use-cases.html#renewal">Renewal Leverage</a>
+            <a href="use-cases.html#cloud">Cloud Maintenance</a>
+            <a href="use-cases.html#compliance">Compliance Evidence</a>
+          </div>
+        </div>
+-->
+        <div class="nav-item">
+          <a href="about.html" class="nav-trigger">Company <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="about.html">About Us</a>
+            <a href="careers.html">Career</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta nav-mobile-cta">Request a Demo</a>
+        <div class="nav-menu-footer">
+          <div class="menu-socials">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <p>hello@tacbot.ai</p>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-cta nav-desktop-cta">Request a Demo</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="careers-hero" id="hero">
+  <canvas id="careers-stars" class="stars-canvas"></canvas>
+  <div class="careers-hero-bg">
+    <div class="ch-blob ch-blob-1"></div>
+    <div class="ch-blob ch-blob-2"></div>
+    <div class="ch-blob ch-blob-3"></div>
+  </div>
+  <div class="hero-bottom-fade"></div>
+
+  <div class="careers-hero-content" id="heroContent">
+    <div class="hero-badge">
+      <span>We're Hiring · 2 Continents · 0 Bureaucracy</span>
+      <span class="badge-arrow">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </span>
+    </div>
+    <h1>Don't just work at a startup.<br>Build one with the masters.</h1>
+    <p class="ch-sub">At Tacbot, you aren’t just a developer or an analyst; you are an apprentice to 150 collective man-years of enterprise operation history. We’ve founded, scaled, and exited multiple successful ventures. We aren’t here to 'try' things; we’re here to execute a proven vision. When you join us, you’re getting a front-row seat to a masterclass in building a global technology leader.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('open-roles').scrollIntoView({behavior:'smooth'})">See Open Roles &nbsp;→</button>
+      <button class="btn-secondary" onclick="document.getElementById('culture').scrollIntoView({behavior:'smooth'})">Our Culture</button>
+    </div>
+    <div class="spots">
+      <span class="spot-dot"></span>
+      <span>3 positions open · Remote-first · Equity included</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STATS STRIP
+═══════════════════════════════════════ -->
+<section class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num-row">
+        <span class="stat-big" data-target="150">0</span><span class="stat-suffix">+</span>
+      </div>
+      <span class="stat-label">Collective Man-Years</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <div class="stat-num-row">
+        <span class="stat-big" data-target="500">0</span><span class="stat-suffix">+</span>
+      </div>
+      <span class="stat-label">Vendor APIs Integrated</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <div class="stat-num-row">
+        <span class="stat-big" data-target="2">0</span>
+      </div>
+      <span class="stat-label">Continents, One Mission</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <div class="stat-num-row">
+        <span class="stat-big">0</span>
+      </div>
+      <span class="stat-label">Layers of Middle Management</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOUNDERS' PROMISE
+═══════════════════════════════════════ -->
+<section class="founders-section edge-praha" id="founders">
+  <div class="praha-bg">
+    <div class="praha-blob praha-blob-1"></div>
+    <div class="praha-blob praha-blob-2"></div>
+    <div class="praha-blob praha-blob-3"></div>
+    <div class="praha-glass-overlay"></div>
+    <div class="praha-noise"></div>
+  </div>
+
+  <div class="praha-container">
+    <div class="founders-card praha-card" id="foundersCard">
+      <div class="praha-card-top">
+        <div class="praha-dot-group">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="praha-eyebrow">The Founders' Promise</span>
+      </div>
+
+      <div class="praha-content-grid">
+        <div class="founders-left">
+          <h2 class="founders-headline">
+            A front-row seat to<br>
+            a <span class="praha-italic">masterclass</span> in<br>
+            building a global<br>
+            technology leader.
+          </h2>
+          <div class="founders-meta">
+            <div class="founders-years-badge">
+              <span class="fy-num">150</span>
+              <span class="fy-label">collective<br>man-years</span>
+            </div>
+            <div class="founders-tag-list">
+              <span class="ftag">Founded</span>
+              <span class="ftag">Scaled</span>
+              <span class="ftag">Exited</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="founders-right">
+          <p class="praha-body">
+            At Tacbot, you aren't just a developer or an analyst — you are an <strong>apprentice to 150 collective man-years</strong> of enterprise operation history.
+          </p>
+          <p class="founders-body-2">
+            We've founded, scaled, and exited multiple successful ventures. We aren't here to "try" things; we're here to <strong class="text-accent">execute a proven vision.</strong>
+          </p>
+          <p class="founders-body-2">
+            When you join us, you're getting a front-row seat to a masterclass in building a global technology leader. We don't hire employees — we bring on partners in this mission.
+          </p>
+          <div class="founders-promise-seal">
+            <div class="fps-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.745 3.745 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="fps-title">The Founders' Promise</div>
+              <div class="fps-text">We mentor, we invest in you, we grow together.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CHUTZPAH CULTURE
+═══════════════════════════════════════ -->
+<section class="culture-section" id="culture">
+  <div class="culture-header">
+    <span class="section-eyebrow">Our Culture</span>
+    <h2 class="culture-title">We value <em>Boldness</em><br>over Bureaucracy.</h2>
+    <p class="culture-sub">In enterprise ops, things break. The difference is how you respond. At Tacbot, we live by the audacity to challenge the status quo and the guts to build the solutions that others think are "too complex."</p>
+  </div>
+
+  <div class="culture-grid">
+
+    <div class="culture-card" data-culture="1">
+      <div class="culture-card-top">
+        <div class="culture-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+          </svg>
+        </div>
+        <span class="culture-num">01</span>
+      </div>
+      <h3 class="culture-card-h">Direct Ownership</h3>
+      <p class="culture-card-desc">We have no "middle management." If you build it, you own it.</p>
+      <div class="culture-tag">
+        <span class="ctag-dot" style="background:#60a5fa"></span>
+        Zero bureaucracy layers
+      </div>
+    </div>
+
+    <div class="culture-card" data-culture="2">
+      <div class="culture-card-top">
+        <div class="culture-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <span class="culture-num">02</span>
+      </div>
+      <h3 class="culture-card-h">Radical Transparency</h3>
+      <p class="culture-card-desc">Every team member has visibility into the roadmap, the board's vision, and our global strategy.</p>
+      <div class="culture-tag">
+        <span class="ctag-dot" style="background:#a78bfa"></span>
+        Board-level visibility for all
+      </div>
+    </div>
+
+    <div class="culture-card" data-culture="3">
+      <div class="culture-card-top">
+        <div class="culture-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+          </svg>
+        </div>
+        <span class="culture-num">03</span>
+      </div>
+      <h3 class="culture-card-h">The Operator Mindset</h3>
+      <p class="culture-card-desc">We build for people like us. If a task is manual and annoying, we automate it. No exceptions.</p>
+      <div class="culture-tag">
+        <span class="ctag-dot" style="background:#34d399"></span>
+        Automate everything
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TECHNICAL PLAYGROUND
+═══════════════════════════════════════ -->
+<section class="tech-section cap-section" id="tech-playground">
+  <div class="cap-header" style="margin-bottom:80px">
+    <p class="cap-eyebrow">For Engineers</p>
+    <h2 class="cap-title">Tame the SaaS Wild West.</h2>
+    <p class="cap-sub">Most companies build a single app. We are building the Neural Network of the Enterprise.</p>
+  </div>
+
+  <div class="feature-row" id="feat-tech">
+    <div class="feature-text">
+      <div class="feat-label">The Hook</div>
+      <h3 class="feat-h">Tame the "SaaS Wild West."</h3>
+      <p class="feat-desc">Most companies build a single app. We are building the Neural Network of the Enterprise.</p>
+      <ul class="feat-list">
+        <li><strong>The Challenge:</strong> How do you normalize 500+ different vendor APIs into a single, high-fidelity data stream?</li>
+        <li><strong>The Tech:</strong> Work on cutting-edge AIOps, predictive outage modeling, and bi-directional synchronization that keeps the world’s largest companies running.</li>
+        <li><strong>Impact:</strong> Your code won't just sit in a repo; it will be the "Command Center" that thousands of IT professionals rely on to prevent multi-million dollar outages.</li>
+      </ul>
+      <div class="tech-impact-badge">
+        <span class="tib-icon">⚡</span>
+        <span>Your code ships to <strong>Fortune 500</strong> on-call teams within weeks of joining.</span>
+      </div>
+    </div>
+
+    <div class="visual-card terminal-visual" id="terminal-card">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="terminal-title">tacbot-normalize — bash</span>
+      </div>
+      <div class="terminal-body" id="terminalBody">
+        <span class="t-cursor"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GLOBAL BRIDGE
+═══════════════════════════════════════ -->
+<section class="global-section" id="global">
+  <div class="global-header">
+    <span class="section-eyebrow">Where We Work</span>
+    <h2 class="global-title">Local Roots.<br><em>Global Impact.</em></h2>
+    <p class="global-sub">Tacbot is a truly global operation. We operate across key hubs in the United States and India, bringing together top talent from Frisco, New York, Bangalore, and Coimbatore.</p>
+    <ul class="global-bullets">
+      <li><strong>24/7 Innovation:</strong> Our global footprint allows us to innovate around the clock.</li>
+      <li><strong>Cross-Border Exposure:</strong> Every team member gets exposure to international markets, enterprise-grade standards, and the unique challenges of scaling across continents.</li>
+    </ul>
+  </div>
+
+  <div class="map-container" id="mapContainer">
+    <canvas id="mapCanvas"></canvas>
+    
+    <!-- Frisco Callout -->
+    <div class="map-marker" data-lon="-96.8364" data-lat="33.1507">
+      <div class="marker-dot"></div>
+      <div class="marker-label marker-label--left">Frisco, Texas</div>
+    </div>
+    <!-- NYC Callout -->
+    <div class="map-marker" data-lon="-74.0060" data-lat="40.7128">
+      <div class="marker-dot"></div>
+      <div class="marker-label marker-label--right">New York City</div>
+    </div>
+    <!-- Bangalore Callout -->
+    <div class="map-marker" data-lon="75.7139" data-lat="19.7515">
+      <div class="marker-dot"></div>
+      <div class="marker-label marker-label--left">Bangalore, India</div>
+    </div>
+    <!-- Coimbatore Callout -->
+    <div class="map-marker" data-lon="76.9558" data-lat="11.0168">
+      <div class="marker-dot"></div>
+      <div class="marker-label marker-label--right">Coimbatore, India</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ENGINEERING PRINCIPLES
+═══════════════════════════════════════ -->
+<section class="principles-section" id="principles">
+  <div class="principles-header">
+    <span class="section-eyebrow">Our Manifesto</span>
+    <h2 class="principles-title">Engineering Principles</h2>
+    <p class="principles-sub">Four rules we live by. Every line of code, every deployment, every decision.</p>
+  </div>
+
+  <div class="principles-list">
+    <div class="principle-row" data-p="1">
+      <div class="principle-left">
+        <span class="principle-num">01</span>
+      </div>
+      <div class="principle-body">
+        <h3 class="principle-h">Automation is a Moral Imperative</h3>
+        <p class="principle-desc">If a human has to do it twice, it belongs in the code.</p>
+      </div>
+      <div class="principle-tag">
+        <span class="pt-dot" style="background:#60a5fa"></span>
+        Engineering
+      </div>
+    </div>
+
+    <div class="principle-row" data-p="2">
+      <div class="principle-left">
+        <span class="principle-num">02</span>
+      </div>
+      <div class="principle-body">
+        <h3 class="principle-h">SLA is a Contract, Not a Suggestion</h3>
+        <p class="principle-desc">We obsess over performance and reliability.</p>
+      </div>
+      <div class="principle-tag">
+        <span class="pt-dot" style="background:#34d399"></span>
+        Reliability
+      </div>
+    </div>
+
+    <div class="principle-row" data-p="3">
+      <div class="principle-left">
+        <span class="principle-num">03</span>
+      </div>
+      <div class="principle-body">
+        <h3 class="principle-h">Ship Fast, Fix Faster</h3>
+        <p class="principle-desc">We value velocity and the ability to iterate based on real-world operator feedback.</p>
+      </div>
+      <div class="principle-tag">
+        <span class="pt-dot" style="background:#fb923c"></span>
+        Velocity
+      </div>
+    </div>
+
+    <div class="principle-row" data-p="4">
+      <div class="principle-left">
+        <span class="principle-num">04</span>
+      </div>
+      <div class="principle-body">
+        <h3 class="principle-h">No Corporate Theater</h3>
+        <p class="principle-desc">We don’t do meetings for the sake of meetings. We value deep work and clear communication.</p>
+      </div>
+      <div class="principle-tag">
+        <span class="pt-dot" style="background:#f472b6"></span>
+        Culture
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     OPEN ROLES
+═══════════════════════════════════════ -->
+<section class="roles-section cta-section" id="open-roles">
+  <div class="cta-bg-elements">
+    <canvas id="roles-stars" class="stars-canvas"></canvas>
+    <div class="cta-grid-overlay"></div>
+    <div class="cta-glow cta-glow-left"></div>
+    <div class="cta-glow cta-glow-right" style="background:#7c3aed; opacity:0.12;"></div>
+  </div>
+
+  <div class="roles-container cta-container" id="rolesCta">
+    <div class="cta-content">
+      <div class="cta-eyebrow">Join the Team</div>
+      <h2 class="cta-title">Ready to Build the Future<br>of Enterprise Ops?</h2>
+      <p class="cta-sub">We're looking for operators, engineers, and thinkers who are done with corporate theater and ready to build something that genuinely matters.</p>
+
+      <div class="roles-list">
+        <div class="role-chip">
+          <span class="role-icon"><i class="fa-solid fa-code"></i></span>
+          <div class="role-info">
+            <span class="role-title">Senior Full-Stack Engineer</span>
+            <span class="role-meta">Remote · India / US · Equity included</span>
+          </div>
+          <a href="mailto:purujit@orangydesign.com?subject=Application — Senior Full-Stack Engineer" class="role-apply">Apply →</a>
+        </div>
+        <div class="role-chip">
+          <span class="role-icon"><i class="fa-solid fa-brain"></i></span>
+          <div class="role-info">
+            <span class="role-title">AIOps / ML Engineer</span>
+            <span class="role-meta">Remote · India · Equity included</span>
+          </div>
+          <a href="mailto:purujit@orangydesign.com?subject=Application — AIOps ML Engineer" class="role-apply">Apply →</a>
+        </div>
+        <div class="role-chip">
+          <span class="role-icon"><i class="fa-solid fa-handshake"></i></span>
+          <div class="role-info">
+            <span class="role-title">Enterprise Sales Executive</span>
+            <span class="role-meta">Frisco, Texas · Equity included</span>
+          </div>
+          <a href="mailto:purujit@orangydesign.com?subject=Application — Enterprise Sales Executive" class="role-apply">Apply →</a>
+        </div>
+      </div>
+
+      <div class="roles-cta-row">
+        <a href="mailto:hello@tacbot.com" class="btn-primary cta-btn">Send Your Resume &nbsp;<span class="btn-arrow">→</span></a>
+        <p class="roles-note">Or email us directly at <strong>hello@tacbot.com</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ai-summary-section">
+  <div class="ai-summary-container">
+    <h2 class="ai-summary-title">Ask For AI Summary</h2>
+    <p class="ai-summary-sub">Want to know what it's really like to work with us and the impact we create? Select your favorite AI below and let it tell you everything.</p>
+    <div class="ai-summary-icons">
+      <a href="https://claude.ai/new?q=As+a+Design+head%2FCTO%2FCMO%2FCDO%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Orangy+Design+the+partner+of+choice+for+outcome-driven+UX.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--claude" aria-label="Ask Claude">
+        <img src="https://api.iconify.design/simple-icons/claude.svg?color=%23ffffff" alt="Claude" width="26" height="26">
+      </a>
+      <a href="https://chat.openai.com/?q=As+a+Design+head%2FCTO%2FCMO%2FCDO%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Orangy+Design+the+partner+of+choice+for+outcome-driven+UX.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--chatgpt" aria-label="Ask ChatGPT">
+        <img src="https://api.iconify.design/simple-icons/openai.svg?color=%23ffffff" alt="ChatGPT" width="26" height="26">
+      </a>
+      <a href="https://www.perplexity.ai/search?q=As+a+Design+head%2FCTO%2FCMO%2FCDO%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Orangy+Design+the+partner+of+choice+for+outcome-driven+UX.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--perplexity" aria-label="Ask Perplexity">
+        <img src="https://api.iconify.design/simple-icons/perplexity.svg?color=%23ffffff" alt="Perplexity" width="26" height="26">
+      </a>
+      <a href="https://gemini.google.com/app?q=As+a+Design+head%2FCTO%2FCMO%2FCDO%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Orangy+Design+the+partner+of+choice+for+outcome-driven+UX.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--gemini" aria-label="Ask Gemini">
+        <img src="https://api.iconify.design/simple-icons/googlegemini.svg?color=%23ffffff" alt="Gemini" width="26" height="26">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer class="site-footer new-footer" data-theme="dark">
+  <div class="nf-top">
+    <div class="nf-left">
+      <div class="nf-logo">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+      </div>
+      <h3 class="nf-heading">Build the future with us.</h3>
+      <p class="nf-desc">Experienced team delivering exceptional digital solutions tailored to your brand.</p>
+      <a href="contact.html" class="nf-cta">Contact Us &rarr;</a>
+    </div>
+    <div class="nf-right">
+      <div class="nf-col">
+        <h4>Platform</h4>
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Product</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <a href="use-cases.html">Use Cases</a>
+-->
+      </div>
+      <div class="nf-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nf-col">
+        <h4>Our Social Handles</h4>
+        <div class="nf-socials">
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-instagram"></i></a>
+          <span class="nf-soc-divider"></span>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <span class="theme-toggle-icon">
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nf-bottom">
+    <div class="nf-bottom-left">@2026 Tacbot. All Rights Reserved.</div>
+    <div class="nf-bottom-right">
+      <a href="#">Privacy Policy</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Terms of Service</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Security</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="script.js"></script>
+<script src="careers.js"></script>
+</body>
+</html>

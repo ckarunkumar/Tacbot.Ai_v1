@@ -1,0 +1,436 @@
+/* ═══════════════════════════════════════════════════════
+   ABOUT PAGE
+═══════════════════════════════════════════════════════ */
+
+/* ── HERO ── */
+.ab-hero {
+  position: relative;
+  padding: 116px var(--px) 100px;
+  overflow: hidden;
+  text-align: center;
+  background: var(--bg);
+}
+/* Hero background — same grid + glow pattern as Integrations/Platform pages */
+.ab-hero-grid {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(var(--cta-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cta-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 100%);
+}
+.ab-hero-glow { position: absolute; pointer-events: none; border-radius: 50%; filter: blur(100px); z-index: 0; }
+.ab-hero-glow-1 { width: 700px; height: 350px; background: rgba(105,125,251,0.14); top: -60px; left: 50%; transform: translateX(-50%); }
+.ab-hero-glow-2 { width: 250px; height: 250px; background: rgba(105,125,251,0.09); bottom: 20px; right: 10%; }
+
+.ab-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ab-title-line {
+  display: block;
+}
+@media (max-width: 768px) {
+  .ab-title-line {
+    display: inline;
+  }
+}
+.ab-hero-inner .section-eyebrow { display: block; margin-bottom: 20px; }
+.ab-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); background: rgba(105,125,251,0.1); border: 1px solid rgba(105,125,251,0.25);
+  padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+}
+[data-theme="light"] .ab-eyebrow { color: #2563eb; background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.2); }
+.ab-hero-title {
+  font-size: clamp(32px, 4.4vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  background: var(--h1-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+}
+.ab-hero-body {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.ab-hero-quote {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 20px 28px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto 36px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+  backdrop-filter: blur(8px);
+}
+.ab-hero-quote p {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.ab-hero-quote span { font-weight: 700; }
+.ab-hero-avatars {
+  justify-content: center;
+  margin: 36px auto 0;
+  max-width: 100%;
+  width: fit-content;
+}
+.ab-hero-avatars .p-avatar {
+  border-color: var(--bg);
+}
+@media (max-width: 480px) {
+  .ab-hero-avatars {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .ab-hero-avatars .p-avatar-text {
+    text-align: center;
+  }
+}
+
+/* ── SHIMMER TEXT ── */
+.ab-shimmer {
+  background: linear-gradient(90deg, var(--text-primary) 0%, var(--blue) 25%, var(--text-primary) 50%, var(--blue) 75%, var(--text-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: ab-shimmer-move 6s linear infinite;
+}
+@keyframes ab-shimmer-move { to { background-position: -200% center; } }
+
+.ab-who.edge-praha {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.ab-who .praha-card {
+  padding: 32px 40px;
+  gap: 32px;
+}
+.ab-who .praha-content-grid {
+  gap: 40px;
+}
+.ab-who .praha-card-top {
+  padding-bottom: 18px;
+}
+.ab-who .praha-left { display: flex; align-items: center; }
+/* Match this card's eyebrow to the .section-eyebrow used by every other section on
+   this page — the shared praha-eyebrow component runs bigger/lighter by default. */
+.ab-who .praha-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+.ab-who-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ab-who-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  transition: border-color 0.3s, background 0.3s;
+}
+.ab-who-chip i { color: var(--blue); font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.ab-who-chip span { font-size: 13px; color: var(--footer-link); line-height: 1.4; }
+.ab-who-chip:hover { border-color: var(--border-hover); background: var(--surface-2); }
+.ab-who-chip:hover i { transform: scale(1.2) rotate(-8deg); }
+@media (max-width: 640px) { .ab-who-grid { grid-template-columns: 1fr; } }
+
+/* ── WHY WE STARTED ── */
+.ab-why {
+  padding: 120px var(--px);
+  background: var(--bg-2);
+}
+.ab-why-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.ab-why-inner .section-eyebrow { display: block; margin-bottom: 20px; }
+.ab-why-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.ab-why-body {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.ab-why-emphasis {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+/* Flow diagram — manual chaos -> autonomous orchestration */
+.ab-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 40px 0 36px;
+  flex-wrap: wrap;
+}
+.ab-flow-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.ab-flow-icons { display: flex; gap: 8px; }
+.ab-flow-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+.ab-flow-icon--active {
+  background: rgba(105,125,251,0.12);
+  border-color: rgba(105,125,251,0.4);
+  color: var(--blue);
+  box-shadow: 0 0 0 6px rgba(105,125,251,0.08);
+}
+.ab-flow-label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; letter-spacing: 0.02em; }
+.ab-flow-label--active { color: var(--blue); }
+.ab-flow-arrow { color: var(--text-muted); font-size: 20px; }
+.ab-flow-logo {
+  width: 22px;
+  height: auto;
+  display: block;
+  /* Brand neon blue #697dfb for dark mode */
+  filter: brightness(0) invert(37%) sepia(85%) saturate(3088%) hue-rotate(222deg) brightness(101%) contrast(96%);
+}
+[data-theme="light"] .ab-flow-logo {
+  /* Brand deep blue #2c3fd1 for light mode */
+  filter: brightness(0) invert(22%) sepia(87%) saturate(2854%) hue-rotate(228deg) brightness(92%) contrast(96%);
+}
+
+/* ── MISSION ── */
+.ab-mission {
+  position: relative;
+  overflow: hidden;
+  padding: 100px var(--px);
+  text-align: center;
+}
+.ab-mission-badge {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ab-badge-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(105,125,251,0.3);
+  border-radius: 50%;
+  animation: ab-ring-pulse 3s ease-out infinite;
+}
+.ab-badge-ring--2 { animation-delay: 1.5s; }
+@keyframes ab-ring-pulse {
+  0%   { transform: scale(0.7); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.ab-badge-core {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 20px;
+}
+.ab-mission-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(105,125,251,0.16) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: ab-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes ab-pulse {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+}
+.ab-mission-inner {
+  position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 24px; padding: 60px 40px;
+}
+[data-theme="light"] .ab-mission-inner { background: rgba(255,255,255,0.7); border-color: rgba(22,50,91,0.1); }
+.ab-mission-inner .section-eyebrow { display: block; margin-bottom: 20px; }
+.ab-mission-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+.ab-mission-highlight {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ── PRINCIPLES ── */
+.ab-principles {
+  padding: 40px var(--px) 120px;
+}
+.ab-principles-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+.ab-principles-header .section-eyebrow { display: block; margin-bottom: 20px; }
+.ab-principles-title {
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+.ab-principles-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.ab-principle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 20px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.ab-principle-card:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-2);
+  box-shadow: 0 12px 32px -18px rgba(0,0,0,0.28);
+}
+.ab-principle-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+.ab-principle-num {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+.ab-principle-card p {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ── CLOSING ── */
+.ab-closing {
+  padding: 100px var(--px) 140px;
+  background: var(--bg-2);
+  text-align: center;
+}
+.ab-closing-inner { max-width: 1200px; margin: 0 auto; }
+.ab-closing-body {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.ab-closing-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ab-closing-actions a { text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.ab-magnetic { will-change: transform; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .ab-principles-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .ab-hero { padding: 100px 20px 72px; }
+  .ab-why, .ab-mission, .ab-principles, .ab-closing {
+    padding-left: 20px; padding-right: 20px;
+  }
+  .ab-hero-body { font-size: 15px; }
+  .ab-hero-quote { padding: 16px 20px; }
+  .ab-hero-quote p { font-size: 14px; }
+  .ab-closing { padding-top: 72px; padding-bottom: 100px; }
+  .ab-closing-body { font-size: 15px; }
+}
+@media (max-width: 640px) {
+  .ab-hero { padding: 96px 16px 60px; }
+  .ab-why, .ab-mission, .ab-principles, .ab-closing { padding-left: 16px; padding-right: 16px; }
+  .ab-principles-grid { grid-template-columns: 1fr; }
+  .ab-mission-inner { padding: 36px 20px; }
+  .ab-closing-actions { flex-direction: column; align-items: center; gap: 12px; }
+  .ab-closing-actions a { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  .ab-hero { padding: 88px 14px 52px; }
+  .ab-why, .ab-mission, .ab-principles, .ab-closing { padding-left: 14px; padding-right: 14px; }
+  .ab-hero-title { font-size: clamp(26px, 7vw, 36px); }
+  .ab-hero-body { font-size: 14px; }
+  .ab-hero-quote { padding: 14px 16px; border-radius: 12px; }
+  .ab-principles-grid { gap: 10px; }
+  .ab-principle-card { padding: 20px 16px; }
+  .ab-closing { padding-top: 52px; padding-bottom: 72px; }
+}

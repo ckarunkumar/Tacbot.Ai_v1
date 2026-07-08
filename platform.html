@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform - TacBot</title>
+<meta name="description" content="Four AI engines working in concert — the Unified Vendor Platform, Vendor Excellence Scorecard, Autonomous Ops Calendar, and AI Vendor Support Assistant — to eliminate vendor chaos before it becomes an incident.">
+<meta name="keywords" content="AI Vendor Management, Vendor Operations Platform, SLA Monitoring, Ops Calendar Automation, Vendor Excellence Scorecard, AIOps Platform, Vendor Ticketing Automation, ITSM Integration, AI Incident Management, Vendor SLA Tracking">
+<meta property="og:title" content="The Tacbot Intelligence Layer | Four AI Engines for Vendor Operations">
+<meta property="og:description" content="See how Tacbot's four AI engines — Unified Vendor Platform, Vendor Excellence Scorecard, Autonomous Ops Calendar, and AI Vendor Support Assistant — eliminate vendor chaos before it becomes an incident.">
+<link rel="icon" type="image/svg+xml" href="Assets/Logo-jump.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ═══════════════════════════════════════════
+   CORE CAPABILITIES — LOCAL STYLES
+═══════════════════════════════════════════ */
+.features-section {
+  padding: 100px var(--px);
+  background: var(--cap-section-bg);
+  position: relative;
+}
+.features-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+/* ── PAGE HERO — same pattern as Integrations/Pricing/Use-Cases ── */
+.plat-hero {
+  position: relative; padding: 116px var(--px) 70px;
+  text-align: center; background: var(--bg); overflow: hidden;
+}
+.plat-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--cta-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cta-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 100%);
+}
+.plat-hero-glow { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.plat-hero-glow-1 { width: 700px; height: 350px; background: rgba(105,125,251,0.14); top: -60px; left: 50%; transform: translateX(-50%); }
+.plat-hero-glow-2 { width: 250px; height: 250px; background: rgba(16,185,129,0.09); bottom: 0; right: 10%; }
+.plat-hero-content { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+.plat-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); background: rgba(105,125,251,0.1); border: 1px solid rgba(105,125,251,0.25);
+  padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+}
+[data-theme="light"] .plat-eyebrow { color: #2563eb; background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.2); }
+.plat-hero h1 {
+  font-size: clamp(32px, 4.4vw, 56px); font-weight: 900; letter-spacing: -2px; line-height: 1.05;
+  background: var(--h1-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 20px;
+}
+.plat-hero-sub { font-size: clamp(15px, 2vw, 18px); line-height: 1.7; color: var(--text-secondary); max-width: 560px; margin: 0 auto; }
+
+/* Feature block */
+.feat-block {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+  max-width: 1100px; margin: 0 auto 100px;
+}
+.feat-text { padding-top: 8px; }
+.feat-block:last-child { margin-bottom: 0; }
+.feat-block--flip { direction: rtl; }
+.feat-block--flip > * { direction: ltr; }
+
+.feat-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+[data-theme="light"] .feat-number { color: #5567e9; }
+.feat-block h3 {
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+.feat-block p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.feat-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.feat-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.feat-checklist li strong {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.feat-checklist li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  background: rgba(105, 125, 251, 0.12);
+  border: 1px solid rgba(105, 125, 251, 0.25);
+  border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 5l2.5 2.5L8 3' stroke='%23697dfb' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-size: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+[data-theme="light"] .feat-checklist li::before {
+  background-color: rgba(105, 125, 251, 0.08);
+  border-color: rgba(105, 125, 251, 0.20);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 5l2.5 2.5L8 3' stroke='%235567e9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-size: 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.feat-checklist li > span { flex: 1; min-width: 0; }
+
+/* Feature visual cards */
+.prod-visual {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.prod-visual::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 180px;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(105,125,251,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+[data-theme="light"] .prod-visual {
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 4px 24px rgba(22,50,91,0.06);
+}
+[data-theme="light"] .prod-visual::before {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,0.07) 0%, transparent 70%);
+}
+.pv-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* Visual: Unified Vendor Platform — signal feed */
+.signal-feed { display: flex; flex-direction: column; gap: 8px; }
+.signal-row {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+[data-theme="light"] .signal-row { background: rgba(255,255,255,0.6); border-color: rgba(22,50,91,0.1); }
+.signal-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.signal-vendor { font-weight: 600; color: var(--text-primary); min-width: 90px; }
+.signal-msg { color: var(--text-secondary); flex: 1; font-size: 12px; }
+.signal-status {
+  font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 100px;
+  white-space: nowrap;
+}
+.signal-status--ok { background: rgba(34,197,94,0.12); color: #16a34a; }
+.signal-status--warn { background: rgba(251,191,36,0.15); color: #b45309; }
+.signal-status--alert { background: rgba(239,68,68,0.12); color: #dc2626; }
+[data-theme="light"] .signal-status--ok { color: #15803d; }
+[data-theme="light"] .signal-status--warn { color: #92400e; }
+[data-theme="light"] .signal-status--alert { color: #b91c1c; }
+
+.pv-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-muted);
+}
+
+/* Visual: Vendor-box zoom — same arc layout as the homepage hub-spoke diagram, vendors clustered right */
+.vendor-zoom { display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; }
+.vz-scene {
+  position: relative; width: 100%;
+  aspect-ratio: 300 / 210;
+}
+.vz-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.vz-svg .vz-line-main { stroke: #6366f1; stroke-width: 2.0; stroke-dasharray: 5 8; stroke-opacity: 0.8; fill: none; }
+.vz-svg .vz-line-badge { stroke: #10b981; stroke-width: 2.0; stroke-dasharray: 5 8; stroke-opacity: 0.8; fill: none; }
+.vz-svg .vz-line-itsm { stroke: #6366f1; stroke-width: 2.0; stroke-dasharray: 5 8; stroke-opacity: 0.8; fill: none; }
+.vz-svg .vz-line-static { stroke: rgba(255,255,255,0.22); stroke-width: 1.5; stroke-dasharray: 4 6; fill: none; }
+[data-theme="light"] .vz-svg .vz-line-static { stroke: rgba(22,50,91,0.25); }
+.vz-packet-blue { fill: #6366f1; filter: drop-shadow(0 0 4px #6366f1); }
+.vz-packet-green { fill: #10b981; filter: drop-shadow(0 0 4px #10b981); }
+.vz-packet-purple { fill: #6366f1; filter: drop-shadow(0 0 4px #6366f1); }
+
+.vz-node { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; }
+.vz-badge {
+  font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 100px;
+  background: var(--surface-2); border: 1px solid rgba(16,185,129,0.3); color: #059669;
+}
+[data-theme="light"] .vz-badge { background: rgba(255,255,255,0.75); }
+.vz-card {
+  background: #161b28; border: 1px solid rgba(16,185,129,0.35);
+  border-left: 3px solid #10b981; border-radius: 10px; padding: 7px 16px; text-align: center;
+}
+[data-theme="light"] .vz-card { background: #ffffff; }
+.vz-card-cat {
+  display: block; font-size: 8.5px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #059669; opacity: 0.85; margin-bottom: 2px;
+}
+.vz-card-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.vz-card--itsm { border-color: rgba(139,92,246,0.35); border-left-color: #8b5cf6; }
+.vz-card--itsm .vz-card-cat { color: #a78bfa; }
+/* Category layer — sits between the Vendors card and the individual vendor-name/logo tiles */
+.vz-category {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 100px;
+  background: var(--surface-2); border: 1px solid rgba(79,110,247,0.35); color: var(--blue);
+}
+[data-theme="light"] .vz-category { background: rgba(255,255,255,0.85); color: #2563eb; border-color: rgba(37,99,235,0.3); }
+
+/* Vendor Two-Layer Badges */
+.vz-badge--two-layers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.3;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #161b28;
+  border: 1px solid rgba(16,185,129,0.3);
+  text-align: center;
+}
+[data-theme="light"] .vz-badge--two-layers {
+  background: #ffffff;
+  border-color: rgba(22,50,91,0.08);
+  box-shadow: 0 4px 12px rgba(22,50,91,0.04);
+}
+.vz-badge-cat {
+  font-size: 8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+.vz-badge-val {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Vendor logo tile — same 2-letter colored-initial style as the Integrations page */
+.vz-logo-tile {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 9.5px; font-weight: 600; padding: 3px 8px 3px 6px; border-radius: 8px;
+  background: #161b28; border: 1px solid rgba(255,255,255,0.08); color: var(--text-primary);
+}
+[data-theme="light"] .vz-logo-tile { background: #ffffff; border-color: rgba(22,50,91,0.08); }
+.vz-logo-initial { font-size: 9px; font-weight: 900; }
+.vz-hub {
+  width: 96px; height: 96px; border-radius: 18px; flex-shrink: 0;
+  background: linear-gradient(145deg, #4f6ef7 0%, #1e3a8a 100%);
+  box-shadow: 0 8px 24px rgba(79,110,247,0.32), 0 0 0 1px rgba(255,255,255,0.15) inset;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  position: relative;
+}
+.vz-hub-pulse {
+  position: absolute; inset: -5px; border-radius: 23px;
+  border: 1.5px solid rgba(79,110,247,0.28);
+  animation: vz-hub-ring 2.8s ease-in-out infinite;
+}
+
+/* ── DIAGRAM BACKGROUND ZONES ── */
+.plat-zone-bg {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 12px;
+  z-index: 1;
+}
+.plat-zone-bg--customer {
+  left: 2%;
+  top: 2%;
+  width: 44%;
+  height: 35%;
+  border: 1.5px dashed rgba(139,92,246,0.3);
+  background: rgba(139,92,246,0.012);
+}
+.plat-zone-bg--vendor {
+  right: 2%;
+  top: 2%;
+  width: 50%;
+  height: 96%;
+  border: 1.5px dashed rgba(16,185,129,0.3);
+  background: rgba(16,185,129,0.012);
+}
+.plat-zone-bg--platform {
+  left: 2%;
+  top: 38%;
+  width: 44%;
+  height: 60%;
+  border: 1.5px dashed rgba(79,110,247,0.35);
+  background: rgba(79,110,247,0.015);
+  border-radius: 60% 60% 50% 50% / 70% 70% 40% 40%;
+}
+.plat-zone-header {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.plat-zone-bg--customer .plat-zone-header { color: #8b5cf6; }
+.plat-zone-bg--vendor .plat-zone-header { color: #10b981; }
+.plat-zone-bg--platform .plat-zone-header {
+  color: #4f6ef7;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.vz-hub-pulse::after {
+  content: ''; position: absolute; inset: -5px; border-radius: 28px;
+  border: 1px solid rgba(79,110,247,0.12);
+  animation: vz-hub-ring 2.8s ease-in-out 0.5s infinite;
+}
+@keyframes vz-hub-ring {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%      { transform: scale(1.2); opacity: 0; }
+}
+.vz-hub-logo { width: 64px; height: auto; object-fit: contain; }
+.vz-hub-sub {
+  font-size: 8px; font-weight: 400; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+.vz-caption { font-size: 11px; color: var(--text-muted); text-align: center; }
+.pv-live-dot {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 500; color: #16a34a;
+}
+.pv-live-dot::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+  animation: pulse-live 1.8s ease-in-out infinite;
+}
+@keyframes pulse-live {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+  50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.05); }
+}
+
+/* Visual: Calendar */
+.mini-cal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.mini-cal-month { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.mini-cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 4px; margin-bottom: 16px;
+}
+.mc-day-label {
+  text-align: center; font-size: 10px; font-weight: 600;
+  color: var(--text-muted); padding: 4px 0;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.mc-cell {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  border-radius: 6px;
+  position: relative;
+}
+.mc-cell.mc-today { background: rgba(105,125,251,0.15); color: var(--blue); font-weight: 700; }
+[data-theme="light"] .mc-cell.mc-today { background: rgba(37,99,235,0.1); color: #2563eb; }
+.mc-cell.mc-event { color: var(--text-primary); }
+.mc-cell.mc-event::after {
+  content: ''; position: absolute; bottom: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--blue);
+}
+[data-theme="light"] .mc-cell.mc-event::after { background: #2563eb; }
+.mc-cell.mc-conflict { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; }
+.mc-cell.mc-conflict::after { background: #ef4444; }
+.cal-events-list { display: flex; flex-direction: column; gap: 6px; }
+.cal-event-chip {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; padding: 7px 11px; border-radius: 8px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+[data-theme="light"] .cal-event-chip { background: rgba(255,255,255,0.7); border-color: rgba(22,50,91,0.1); }
+.cal-event-chip-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.cal-event-chip-text { flex: 1; }
+.cal-event-chip-time { font-size: 10px; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+
+/* Visual: Scorecard */
+.score-grid { display: flex; flex-direction: column; gap: 10px; }
+.score-vendor-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.score-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+  background: var(--surface-2); border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+[data-theme="light"] .score-icon { background: rgba(255,255,255,0.7); }
+.score-name { font-size: 13px; font-weight: 600; color: var(--text-primary); min-width: 96px; }
+.score-bar-wrap { flex: 1; height: 6px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 100px; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+.score-val { font-size: 13px; font-weight: 700; color: var(--text-primary); min-width: 34px; text-align: right; }
+.score-trend { font-size: 11px; font-weight: 600; min-width: 28px; text-align: right; }
+.score-trend--up { color: #22c55e; }
+.score-trend--dn { color: #ef4444; }
+
+/* Visual: AI Vendor Support Assistant — big, prominent Tacbot avatar */
+.assistant-persona {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 10px; padding: 24px 12px 20px;
+  margin-bottom: 16px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+}
+[data-theme="light"] .assistant-persona { background: rgba(255,255,255,0.7); border-color: rgba(22,50,91,0.1); }
+.assistant-avatar {
+  width: 88px; height: 88px; border-radius: 20px; flex-shrink: 0;
+  background: linear-gradient(145deg, #0d1424, #1b2740);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 28px rgba(0,0,0,0.22);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue); font-size: 15px;
+  position: relative;
+}
+[data-theme="light"] .assistant-avatar { background: linear-gradient(145deg, #16213a, #22304d); border-color: rgba(255,255,255,0.06); }
+.assistant-avatar img { width: 42px; height: 63px; opacity: 0.95; display: block; }
+.assistant-avatar::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 24px;
+  box-shadow: 0 0 0 0 rgba(105,125,251,0.4);
+  opacity: 0;
+}
+.assistant-avatar.is-speaking::after {
+  opacity: 1;
+  animation: bot-pulse-ring 2s ease-out infinite;
+}
+@keyframes bot-pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(105,125,251,0.35); }
+  100% { box-shadow: 0 0 0 10px rgba(105,125,251,0); }
+}
+.assistant-persona-name { font-size: 16px; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 2px; }
+.assistant-persona-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; max-width: 260px; }
+
+/* Speaking indicator — music-equalizer bars, JS-driven for a real "playing" feel */
+.assistant-speaking-dots {
+  display: inline-flex; align-items: flex-end; gap: 3px; height: 18px;
+  opacity: 0; transition: opacity 0.25s ease;
+}
+.assistant-persona.is-speaking .assistant-speaking-dots { opacity: 1; }
+.assistant-speaking-dots span {
+  width: 3px; border-radius: 1px; background: var(--blue); height: 4px;
+  transition: height 0.32s ease-in-out;
+}
+[data-theme="light"] .assistant-speaking-dots span { background: #2563eb; }
+.assistant-rca-text.typing::after {
+  content: '\258B'; display: inline-block; margin-left: 2px;
+  color: var(--blue); animation: rca-cursor-blink 0.8s steps(1) infinite;
+}
+[data-theme="light"] .assistant-rca-text.typing::after { color: #2563eb; }
+@keyframes rca-cursor-blink { 50% { opacity: 0; } }
+.assistant-footer { opacity: 0; transition: opacity 0.5s ease; }
+.assistant-footer.visible { opacity: 1; }
+.assistant-rca {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 14px;
+  min-height: 100px;
+}
+[data-theme="light"] .assistant-rca { background: rgba(255,255,255,0.6); border-color: rgba(22,50,91,0.1); }
+.assistant-rca-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 8px;
+}
+[data-theme="light"] .assistant-rca-label { color: #2563eb; }
+.assistant-rca-text { font-size: 12px; line-height: 1.6; color: var(--text-secondary); }
+
+@media (max-width: 900px) {
+  .feat-block { grid-template-columns: 1fr; gap: 40px; }
+  .feat-block--flip { direction: ltr; }
+  .features-section { padding: 64px var(--px); }
+}
+@media (max-width: 768px) {
+  .plat-hero { padding: 100px 20px 60px; }
+  .features-section { padding: 56px 20px; }
+  .feat-block { margin-bottom: 56px; gap: 28px; }
+  .prod-visual { padding: 24px; min-height: 280px; }
+  .signal-vendor { min-width: 70px; font-size: 11px; }
+  .signal-msg { font-size: 11px; }
+  .score-name { min-width: 72px; font-size: 12px; }
+}
+@media (max-width: 640px) {
+  .plat-hero { padding: 96px 16px 52px; }
+  .features-section { padding: 48px 16px; }
+  .feat-block { gap: 20px; margin-bottom: 44px; }
+  .prod-visual { padding: 18px; border-radius: 14px; }
+  .pv-footer { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .assistant-persona { padding: 18px 10px 14px; }
+  .assistant-avatar { width: 72px; height: 72px; border-radius: 16px; }
+  .score-vendor-row { gap: 8px; }
+  .score-name { min-width: 60px; font-size: 11px; }
+  .score-val { font-size: 12px; min-width: 28px; }
+}
+@media (max-width: 480px) {
+  .plat-hero { padding: 88px 14px 44px; }
+  .features-section { padding: 40px 14px; }
+  .prod-visual { min-height: auto; }
+  .mini-cal-grid { gap: 2px; }
+  .mc-cell { font-size: 10px; border-radius: 4px; }
+  .cal-event-chip { padding: 5px 8px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+        </div>
+      </a>
+    </div>
+
+    <div class="nav-center">
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Platform</a> -->
+        <a href="platform.html"><b>Platform</b></a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <div class="nav-item">
+          <a href="use-cases.html" class="nav-trigger">Solutions <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="use-cases.html#incident">Incident Response</a>
+            <a href="use-cases.html#onboarding">Vendor Onboarding</a>
+            <a href="use-cases.html#sla">SLA Tracking</a>
+            <a href="use-cases.html#renewal">Renewal Leverage</a>
+            <a href="use-cases.html#cloud">Cloud Maintenance</a>
+            <a href="use-cases.html#compliance">Compliance Evidence</a>
+          </div>
+        </div>
+-->
+        <div class="nav-item">
+          <a href="about.html" class="nav-trigger">Company <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="about.html">About Us</a>
+            <a href="careers.html">Career</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta nav-mobile-cta">Request a Demo</a>
+        <div class="nav-menu-footer">
+          <div class="menu-socials">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <p>hello@tacbot.ai</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <a href="contact.html" class="nav-cta nav-desktop-cta">Request a Demo</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="plat-hero">
+  <div class="plat-hero-grid"></div>
+  <div class="plat-hero-glow plat-hero-glow-1"></div>
+  <div class="plat-hero-glow plat-hero-glow-2"></div>
+  <div class="plat-hero-content">
+    <div class="plat-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Core Capabilities
+    </div>
+    <h1>The Tacbot Intelligence Layer</h1>
+    <p class="plat-hero-sub">Four tightly integrated engines that transform reactive fire-fighting into proactive, data-driven operations.</p>
+  </div>
+</section>
+
+<!-- ═══════════ CORE CAPABILITIES ═══════════ -->
+<section class="features-section" id="corecapabilities">
+
+  <!-- ── Feature A: The Unified Vendor Platform ── -->
+  <div class="feat-block" id="feat-a">
+    <div class="feat-text">
+      <div class="feat-number">A — Unified Vendor Platform</div>
+      <h3>The Unified Vendor Platform</h3>
+      <p>Stop vendor-specific support workflow hopping. Use a single platform to create, track, and update tickets for Network, Security, Compute, Circuit, SaaS, Applications, Cloud, MSP, or any third-party vendor — directly from Tacbot, or your existing ITSM (Jira/ServiceNow).</p>
+      <ul class="feat-checklist">
+        <li><span><strong>Multi-Dimensional Integration &amp; Sync:</strong> Support updates reflected in your choice of interface — Tacbot, vendor portal, ITSM, or any other connected platform.</span></li>
+        <li><span><strong>SLA Watchdog:</strong> Real-time SLA monitoring of vendor responsiveness and resolution times.</span></li>
+      </ul>
+    </div>
+    <div class="prod-visual" style="padding:0; overflow:hidden; min-height:520px;">
+      <iframe
+        src="platform-diagram.html"
+        style="width:100%;height:100%;min-height:520px;border:none;display:block;background:transparent;border-radius:20px;"
+        scrolling="no"
+        frameborder="0"
+        title="Unified Vendor Platform Diagram"
+      ></iframe>
+    </div>
+  </div>
+
+  <!-- ── Feature B: The Vendor Excellence Scorecard ── -->
+  <div class="feat-block feat-block--flip" id="feat-b">
+    <div class="feat-text">
+      <div class="feat-number">B — Vendor Excellence Scorecard</div>
+      <h3>The Vendor Excellence Scorecard</h3>
+      <p>Turn subjective "opinions" about vendor responsiveness into quantitative Excellence Scores.</p>
+      <ul class="feat-checklist">
+        <li><span>Rank vendors by uptime, SLA adherence, and support quality.</span></li>
+        <li><span>Negotiate vendor renewals with hard data and customer-owned evidence.</span></li>
+      </ul>
+    </div>
+    <div class="prod-visual">
+      <div class="pv-tag">Vendor Scorecard — Last 90 Days</div>
+      <div class="score-grid">
+        <div class="score-vendor-row">
+          <div class="score-icon"><i class="fa-brands fa-aws"></i></div>
+          <span class="score-name">AWS</span>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:94%;background:linear-gradient(90deg,#22c55e,#16a34a)"></div></div>
+          <span class="score-val">94</span>
+          <span class="score-trend score-trend--up">+2</span>
+        </div>
+        <div class="score-vendor-row">
+          <div class="score-icon"><i class="fa-brands fa-microsoft"></i></div>
+          <span class="score-name">Azure</span>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:88%;background:linear-gradient(90deg,#3b82f6,#2563eb)"></div></div>
+          <span class="score-val">88</span>
+          <span class="score-trend score-trend--up">+1</span>
+        </div>
+        <div class="score-vendor-row">
+          <div class="score-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <span class="score-name">ServiceNow</span>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:81%;background:linear-gradient(90deg,#6366f1,#4f46e5)"></div></div>
+          <span class="score-val">81</span>
+          <span class="score-trend" style="color:var(--text-muted)">—</span>
+        </div>
+        <div class="score-vendor-row">
+          <div class="score-icon"><i class="fa-solid fa-dog"></i></div>
+          <span class="score-name">Datadog</span>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:73%;background:linear-gradient(90deg,#f59e0b,#d97706)"></div></div>
+          <span class="score-val">73</span>
+          <span class="score-trend score-trend--dn">−4</span>
+        </div>
+        <div class="score-vendor-row">
+          <div class="score-icon"><i class="fa-solid fa-phone"></i></div>
+          <span class="score-name">PagerDuty</span>
+          <div class="score-bar-wrap"><div class="score-bar-fill" style="width:61%;background:linear-gradient(90deg,#ef4444,#dc2626)"></div></div>
+          <span class="score-val">61</span>
+          <span class="score-trend score-trend--dn">−7</span>
+        </div>
+      </div>
+      <div class="pv-footer">
+        <span class="pv-live-dot">Live scoring</span>
+        <span>Updated every 15 min</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Feature C: Autonomous Ops Calendar ── -->
+  <div class="feat-block" id="feat-c">
+    <div class="feat-text">
+      <div class="feat-number">C — Autonomous Ops Calendar</div>
+      <h3>Autonomous Ops Calendar</h3>
+      <p>Tacbot's AI engine ingests and reduces 99% of the noise from every vendor notification, maintenance window, and outage report — distilling it all into actionable steps for your operations team:</p>
+      <ul class="feat-checklist">
+        <li><span><strong>Ops Calendar:</strong> Tacbot proactively identifies vendor notifications and, using AI, intelligently maps them onto your internal operations team calendar.</span></li>
+        <li><span><strong>Global Outage Intelligence:</strong> Intelligently correlates and prioritizes vendor alerts.</span></li>
+      </ul>
+    </div>
+    <div class="prod-visual">
+      <div class="pv-tag">April 2025 — Ops Calendar</div>
+      <div class="mini-cal">
+        <div class="mini-cal-header">
+          <span class="mini-cal-month">April 2025</span>
+          <div style="display:flex;gap:12px;font-size:13px;color:var(--text-muted)"><span style="cursor:pointer">‹</span><span style="cursor:pointer">›</span></div>
+        </div>
+        <div class="mini-cal-grid">
+          <div class="mc-day-label">M</div><div class="mc-day-label">T</div><div class="mc-day-label">W</div>
+          <div class="mc-day-label">T</div><div class="mc-day-label">F</div><div class="mc-day-label">S</div><div class="mc-day-label">S</div>
+          <div class="mc-cell"></div><div class="mc-cell mc-today">1</div><div class="mc-cell">2</div>
+          <div class="mc-cell mc-event">3</div><div class="mc-cell">4</div><div class="mc-cell">5</div><div class="mc-cell">6</div>
+          <div class="mc-cell">7</div><div class="mc-cell">8</div><div class="mc-cell mc-conflict">9</div>
+          <div class="mc-cell mc-event">10</div><div class="mc-cell">11</div><div class="mc-cell">12</div><div class="mc-cell">13</div>
+          <div class="mc-cell">14</div><div class="mc-cell mc-event">15</div><div class="mc-cell">16</div>
+          <div class="mc-cell">17</div><div class="mc-cell mc-event">18</div><div class="mc-cell">19</div><div class="mc-cell">20</div>
+        </div>
+        <div class="cal-events-list">
+          <div class="cal-event-chip">
+            <span class="cal-event-chip-dot" style="background:#ff9900"></span>
+            <span class="cal-event-chip-text">ServiceNow maintenance window</span>
+            <span class="cal-event-chip-time">Apr 3, 2AM</span>
+          </div>
+          <div class="cal-event-chip" style="border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.05)">
+            <span class="cal-event-chip-dot" style="background:#ef4444"></span>
+            <span class="cal-event-chip-text" style="color:var(--text-primary);font-weight:600">⚡ Circuit down — Region East</span>
+            <span class="cal-event-chip-time" style="color:#ef4444">Apr 9</span>
+          </div>
+          <div class="cal-event-chip">
+            <span class="cal-event-chip-dot" style="background:#6366f1"></span>
+            <span class="cal-event-chip-text">Network maintenance — core switch</span>
+            <span class="cal-event-chip-time">Apr 18</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Feature D: The AI Vendor Support Assistant ── -->
+  <div class="feat-block feat-block--flip" id="feat-d">
+    <div class="feat-text">
+      <div class="feat-number">D — AI Vendor Support Assistant</div>
+      <h3>The AI Vendor Support Assistant</h3>
+      <ul class="feat-checklist">
+        <li><span><strong>Custom Vendor Support Personas:</strong> An assistant customized to handle the requirements and issues of each individual vendor.</span></li>
+        <li><span><strong>Summaries &amp; RCAs:</strong> Automated summaries and root-cause-analysis documents for every ticket and every incident.</span></li>
+      </ul>
+    </div>
+    <div class="prod-visual">
+      <div class="pv-tag">AI Assistant — Ticket #4821</div>
+      <div class="assistant-persona">
+        <div class="assistant-avatar">
+          <img src="Assets/Robot-white.svg" alt="Tacbot">
+        </div>
+        <div>
+          <div class="assistant-persona-name">Tacbot <span class="assistant-speaking-dots"><span></span><span></span><span></span><span></span><span></span></span></div>
+          <div class="assistant-persona-desc">Trained on AWS SLAs, escalation paths &amp; support tiers</div>
+        </div>
+      </div>
+      <div class="assistant-rca">
+        <div class="assistant-rca-label">Auto-Generated RCA</div>
+        <p class="assistant-rca-text" data-full-text="EC2 instance i-0af3d2e became unreachable at 02:14 UTC following a network ACL misconfiguration pushed during a routine maintenance window. AWS support restored connectivity at 02:41 UTC. Recommend adding a pre-deploy ACL diff check."></p>
+      </div>
+      <div class="pv-footer assistant-footer">
+        <span class="pv-live-dot">Live</span>
+        <span>Summary generated in 4.2s</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cta-section">
+  <div class="cta-glow-left"></div>
+  <div class="cta-glow-right"></div>
+  <div class="cta-container">
+    <div class="cta-content">
+      <div class="cta-eyebrow">Start Your Journey</div>
+      <h2 class="cta-title">Ready to Orchestrate<br>Your Enterprise?</h2>
+      <p class="cta-sub">Join the world's most resilient engineering teams. Stop fighting fires across 15+ portals and start shipping with confidence.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-primary cta-btn">Get Started Now <span class="btn-arrow">→</span></a>
+        <a href="contact.html" class="btn-secondary cta-btn-sec">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer new-footer" data-theme="dark">
+  <div class="nf-top">
+    <!-- Left Column -->
+    <div class="nf-left">
+      <div class="nf-logo">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+      </div>
+      <p class="nf-desc">Experienced team delivering exceptional digital solutions tailored to your brand.</p>
+      <a href="contact.html" class="nf-cta">Contact Us &rarr;</a>
+    </div>
+    
+    <!-- Right columns -->
+    <div class="nf-right">
+      <div class="nf-col">
+        <h4>Platform</h4>
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Product</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <a href="use-cases.html">Use Cases</a>
+-->
+      </div>
+      <div class="nf-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nf-col">
+        <h4>Our Social Handles</h4>
+        <div class="nf-socials">
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-instagram"></i></a>
+          <span class="nf-soc-divider"></span>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <span class="theme-toggle-icon">
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nf-bottom">
+    <div class="nf-bottom-left">@2026 Tacbot. All Rights Reserved.</div>
+    <div class="nf-bottom-right">
+      <a href="#">Privacy Policy</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Terms of Service</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Security</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script src="script.js"></script>
+<script>
+(function() {
+  /* ── Animate score bars on scroll ── */
+  const fills = document.querySelectorAll('.score-bar-fill');
+  const targets = Array.from(fills).map(f => f.style.width);
+  fills.forEach(f => f.style.width = '0%');
+  const scoreObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fills.forEach((f, i) => { f.style.width = targets[i]; });
+        scoreObs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  const scoreGrid = document.querySelector('.score-grid');
+  if (scoreGrid) scoreObs.observe(scoreGrid);
+
+  /* ── Scroll reveal for feat-blocks ── */
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('.feat-block').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        }
+      );
+    });
+  }
+
+  /* ── Tacbot "speaking" typewriter — RCA text types out while avatar talks ── */
+  const rcaText = document.querySelector('#feat-d .assistant-rca-text');
+  const avatar = document.querySelector('#feat-d .assistant-avatar');
+  const persona = document.querySelector('#feat-d .assistant-persona');
+  const footer = document.querySelector('#feat-d .assistant-footer');
+  const eqBars = document.querySelectorAll('#feat-d .assistant-speaking-dots span');
+  if (rcaText) {
+    const fullText = rcaText.dataset.fullText || '';
+
+    /* Lock the box to its final rendered height so it never grows while typing */
+    const lockHeight = () => {
+      rcaText.style.height = 'auto';
+      rcaText.textContent = fullText;
+      const h = rcaText.getBoundingClientRect().height;
+      rcaText.style.height = h + 'px';
+      rcaText.style.overflow = 'hidden';
+      rcaText.textContent = '';
+    };
+    lockHeight();
+    window.addEventListener('resize', lockHeight);
+
+    let eqTimer = null;
+    const startEq = () => {
+      eqTimer = setInterval(() => {
+        eqBars.forEach(bar => { bar.style.height = (3 + Math.random() * 11).toFixed(1) + 'px'; });
+      }, 340);
+    };
+    const stopEq = () => {
+      clearInterval(eqTimer);
+      eqBars.forEach(bar => { bar.style.height = '3px'; });
+    };
+
+    let loopStarted = false;
+    const runCycle = () => {
+      avatar.classList.add('is-speaking');
+      persona.classList.add('is-speaking');
+      rcaText.classList.add('typing');
+      if (footer) footer.classList.remove('visible');
+      rcaText.textContent = '';
+      startEq();
+      let i = 0;
+      const timer = setInterval(() => {
+        i++;
+        rcaText.textContent = fullText.slice(0, i);
+        if (i >= fullText.length) {
+          clearInterval(timer);
+          stopEq();
+          avatar.classList.remove('is-speaking');
+          persona.classList.remove('is-speaking');
+          rcaText.classList.remove('typing');
+          if (footer) footer.classList.add('visible');
+          setTimeout(runCycle, 2800);
+        }
+      }, 18);
+    };
+    const rcaVisual = document.querySelector('#feat-d .prod-visual');
+    const checkVisible = () => {
+      if (loopStarted || !rcaVisual) return;
+      const rect = rcaVisual.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+        loopStarted = true;
+        runCycle();
+        window.removeEventListener('scroll', checkVisible);
+        window.removeEventListener('resize', checkVisible);
+      }
+    };
+    window.addEventListener('scroll', checkVisible, { passive: true });
+    window.addEventListener('resize', checkVisible);
+    checkVisible();
+  }
+})();
+</script>
+</body>
+</html>

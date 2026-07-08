@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tacbot Orchestrator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tacbot-diagram.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="canvas" id="canvas">
+  <svg class="conn-svg" id="connSvg"></svg>
+
+  <!-- Group Containers / Background Zones -->
+  <div class="zone-bg zone-bg--customer">
+    <div class="zone-header">
+      <span class="zone-dot" style="background: var(--blue);"></span>
+      Customer
+    </div>
+  </div>
+  <div class="zone-bg zone-bg--vendors">
+    <div class="zone-header">
+      <span class="zone-dot" style="background: var(--teal);"></span>
+      Vendors
+    </div>
+  </div>
+  <div class="zone-bg zone-bg--ai-platform">
+    <div class="zone-header">
+      <span class="zone-dot" style="background: var(--purple);"></span>
+      AI Platform
+    </div>
+  </div>
+
+  <!-- Hub — fixed center -->
+  <div class="hub" id="hub">
+    <div class="hub-pulse"></div>
+    <img src="Assets/Robot-white.svg" class="hub-logo" alt="Tacbot">
+    <div class="hub-text">
+      <span class="hub-name">Tacbot</span>
+      <span class="hub-sub">Orchestrator</span>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="pcard reveal" id="itsm-card" data-to="hub">
+    <span class="pcard-cat">ITSM</span>
+    <h3 class="pcard-title">ITSM Integration</h3>
+  </div>
+  <div class="pcard pcard--ops reveal" id="ops-card" data-to="hub">
+    <span class="pcard-cat">Operations</span>
+    <h3 class="pcard-title">Problem Solver</h3>
+  </div>
+  <div class="pcard reveal" id="monitor-card" data-to="hub">
+    <span class="pcard-cat">Monitoring</span>
+    <h3 class="pcard-title">Events</h3>
+  </div>
+  <div class="pcard pcard--ops reveal" id="vendors-card" data-to="hub">
+    <span class="pcard-cat">Vendor Platform</span>
+    <h3 class="pcard-title">Vendors</h3>
+  </div>
+  <div class="pcard pcard--llm reveal" id="llm-card" data-to="hub">
+    <span class="pcard-cat">AI &amp; Models</span>
+    <h3 class="pcard-title">LLM</h3>
+  </div>
+
+  <!-- ITSM badges -->
+  <span class="pbadge reveal" id="jira"     data-parent="itsm-card">Jira</span>
+  <span class="pbadge reveal" id="snow"     data-parent="itsm-card">Snow Actors</span>
+  <span class="pbadge reveal" id="recons"   data-parent="itsm-card">Recons</span>
+  <span class="pbadge reveal" id="obs"      data-parent="itsm-card">OBS</span>
+
+  <!-- Ops badges (teal) -->
+  <span class="pbadge pbadge--ops reveal" id="rca"       data-parent="ops-card">RCA</span>
+  <span class="pbadge pbadge--ops reveal" id="summary"   data-parent="ops-card">Summary</span>
+  <span class="pbadge pbadge--ops reveal" id="sla"       data-parent="ops-card">SLA Cornerstone</span>
+  <span class="pbadge pbadge--ops reveal" id="vendnotif" data-parent="ops-card">Vendor Notification</span>
+
+  <!-- Monitoring badges -->
+  <span class="pbadge reveal" id="splunk"   data-parent="monitor-card">Splunk</span>
+  <span class="pbadge reveal" id="moonsoft" data-parent="monitor-card">MoonSoft NMS</span>
+  <span class="pbadge reveal" id="esrat"    data-parent="monitor-card">Esrat</span>
+  <span class="pbadge reveal" id="jmcts"    data-parent="monitor-card">Jmcts</span>
+  <span class="pbadge reveal" id="slow"     data-parent="monitor-card">Slow</span>
+
+  <!-- Vendor badges (teal) — grouped Network + Circuit vendors -->
+  <span class="pbadge pbadge--ops reveal" id="ui"          data-parent="vendors-card">Arista</span>
+  <span class="pbadge pbadge--ops reveal" id="email"       data-parent="vendors-card">Cisco</span>
+  <span class="pbadge pbadge--ops reveal" id="mop"         data-parent="vendors-card">Juniper</span>
+  <span class="pbadge pbadge--ops reveal" id="m1"          data-parent="vendors-card">Verizon</span>
+  <span class="pbadge pbadge--ops reveal" id="cve"         data-parent="vendors-card">AT&amp;T</span>
+  <span class="pbadge pbadge--ops reveal" id="maintenance" data-parent="vendors-card">Colt</span>
+  <span class="pbadge pbadge--ops reveal" id="bgs"         data-parent="vendors-card">Equinix</span>
+
+  <!-- LLM badges -->
+  <span class="pbadge pbadge--llm reveal" id="slm"       data-parent="llm-card">SLM</span>
+  <span class="pbadge pbadge--llm reveal" id="anyllm"    data-parent="llm-card">Any LLM</span>
+  <span class="pbadge pbadge--llm reveal" id="customllm" data-parent="llm-card">Custom LLM</span>
+</div>
+
+<script>
+(function () {
+  const SVGNS  = 'http://www.w3.org/2000/svg';
+  const canvas = document.getElementById('canvas');
+  const svg    = document.getElementById('connSvg');
+  const hub    = document.getElementById('hub');
+  const BLUE  = '#6366f1';
+  const GREEN = '#10b981';
+
+  const POS = {
+    'itsm-card':    { cx: 33.0, cy: 26.0 },
+    'ops-card':     { cx: 67.0, cy: 26.0 },
+    'monitor-card': { cx: 22.0, cy: 44.0 },
+    'vendors-card': { cx: 78.0, cy: 44.0 },
+    'llm-card':     { cx: 50.0, cy: 63.0 },
+    'jira':         { cx: 21.0, cy: 22.0 },
+    'snow':         { cx: 27.0, cy: 13.5 },
+    'recons':       { cx: 36.0, cy: 11.5 },
+    'obs':          { cx: 43.0, cy: 13.5 },
+    'rca':          { cx: 57.0, cy: 13.5 },
+    'summary':      { cx: 64.0, cy: 11.5 },
+    'sla':          { cx: 73.0, cy: 13.5 },
+    'vendnotif':    { cx: 80.0, cy: 22.0 },
+    'splunk':       { cx:  8.0, cy: 30.0 },
+    'moonsoft':     { cx:  6.5, cy: 37.0 },
+    'esrat':        { cx:  8.0, cy: 44.0 },
+    'jmcts':        { cx:  7.0, cy: 51.0 },
+    'slow':         { cx:  8.0, cy: 58.0 },
+    'ui':           { cx: 89.0, cy: 30.0 },
+    'email':        { cx: 91.0, cy: 37.0 },
+    'mop':          { cx: 92.0, cy: 44.0 },
+    'm1':           { cx: 93.0, cy: 51.0 },
+    'cve':          { cx: 92.0, cy: 58.0 },
+    'maintenance':  { cx: 89.0, cy: 65.0 },
+    'bgs':          { cx: 85.0, cy: 72.0 },
+    'slm':          { cx: 38.0, cy: 77.0 },
+    'anyllm':       { cx: 50.0, cy: 81.0 },
+    'customllm':    { cx: 62.0, cy: 77.0 },
+  };
+
+  let packets = [];
+  let dragEl = null, dragOffX = 0, dragOffY = 0;
+
+  function box(el) {
+    const cr = canvas.getBoundingClientRect();
+    const er = el.getBoundingClientRect();
+    return {
+      l: er.left-cr.left, r: er.right-cr.left,
+      t: er.top-cr.top,   b: er.bottom-cr.top,
+      cx: er.left-cr.left+er.width/2,
+      cy: er.top-cr.top+er.height/2,
+    };
+  }
+
+  function nearest(fb, tb) {
+    const dx = tb.cx-fb.cx, dy = tb.cy-fb.cy;
+    if (Math.abs(dx) >= Math.abs(dy)) {
+      return dx > 0
+        ? { fa:{x:fb.r,y:fb.cy}, ta:{x:tb.l,y:tb.cy} }
+        : { fa:{x:fb.l,y:fb.cy}, ta:{x:tb.r,y:tb.cy} };
+    } else {
+      return dy > 0
+        ? { fa:{x:fb.cx,y:fb.b}, ta:{x:tb.cx,y:tb.t} }
+        : { fa:{x:fb.cx,y:fb.t}, ta:{x:tb.cx,y:tb.b} };
+    }
+  }
+
+  function bezierPath(from, to) {
+    const dx = to.x-from.x, dy = to.y-from.y;
+    let c1, c2;
+    if (Math.abs(dx) >= Math.abs(dy)) {
+      const mx=(from.x+to.x)/2; c1={x:mx,y:from.y}; c2={x:mx,y:to.y};
+    } else {
+      const my=(from.y+to.y)/2; c1={x:from.x,y:my}; c2={x:to.x,y:my};
+    }
+    const p = document.createElementNS(SVGNS,'path');
+    p.setAttribute('d',`M ${from.x} ${from.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${to.x} ${to.y}`);
+    const theme = document.documentElement.dataset.theme || 'light';
+    p.setAttribute('stroke', theme === 'dark' ? '#64748b' : '#94a3b8');
+    p.setAttribute('stroke-opacity','1');
+    p.setAttribute('stroke-dasharray','5 8');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke-width','2');
+    svg.appendChild(p);
+    return {from,to,c1,c2};
+  }
+
+  function addDot(conn, dir, color) {
+    const dot = document.createElementNS(SVGNS,'circle');
+    dot.setAttribute('r','3.5');
+    dot.setAttribute('fill', color);
+    dot.style.filter = `drop-shadow(0 0 5px ${color})`;
+    svg.appendChild(dot);
+    packets.push({conn,el:dot,t:Math.random(),speed:0.0038+Math.random()*0.0025,dir});
+  }
+
+  function build() {
+    svg.innerHTML = '';
+    packets = [];
+    const hb = box(hub);
+
+    document.querySelectorAll('.pcard[data-to="hub"]').forEach(card => {
+      const {fa,ta} = nearest(box(card), hb);
+      const conn = bezierPath(fa, ta);
+      addDot(conn,  1, BLUE);
+      addDot(conn, -1, GREEN);
+    });
+
+    document.querySelectorAll('.pbadge[data-parent]').forEach(badge => {
+      const parent = document.getElementById(badge.dataset.parent);
+      if (!parent) return;
+      const {fa,ta} = nearest(box(badge), box(parent));
+      const conn = bezierPath(fa, ta);
+      addDot(conn,  1, BLUE);
+      addDot(conn, -1, GREEN);
+    });
+  }
+
+  /* Apply positions from POS map */
+  function applyPositions() {
+    const vw = canvas.offsetWidth;
+    const vh = canvas.offsetHeight;
+    document.querySelectorAll('.pcard, .pbadge').forEach(el => {
+      const p = POS[el.id];
+      if (!p) return;
+      const er = el.getBoundingClientRect();
+      el.style.left = (p.cx/100*vw - er.width/2)  + 'px';
+      el.style.top  = (p.cy/100*vh - er.height/2) + 'px';
+    });
+  }
+
+  /* Drag */
+  function onMouseDown(e) {
+    dragEl   = e.currentTarget;
+    const er = dragEl.getBoundingClientRect();
+    dragOffX = e.clientX - er.left;
+    dragOffY = e.clientY - er.top;
+    dragEl.style.zIndex  = '20';
+    dragEl.style.cursor  = 'grabbing';
+    dragEl.style.opacity = '0.85';
+    e.preventDefault();
+  }
+
+  document.addEventListener('mousemove', e => {
+    if (!dragEl) return;
+    const cr = canvas.getBoundingClientRect();
+    dragEl.style.left = (e.clientX-cr.left-dragOffX) + 'px';
+    dragEl.style.top  = (e.clientY-cr.top-dragOffY)  + 'px';
+    build();
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!dragEl) return;
+    dragEl.style.zIndex  = '5';
+    dragEl.style.cursor  = 'grab';
+    dragEl.style.opacity = '1';
+    dragEl = null;
+    build();
+  });
+
+  function initDraggable() {
+    document.querySelectorAll('.pcard, .pbadge').forEach(el => {
+      el.style.position = 'absolute';
+      el.style.zIndex   = '5';
+      el.style.cursor   = 'grab';
+      el.addEventListener('mousedown', onMouseDown);
+    });
+    applyPositions();
+    document.querySelectorAll('.pcard, .pbadge').forEach((el,i) =>
+      setTimeout(() => el.classList.add('shown'), 80 + i*55)
+    );
+    build();
+  }
+
+  function bezierPt(c, t) {
+    const u=1-t;
+    return {
+      x: u*u*u*c.from.x+3*u*u*t*c.c1.x+3*u*t*t*c.c2.x+t*t*t*c.to.x,
+      y: u*u*u*c.from.y+3*u*u*t*c.c1.y+3*u*t*t*c.c2.y+t*t*t*c.to.y,
+    };
+  }
+
+  function tick() {
+    packets.forEach(pk => {
+      pk.t += pk.speed*pk.dir;
+      if (pk.t>1) pk.t=0;
+      if (pk.t<0) pk.t=1;
+      const pt = bezierPt(pk.conn, pk.t);
+      pk.el.setAttribute('cx', pt.x);
+      pk.el.setAttribute('cy', pt.y);
+    });
+    requestAnimationFrame(tick);
+  }
+
+  function syncTheme() {
+    try {
+      const t = window.parent.document.documentElement.dataset.theme || 'light';
+      document.documentElement.dataset.theme = t;
+      build();
+    } catch (e) {
+      console.warn("Could not sync theme with parent window:", e);
+    }
+  }
+  syncTheme();
+  try {
+    new MutationObserver(syncTheme).observe(
+      window.parent.document.documentElement,
+      { attributes: true, attributeFilter: ['data-theme'] }
+    );
+  } catch (e) {}
+
+  window.addEventListener('load', () => {
+    setTimeout(initDraggable, 120);
+    requestAnimationFrame(tick);
+  });
+  window.addEventListener('resize', () => {
+    applyPositions();
+    setTimeout(build, 80);
+  });
+})();
+</script>
+</body>
+</html>

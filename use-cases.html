@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Use Cases - TacBot</title>
+<meta name="description" content="See how six different ops teams use Tacbot — from fighting fires at 3AM to walking into vendor renewal meetings armed with the data and automation they need.">
+<meta name="keywords" content="Tacbot Use Cases, NOC Automation, Vendor Renewal Management, Network Operations AI, IT Operations Automation, SLA Evidence, Incident Response Automation, Vendor Management Use Cases">
+<meta property="og:title" content="Use Cases | The Same Ops Pain, Six Different Teams">
+<meta property="og:description" content="Whether you're fighting fires at 3AM or walking into a vendor renewal meeting, Tacbot gives every operations team the data and automation they've been missing.">
+<link rel="icon" type="image/svg+xml" href="Assets/Logo-jump.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ═══════════════════════════════════════════
+   USE CASES PAGE — LOCAL STYLES
+═══════════════════════════════════════════ */
+
+/* ── HERO ──────────────────────────────────── */
+.uc-hero {
+  position: relative; padding: 116px var(--px) 90px;
+  text-align: center; background: var(--bg); overflow: hidden;
+}
+.uc-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--cta-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cta-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 100%);
+}
+.uc-glow { position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; }
+.uc-glow-1 { width: 620px; height: 320px; background: rgba(105,125,251,0.15); top: -40px; left: 50%; transform: translateX(-50%); }
+.uc-glow-2 { width: 220px; height: 220px; background: rgba(34,197,94,0.08); bottom: 0; left: 12%; }
+.uc-glow-3 { width: 220px; height: 220px; background: rgba(239,68,68,0.07); bottom: 0; right: 12%; }
+.uc-hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+.uc-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); background: rgba(105,125,251,0.1); border: 1px solid rgba(105,125,251,0.25);
+  padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+}
+[data-theme="light"] .uc-eyebrow { color: #2563eb; background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.2); }
+.uc-hero h1 {
+  font-size: clamp(32px, 4.4vw, 56px); font-weight: 900; letter-spacing: -2px; line-height: 1.05;
+  background: var(--h1-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 22px;
+}
+.uc-hero-sub {
+  font-size: clamp(15px, 2vw, 18px); line-height: 1.7; color: var(--text-secondary);
+  max-width: 560px; margin: 0 auto 48px;
+}
+
+/* Use case pill nav */
+.uc-pills {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+}
+.uc-pill {
+  font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+  cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block;
+}
+.uc-pill:hover { border-color: var(--border-hover); color: var(--text-primary); background: var(--surface-2); }
+[data-theme="light"] .uc-pill { background: rgba(255,255,255,0.7); }
+[data-theme="light"] .uc-pill:hover { background: rgba(255,255,255,0.95); }
+
+/* ── OVERVIEW CARDS ─────────────────────────── */
+.overview-section {
+  padding: 80px var(--px);
+  background: var(--cap-section-bg);
+  border-top: 1px solid var(--border);
+}
+.overview-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.ov-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px;
+  cursor: pointer; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none; display: block;
+}
+.ov-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+[data-theme="light"] .ov-card { background: rgba(255,255,255,0.75); }
+[data-theme="light"] .ov-card:hover { box-shadow: 0 8px 28px rgba(22,50,91,0.08); }
+.ov-icon {
+  width: 48px; height: 48px; border-radius: 12px; margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: center; font-size: 20px;
+  border: 1px solid var(--border);
+}
+.ov-title { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.ov-desc { font-size: 13px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 16px; }
+.ov-personas { display: flex; flex-wrap: wrap; gap: 6px; }
+.ov-persona-tag {
+  font-size: 11px; font-weight: 500; color: var(--text-muted);
+  background: var(--border); border-radius: 100px; padding: 3px 10px;
+}
+[data-theme="light"] .ov-persona-tag { background: rgba(22,50,91,0.07); }
+.ov-arrow {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 600; color: var(--blue); margin-top: 16px;
+}
+[data-theme="light"] .ov-arrow { color: #2563eb; }
+
+/* ── DEEP DIVE BLOCKS ───────────────────────── */
+.deepdive-section {
+  padding: 100px var(--px);
+  background: var(--bg);
+}
+.deepdive-section::before {
+  content: ''; display: block;
+  height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin-bottom: 100px;
+}
+
+.dd-block {
+  max-width: 1100px; margin: 0 auto 100px;
+  scroll-margin-top: 100px;
+}
+.dd-block:last-child { margin-bottom: 0; }
+
+.dd-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 100px; margin-bottom: 32px;
+  border: 1px solid;
+}
+.dd-block-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: start;
+}
+.dd-block-grid--flip { direction: rtl; }
+.dd-block-grid--flip > * { direction: ltr; }
+
+.dd-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+.dd-h2 { font-size: clamp(22px, 3vw, 36px); font-weight: 800; letter-spacing: -1px; color: var(--text-primary); margin-bottom: 14px; line-height: 1.15; }
+.dd-sub { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 28px; }
+
+/* Problem → solution flow */
+.dd-flow { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.dd-flow-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-radius: 12px; font-size: 13.5px; line-height: 1.55;
+}
+.dd-flow-item--problem {
+  background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); color: var(--text-secondary);
+}
+.dd-flow-item--solution {
+  background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.18); color: var(--text-secondary);
+}
+.dd-flow-icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+.dd-flow-item--problem .dd-flow-icon { color: #ef4444; }
+.dd-flow-item--solution .dd-flow-icon { color: #22c55e; }
+[data-theme="light"] .dd-flow-item--solution .dd-flow-icon { color: #16a34a; }
+
+/* Key metrics */
+.dd-metrics { display: flex; gap: 20px; flex-wrap: wrap; }
+.dd-metric {
+  text-align: center; background: var(--surface);
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 16px 22px; flex: 1; min-width: 90px;
+}
+[data-theme="light"] .dd-metric { background: rgba(255,255,255,0.8); }
+.dd-metric-num { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--blue); line-height: 1; margin-bottom: 4px; }
+[data-theme="light"] .dd-metric-num { color: #2563eb; }
+.dd-metric-lbl { font-size: 12px; font-weight: 500; color: var(--text-muted); }
+
+/* Visual panels */
+.dd-visual {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  padding: 28px; position: relative; overflow: hidden;
+}
+[data-theme="light"] .dd-visual { background: rgba(255,255,255,0.8); box-shadow: 0 4px 20px rgba(22,50,91,0.06); }
+.dd-visual::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 160px;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(105,125,251,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+[data-theme="light"] .dd-visual::before { background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(37,99,235,0.06) 0%, transparent 70%); }
+.dv-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px; }
+
+/* Visual: Incident timeline */
+.incident-timeline { display: flex; flex-direction: column; gap: 0; }
+.it-row {
+  display: flex; gap: 14px; padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.it-row:last-child { border-bottom: none; }
+.it-time { color: var(--text-muted); font-size: 11px; font-weight: 600; min-width: 40px; padding-top: 2px; white-space: nowrap; }
+.it-dot-col { display: flex; flex-direction: column; align-items: center; gap: 2px; padding-top: 4px; }
+.it-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.it-line { width: 1px; flex: 1; background: var(--border); min-height: 16px; }
+.it-body { flex: 1; }
+.it-event { font-weight: 600; color: var(--text-primary); font-size: 13px; }
+.it-detail { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+.it-badge {
+  font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px;
+  white-space: nowrap; align-self: flex-start; margin-top: 2px;
+}
+.it-badge--auto { background: rgba(105,125,251,0.14); color: var(--blue); }
+[data-theme="light"] .it-badge--auto { color: #2563eb; }
+.it-badge--resolved { background: rgba(34,197,94,0.12); color: #16a34a; }
+.it-badge--alert { background: rgba(239,68,68,0.12); color: #ef4444; }
+
+/* Visual: Vendor onboarding checklist */
+.onboard-list { display: flex; flex-direction: column; gap: 8px; }
+.ob-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; border-radius: 10px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  font-size: 13px;
+}
+[data-theme="light"] .ob-item { background: rgba(255,255,255,0.6); }
+.ob-check {
+  width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 9px;
+}
+.ob-check--done { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3); color: #16a34a; }
+.ob-check--pending { background: rgba(148,163,184,0.1); border: 1px solid var(--border); color: var(--text-muted); }
+.ob-check--auto { background: rgba(105,125,251,0.12); border: 1px solid rgba(105,125,251,0.3); color: var(--blue); }
+[data-theme="light"] .ob-check--auto { color: #2563eb; }
+.ob-text { flex: 1; color: var(--text-secondary); font-weight: 500; }
+.ob-text.done { color: var(--text-muted); text-decoration: line-through; }
+.ob-who { font-size: 10px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+
+/* Visual: SLA scorecard snapshot */
+.sla-snap { display: flex; flex-direction: column; gap: 10px; }
+.sla-snap-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; border-radius: 10px;
+  background: var(--surface-2); border: 1px solid var(--border);
+}
+[data-theme="light"] .sla-snap-row { background: rgba(255,255,255,0.6); }
+.sla-snap-vendor { font-size: 13px; font-weight: 700; color: var(--text-primary); min-width: 96px; }
+.sla-snap-bar-wrap { flex: 1; height: 5px; background: var(--border); border-radius: 100px; overflow: hidden; }
+.sla-snap-bar { height: 100%; border-radius: 100px; }
+.sla-snap-pct { font-size: 12px; font-weight: 700; min-width: 44px; text-align: right; }
+.sla-snap-status { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; white-space: nowrap; }
+.sla-ok { background: rgba(34,197,94,0.12); color: #16a34a; }
+.sla-warn { background: rgba(251,191,36,0.14); color: #b45309; }
+.sla-fail { background: rgba(239,68,68,0.12); color: #ef4444; }
+[data-theme="light"] .sla-ok { color: #15803d; }
+[data-theme="light"] .sla-warn { color: #92400e; }
+
+/* Visual: Contract renewal timeline */
+.renewal-list { display: flex; flex-direction: column; gap: 10px; }
+.renewal-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 10px;
+  background: var(--surface-2); border: 1px solid var(--border);
+}
+[data-theme="light"] .renewal-row { background: rgba(255,255,255,0.6); }
+.renewal-vendor { font-weight: 700; font-size: 13px; color: var(--text-primary); min-width: 88px; }
+.renewal-date { font-size: 12px; color: var(--text-secondary); flex: 1; }
+.renewal-days {
+  font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 100px;
+}
+.renewal-days--urgent { background: rgba(239,68,68,0.12); color: #ef4444; }
+.renewal-days--warn   { background: rgba(251,191,36,0.14); color: #b45309; }
+.renewal-days--ok     { background: rgba(34,197,94,0.12); color: #16a34a; }
+[data-theme="light"] .renewal-days--ok { color: #15803d; }
+[data-theme="light"] .renewal-days--warn { color: #92400e; }
+
+/* Visual: Cloud ops summary */
+.cloud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cloud-tile {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+  padding: 16px; display: flex; flex-direction: column; gap: 6px;
+}
+[data-theme="light"] .cloud-tile { background: rgba(255,255,255,0.6); }
+.cloud-tile-top { display: flex; align-items: center; justify-content: space-between; }
+.cloud-tile-name { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+.cloud-tile-status { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 100px; }
+.cloud-tile-val { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: var(--text-primary); }
+.cloud-tile-sub { font-size: 11px; color: var(--text-muted); }
+
+/* ── PERSONA SECTION ────────────────────────── */
+.persona-section {
+  padding: 90px var(--px);
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.persona-header { text-align: center; max-width: 520px; margin: 0 auto 56px; }
+.persona-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+[data-theme="light"] .persona-eyebrow { color: #2563eb; }
+.persona-title { font-size: clamp(24px, 3vw, 38px); font-weight: 800; letter-spacing: -1px; color: var(--text-primary); margin-bottom: 10px; }
+.persona-sub { font-size: 15px; line-height: 1.65; color: var(--text-secondary); }
+
+.persona-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.persona-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s; cursor: default;
+}
+.persona-card:hover { border-color: var(--border-hover); box-shadow: 0 8px 28px rgba(0,0,0,0.08); }
+[data-theme="light"] .persona-card { background: rgba(255,255,255,0.8); }
+[data-theme="light"] .persona-card:hover { box-shadow: 0 6px 20px rgba(22,50,91,0.07); }
+.persona-avatar {
+  width: 52px; height: 52px; border-radius: 50%; overflow: hidden; margin-bottom: 16px;
+  border: 2px solid var(--border);
+}
+.persona-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.persona-role { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+[data-theme="light"] .persona-role { color: #2563eb; }
+.persona-name { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+.persona-quote { font-size: 13px; line-height: 1.65; color: var(--text-secondary); font-style: italic; margin-bottom: 16px; border-left: 2px solid var(--border); padding-left: 12px; }
+.persona-uses { display: flex; flex-direction: column; gap: 5px; }
+.persona-use { font-size: 12px; color: var(--text-secondary); display: flex; align-items: flex-start; gap: 6px; }
+.persona-use::before { content: '→'; color: var(--blue); font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+[data-theme="light"] .persona-use::before { color: #2563eb; }
+
+/* ── CTA ───────────────────────────────────── */
+.uc-cta {
+  padding: 100px var(--px); text-align: center;
+  background: var(--bg); position: relative; overflow: hidden;
+}
+.uc-cta-glow {
+  position: absolute; width: 600px; height: 300px; border-radius: 50%;
+  filter: blur(100px); pointer-events: none;
+  background: rgba(105,125,251,0.12); top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+[data-theme="light"] .uc-cta-glow { background: rgba(37,99,235,0.07); }
+.uc-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.uc-cta-title {
+  font-size: clamp(28px, 4vw, 52px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.08;
+  background: var(--h1-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 16px;
+}
+.uc-cta-sub { font-size: 16px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 36px; }
+.uc-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media (max-width: 1024px) {
+  .persona-grid { grid-template-columns: repeat(2, 1fr); }
+  .overview-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .dd-block-grid { grid-template-columns: 1fr; gap: 40px; }
+  .dd-block-grid--flip { direction: ltr; }
+  .cloud-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .uc-hero { padding: 100px 20px 72px; }
+  .overview-section { padding: 64px 20px; }
+  .deepdive-section { padding: 72px 20px; }
+  .persona-section { padding: 64px 20px; }
+  .uc-cta { padding: 72px 20px; }
+  .dd-block { margin-bottom: 64px; }
+  .dd-block-grid { gap: 28px; }
+  .dd-visual { padding: 22px; }
+  .dd-metrics { gap: 12px; }
+  .dd-metric { padding: 14px 16px; }
+  .dd-metric-num { font-size: 24px; }
+  .uc-cta-actions { flex-direction: column; align-items: center; }
+  .uc-cta-actions .btn-primary,
+  .uc-cta-actions .btn-secondary { width: 100%; justify-content: center; }
+  .sla-snap-vendor { min-width: 72px; font-size: 12px; }
+  .renewal-vendor { min-width: 68px; font-size: 12px; }
+}
+@media (max-width: 640px) {
+  .overview-grid { grid-template-columns: 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
+  .dd-metrics { flex-direction: column; }
+  .ov-card { padding: 22px; }
+  .persona-card { padding: 22px; }
+  .dd-visual { padding: 18px; border-radius: 14px; }
+  .cloud-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cloud-tile { padding: 12px; }
+  .cloud-tile-val { font-size: 20px; }
+}
+@media (max-width: 480px) {
+  .uc-hero { padding: 88px 14px 60px; }
+  .overview-section { padding: 48px 14px; }
+  .deepdive-section { padding: 52px 14px; }
+  .persona-section { padding: 48px 14px; }
+  .uc-cta { padding: 52px 14px; }
+  .dd-block { margin-bottom: 48px; }
+  .dd-visual { padding: 14px; }
+  .sla-snap-row { padding: 8px 10px; gap: 8px; }
+  .sla-snap-vendor { min-width: 58px; font-size: 11px; }
+  .renewal-row { padding: 8px 10px; gap: 8px; }
+  .renewal-vendor { min-width: 58px; font-size: 11px; }
+  .ob-item { padding: 9px 10px; gap: 8px; font-size: 12px; }
+  .it-row { gap: 10px; font-size: 12px; }
+  .it-time { min-width: 32px; font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+          <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+        </div>
+      </a>
+    </div>
+    <div class="nav-center">
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Platform</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <div class="nav-item">
+          <a href="use-cases.html" class="nav-trigger active">Solutions <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="use-cases.html#incident">Incident Response</a>
+            <a href="use-cases.html#onboarding">Vendor Onboarding</a>
+            <a href="use-cases.html#sla">SLA Tracking</a>
+            <a href="use-cases.html#renewal">Renewal Leverage</a>
+            <a href="use-cases.html#cloud">Cloud Maintenance</a>
+            <a href="use-cases.html#compliance">Compliance Evidence</a>
+          </div>
+        </div>
+-->
+        <div class="nav-item">
+          <a href="about.html" class="nav-trigger">Company <i class="fa-solid fa-chevron-down nav-caret"></i></a>
+          <div class="nav-dropdown">
+            <a href="about.html">About Us</a>
+            <a href="careers.html">Career</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html" class="nav-cta nav-mobile-cta">Request a Demo</a>
+        <div class="nav-menu-footer">
+          <div class="menu-socials">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <p>hello@tacbot.ai</p>
+        </div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="nav-cta nav-desktop-cta">Request a Demo</a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="uc-hero">
+  <div class="uc-hero-grid"></div>
+  <div class="uc-glow uc-glow-1"></div>
+  <div class="uc-glow uc-glow-2"></div>
+  <div class="uc-glow uc-glow-3"></div>
+  <div class="uc-hero-content">
+    <div class="uc-eyebrow">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="4" height="4" rx="1" fill="currentColor"/><rect x="7" y="1" width="4" height="4" rx="1" fill="currentColor"/><rect x="1" y="7" width="4" height="4" rx="1" fill="currentColor"/><rect x="7" y="7" width="4" height="4" rx="1" fill="currentColor"/></svg>
+      Real-World Use Cases
+    </div>
+    <h1>The same ops pain.<br>Six different teams.</h1>
+    <p class="uc-hero-sub">Whether you're fighting fires at 3AM or walking into a vendor renewal meeting, Tacbot gives every operations team the data and automation they've been missing.</p>
+    <div class="uc-pills">
+      <a href="#incident" class="uc-pill">Incident Response</a>
+      <a href="#onboarding" class="uc-pill">Vendor Onboarding</a>
+      <a href="#sla" class="uc-pill">SLA Management</a>
+      <a href="#renewal" class="uc-pill">Contract Renewal</a>
+      <a href="#cloud" class="uc-pill">Cloud Operations</a>
+      <a href="#compliance" class="uc-pill">Compliance Audits</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ OVERVIEW CARDS ═══════════════════════ -->
+<section class="overview-section">
+  <div class="overview-grid">
+    <a href="#incident" class="ov-card">
+      <div class="ov-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2)"><i class="fa-solid fa-bolt" style="color:#ef4444"></i></div>
+      <div class="ov-title">Incident Response</div>
+      <div class="ov-desc">Stop chasing vendor status pages during a P0. Tacbot surfaces the right context, routes to the right team, and acts in seconds.</div>
+      <div class="ov-personas"><span class="ov-persona-tag">DevOps Engineer</span><span class="ov-persona-tag">SRE</span><span class="ov-persona-tag">IT Director</span></div>
+      <div class="ov-arrow">Explore <i class="fa-solid fa-arrow-right" style="font-size:10px"></i></div>
+    </a>
+    <a href="#onboarding" class="ov-card">
+      <div class="ov-icon" style="background:rgba(105,125,251,0.1);border-color:rgba(105,125,251,0.2)"><i class="fa-solid fa-plug" style="color:var(--blue)"></i></div>
+      <div class="ov-title">Vendor Onboarding</div>
+      <div class="ov-desc">Reduce a 3-week vendor integration sprint to a 2-day checklist. Tacbot automates credential validation, SLA baseline, and monitoring setup.</div>
+      <div class="ov-personas"><span class="ov-persona-tag">Procurement</span><span class="ov-persona-tag">IT Ops</span><span class="ov-persona-tag">Security</span></div>
+      <div class="ov-arrow">Explore <i class="fa-solid fa-arrow-right" style="font-size:10px"></i></div>
+    </a>
+    <a href="#sla" class="ov-card">
+      <div class="ov-icon" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.25)"><i class="fa-solid fa-chart-line" style="color:#f59e0b"></i></div>
+      <div class="ov-title">SLA Management</div>
+      <div class="ov-desc">Turn gut-feel vendor performance into measured, documented SLA compliance — so you always have the data before a breach becomes a dispute.</div>
+      <div class="ov-personas"><span class="ov-persona-tag">IT Director</span><span class="ov-persona-tag">CTO</span><span class="ov-persona-tag">Vendor Manager</span></div>
+      <div class="ov-arrow">Explore <i class="fa-solid fa-arrow-right" style="font-size:10px"></i></div>
+    </a>
+    <a href="#renewal" class="ov-card">
+      <div class="ov-icon" style="background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.2)"><i class="fa-solid fa-file-contract" style="color:#22c55e"></i></div>
+      <div class="ov-title">Contract Renewal</div>
+      <div class="ov-desc">Walk into every renewal with 90 days of vendor performance data. Stop renewing on hope — start negotiating on evidence.</div>
+      <div class="ov-personas"><span class="ov-persona-tag">CTO</span><span class="ov-persona-tag">VP Engineering</span><span class="ov-persona-tag">Finance</span></div>
+      <div class="ov-arrow">Explore <i class="fa-solid fa-arrow-right" style="font-size:10px"></i></div>
+    </a>
+    <a href="#cloud" class="ov-card">
+      <div class="ov-icon" style="background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.2)"><i class="fa-brands fa-aws" style="color:#3b82f6"></i></div>
+      <div class="ov-title">Cloud Operations</div>
+      <div class="ov-desc">Unify AWS, Azure, and GCP maintenance windows, cost anomalies, and health events into a single ops timeline that your whole team can see.</div>
+      <div class="ov-personas"><span class="ov-persona-tag">Cloud Architect</span><span class="ov-persona-tag">Platform Eng</span><span class="ov-persona-tag">FinOps</span></div>
+      <div class="ov-arrow">Explore <i class="fa-solid fa-arrow-right" style="font-size:10px"></i></div>
+    </a>
+    <a href="#compliance" class="ov-card">
+      <div class="ov-icon" style="background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.2)"><i class="fa-solid fa-shield-halved" style="color:#a855f7"></i></div>
+      <div class="ov-title">Compliance Audits</div>
+      <div class="ov-desc">Every vendor action, acknowledgement, and resolution is immutably logged. Audit prep that used to take weeks now takes hours.</div>
+      <div class="ov-personas"><span class="ov-persona-tag">CISO</span><span class="ov-persona-tag">GRC Team</span><span class="ov-persona-tag">IT Director</span></div>
+      <div class="ov-arrow">Explore <i class="fa-solid fa-arrow-right" style="font-size:10px"></i></div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════ DEEP DIVES ═══════════════════════ -->
+<section class="deepdive-section">
+
+  <!-- ── 01: Incident Response ── -->
+  <div class="dd-block" id="incident">
+    <div class="dd-label" style="background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.2);color:#ef4444">
+      <i class="fa-solid fa-bolt"></i> Use Case 01 — Incident Response
+    </div>
+    <div class="dd-block-grid">
+      <div class="dd-text">
+        <div class="dd-eyebrow">The Scenario</div>
+        <h2 class="dd-h2">A P0 hits at 3AM. Your vendor's status page says "All Systems Operational."</h2>
+        <p class="dd-sub">During a live incident, every second spent hunting for vendor context is a second your users are offline. Tacbot correlates vendor signals in real time so your team always knows if the issue is yours or theirs.</p>
+        <div class="dd-flow">
+          <div class="dd-flow-item dd-flow-item--problem">
+            <span class="dd-flow-icon"><i class="fa-solid fa-xmark"></i></span>
+            Without Tacbot: engineer logs into 8 portals, checks status pages, posts in Slack, waits 20 min for a vendor response.
+          </div>
+          <div class="dd-flow-item dd-flow-item--solution">
+            <span class="dd-flow-icon"><i class="fa-solid fa-check"></i></span>
+            With Tacbot: vendor's degraded event appears in your signal feed 45 seconds after it fires — correlated with your Datadog alert automatically.
+          </div>
+        </div>
+        <div class="dd-metrics">
+          <div class="dd-metric"><div class="dd-metric-num">90s</div><div class="dd-metric-lbl">Mean detection time</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">74%</div><div class="dd-metric-lbl">Fewer vendor escalations</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">3.2×</div><div class="dd-metric-lbl">Faster MTTR</div></div>
+        </div>
+      </div>
+      <div class="dd-visual">
+        <div class="dv-tag">Live Incident Timeline</div>
+        <div class="incident-timeline">
+          <div class="it-row">
+            <div class="it-time">02:41</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#ef4444"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">Datadog alert fired — API p99 latency &gt;5s</div>
+              <div class="it-detail">Affecting: checkout service, 3 regions</div>
+            </div>
+          </div>
+          <div class="it-row">
+            <div class="it-time">02:42</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#697dfb"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">Tacbot correlated with AWS signal</div>
+              <div class="it-detail">AWS us-east-1 network degradation event detected</div>
+              <div class="it-badge it-badge--auto">Auto-correlated</div>
+            </div>
+          </div>
+          <div class="it-row">
+            <div class="it-time">02:43</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#697dfb"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">On-call engineer notified via Slack + PagerDuty</div>
+              <div class="it-detail">Context pre-loaded: vendor event, affected resources, SLA status</div>
+              <div class="it-badge it-badge--auto">Auto-routed</div>
+            </div>
+          </div>
+          <div class="it-row">
+            <div class="it-time">03:01</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#22c55e"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">AWS degradation resolved — latency normalised</div>
+              <div class="it-detail">Incident auto-closed. SLA breach logged for scorecard.</div>
+              <div class="it-badge it-badge--resolved">Resolved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 02: Vendor Onboarding ── -->
+  <div class="dd-block" id="onboarding">
+    <div class="dd-label" style="background:rgba(105,125,251,0.08);border-color:rgba(105,125,251,0.25);color:var(--blue)">
+      <i class="fa-solid fa-plug"></i> Use Case 02 — Vendor Onboarding
+    </div>
+    <div class="dd-block-grid dd-block-grid--flip">
+      <div class="dd-text">
+        <div class="dd-eyebrow">The Scenario</div>
+        <h2 class="dd-h2">A new vendor signed. IT, Security, and Procurement all need something different.</h2>
+        <p class="dd-sub">Onboarding a new vendor typically takes 3 weeks of back-and-forth between teams. Tacbot gives everyone a shared checklist, automates the repetitive steps, and flags blockers before they delay go-live.</p>
+        <div class="dd-flow">
+          <div class="dd-flow-item dd-flow-item--problem">
+            <span class="dd-flow-icon"><i class="fa-solid fa-xmark"></i></span>
+            Without Tacbot: spreadsheet ping-pong between Procurement, IT, and Security. No one knows what's done or who's blocking.
+          </div>
+          <div class="dd-flow-item dd-flow-item--solution">
+            <span class="dd-flow-icon"><i class="fa-solid fa-check"></i></span>
+            With Tacbot: one shared onboarding checklist auto-assigned by role. Tacbot auto-validates API credentials and creates the first SLA baseline on day one.
+          </div>
+        </div>
+        <div class="dd-metrics">
+          <div class="dd-metric"><div class="dd-metric-num">2d</div><div class="dd-metric-lbl">Avg onboarding time</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">12</div><div class="dd-metric-lbl">Teams synced automatically</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">0</div><div class="dd-metric-lbl">Missed setup steps</div></div>
+        </div>
+      </div>
+      <div class="dd-visual">
+        <div class="dv-tag">Vendor Onboarding — Datadog</div>
+        <div class="onboard-list">
+          <div class="ob-item">
+            <div class="ob-check ob-check--done"><i class="fa-solid fa-check" style="font-size:8px"></i></div>
+            <span class="ob-text done">Vendor contract signed &amp; uploaded</span>
+            <span class="ob-who">Procurement</span>
+          </div>
+          <div class="ob-item">
+            <div class="ob-check ob-check--done"><i class="fa-solid fa-check" style="font-size:8px"></i></div>
+            <span class="ob-text done">Security questionnaire reviewed</span>
+            <span class="ob-who">Security</span>
+          </div>
+          <div class="ob-item">
+            <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt" style="font-size:8px"></i></div>
+            <span class="ob-text">API credentials validated</span>
+            <span class="ob-who">Auto</span>
+          </div>
+          <div class="ob-item">
+            <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt" style="font-size:8px"></i></div>
+            <span class="ob-text">SLA baseline established (90-day window)</span>
+            <span class="ob-who">Auto</span>
+          </div>
+          <div class="ob-item">
+            <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt" style="font-size:8px"></i></div>
+            <span class="ob-text">Monitoring configured in Tacbot</span>
+            <span class="ob-who">Auto</span>
+          </div>
+          <div class="ob-item">
+            <div class="ob-check ob-check--pending"><i class="fa-solid fa-clock" style="font-size:8px"></i></div>
+            <span class="ob-text">On-call escalation policy linked</span>
+            <span class="ob-who">IT Ops</span>
+          </div>
+          <div class="ob-item">
+            <div class="ob-check ob-check--pending"><i class="fa-solid fa-clock" style="font-size:8px"></i></div>
+            <span class="ob-text">Runbook published to team wiki</span>
+            <span class="ob-who">Platform</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 03: SLA Management ── -->
+  <div class="dd-block" id="sla">
+    <div class="dd-label" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3);color:#b45309">
+      <i class="fa-solid fa-chart-line"></i> Use Case 03 — SLA Management
+    </div>
+    <div class="dd-block-grid">
+      <div class="dd-text">
+        <div class="dd-eyebrow">The Scenario</div>
+        <h2 class="dd-h2">A vendor feels slow. But "slow" doesn't win a credit or a renewal discount.</h2>
+        <p class="dd-sub">Tacbot measures every vendor's response time, resolution speed, and uptime 24/7 — and flags when they're trending toward a breach days before it becomes a contractual dispute.</p>
+        <div class="dd-flow">
+          <div class="dd-flow-item dd-flow-item--problem">
+            <span class="dd-flow-icon"><i class="fa-solid fa-xmark"></i></span>
+            Without Tacbot: SLA breaches go unnoticed until finance asks why renewal costs rose and there's no evidence to contest it.
+          </div>
+          <div class="dd-flow-item dd-flow-item--solution">
+            <span class="dd-flow-icon"><i class="fa-solid fa-check"></i></span>
+            With Tacbot: every SLA data point is captured, scored, and exportable as a PDF report you can hand directly to the vendor in a renewal meeting.
+          </div>
+        </div>
+        <div class="dd-metrics">
+          <div class="dd-metric"><div class="dd-metric-num">$340k</div><div class="dd-metric-lbl">Avg savings per renewal</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">100%</div><div class="dd-metric-lbl">SLA events documented</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">8</div><div class="dd-metric-lbl">Dimensions scored</div></div>
+        </div>
+      </div>
+      <div class="dd-visual">
+        <div class="dv-tag">SLA Compliance — Last 90 Days</div>
+        <div class="sla-snap">
+          <div class="sla-snap-row">
+            <span class="sla-snap-vendor">AWS</span>
+            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar" style="width:99.8%;background:linear-gradient(90deg,#22c55e,#16a34a)"></div></div>
+            <span class="sla-snap-pct" style="color:#16a34a">99.8%</span>
+            <span class="sla-snap-status sla-ok">Met</span>
+          </div>
+          <div class="sla-snap-row">
+            <span class="sla-snap-vendor">Azure</span>
+            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar" style="width:99.5%;background:linear-gradient(90deg,#22c55e,#16a34a)"></div></div>
+            <span class="sla-snap-pct" style="color:#16a34a">99.5%</span>
+            <span class="sla-snap-status sla-ok">Met</span>
+          </div>
+          <div class="sla-snap-row">
+            <span class="sla-snap-vendor">Datadog</span>
+            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar" style="width:99.1%;background:linear-gradient(90deg,#f59e0b,#d97706)"></div></div>
+            <span class="sla-snap-pct" style="color:#d97706">99.1%</span>
+            <span class="sla-snap-status sla-warn">At Risk</span>
+          </div>
+          <div class="sla-snap-row">
+            <span class="sla-snap-vendor">PagerDuty</span>
+            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar" style="width:97.8%;background:linear-gradient(90deg,#ef4444,#dc2626)"></div></div>
+            <span class="sla-snap-pct" style="color:#ef4444">97.8%</span>
+            <span class="sla-snap-status sla-fail">Breached</span>
+          </div>
+          <div class="sla-snap-row">
+            <span class="sla-snap-vendor">ServiceNow</span>
+            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar" style="width:99.6%;background:linear-gradient(90deg,#22c55e,#16a34a)"></div></div>
+            <span class="sla-snap-pct" style="color:#16a34a">99.6%</span>
+            <span class="sla-snap-status sla-ok">Met</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 04: Contract Renewal ── -->
+  <div class="dd-block" id="renewal">
+    <div class="dd-label" style="background:rgba(34,197,94,0.08);border-color:rgba(34,197,94,0.22);color:#16a34a">
+      <i class="fa-solid fa-file-contract"></i> Use Case 04 — Contract Renewal
+    </div>
+    <div class="dd-block-grid dd-block-grid--flip">
+      <div class="dd-text">
+        <div class="dd-eyebrow">The Scenario</div>
+        <h2 class="dd-h2">Renewal is in 30 days. Your only leverage is a gut feeling that the vendor underperformed.</h2>
+        <p class="dd-sub">Tacbot tracks every renewal date and gives your team 30, 7, and 1-day alerts — plus a pre-built report card with 90 days of performance data ready to share with the vendor the moment you walk into the room.</p>
+        <div class="dd-flow">
+          <div class="dd-flow-item dd-flow-item--problem">
+            <span class="dd-flow-icon"><i class="fa-solid fa-xmark"></i></span>
+            Without Tacbot: renewal deadline discovered 5 days out. No data. Auto-renew accepted at full rate despite 3 SLA breaches.
+          </div>
+          <div class="dd-flow-item dd-flow-item--solution">
+            <span class="dd-flow-icon"><i class="fa-solid fa-check"></i></span>
+            With Tacbot: 30-day alert triggers. Team exports PDF scorecard. Enters negotiation with documented breach evidence. Saves $340K.
+          </div>
+        </div>
+        <div class="dd-metrics">
+          <div class="dd-metric"><div class="dd-metric-num">30d</div><div class="dd-metric-lbl">Advance warning</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">0</div><div class="dd-metric-lbl">Missed renewals</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">22%</div><div class="dd-metric-lbl">Avg cost reduction</div></div>
+        </div>
+      </div>
+      <div class="dd-visual">
+        <div class="dv-tag">Upcoming Renewals</div>
+        <div class="renewal-list">
+          <div class="renewal-row">
+            <span class="renewal-vendor">PagerDuty</span>
+            <span class="renewal-date">Renews Apr 3, 2025</span>
+            <span class="renewal-days renewal-days--urgent">12 days</span>
+          </div>
+          <div class="renewal-row">
+            <span class="renewal-vendor">Datadog</span>
+            <span class="renewal-date">Renews Apr 18, 2025</span>
+            <span class="renewal-days renewal-days--warn">27 days</span>
+          </div>
+          <div class="renewal-row">
+            <span class="renewal-vendor">Zendesk</span>
+            <span class="renewal-date">Renews May 11, 2025</span>
+            <span class="renewal-days renewal-days--ok">50 days</span>
+          </div>
+          <div class="renewal-row">
+            <span class="renewal-vendor">ServiceNow</span>
+            <span class="renewal-date">Renews Jun 1, 2025</span>
+            <span class="renewal-days renewal-days--ok">71 days</span>
+          </div>
+          <div class="renewal-row">
+            <span class="renewal-vendor">Salesforce</span>
+            <span class="renewal-date">Renews Jul 22, 2025</span>
+            <span class="renewal-days renewal-days--ok">122 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 05: Cloud Operations ── -->
+  <div class="dd-block" id="cloud">
+    <div class="dd-label" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.22);color:#3b82f6">
+      <i class="fa-brands fa-aws"></i> Use Case 05 — Cloud Operations
+    </div>
+    <div class="dd-block-grid">
+      <div class="dd-text">
+        <div class="dd-eyebrow">The Scenario</div>
+        <h2 class="dd-h2">AWS, Azure, and GCP all have maintenance windows this weekend. None of them know about each other.</h2>
+        <p class="dd-sub">Multi-cloud teams live in constant fear of overlapping maintenance causing cascading failures. Tacbot maps every cloud event onto one timeline and auto-detects conflicts before they become incidents.</p>
+        <div class="dd-flow">
+          <div class="dd-flow-item dd-flow-item--problem">
+            <span class="dd-flow-icon"><i class="fa-solid fa-xmark"></i></span>
+            Without Tacbot: AWS and Azure windows overlap Saturday 2AM. GCP billing anomaly hits the same weekend. Platform team discovers it in post-mortem.
+          </div>
+          <div class="dd-flow-item dd-flow-item--solution">
+            <span class="dd-flow-icon"><i class="fa-solid fa-check"></i></span>
+            With Tacbot: conflict flagged Thursday. Azure window rescheduled autonomously. GCP cost spike surfaced 6 hours after it fires. Weekend stays quiet.
+          </div>
+        </div>
+        <div class="dd-metrics">
+          <div class="dd-metric"><div class="dd-metric-num">3</div><div class="dd-metric-lbl">Clouds unified</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">0</div><div class="dd-metric-lbl">Weekend incidents</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">6h</div><div class="dd-metric-lbl">Avg cost anomaly detection</div></div>
+        </div>
+      </div>
+      <div class="dd-visual">
+        <div class="dv-tag">Multi-Cloud Health — Now</div>
+        <div class="cloud-grid">
+          <div class="cloud-tile">
+            <div class="cloud-tile-top">
+              <span class="cloud-tile-name">AWS us-east-1</span>
+              <span class="cloud-tile-status" style="background:rgba(34,197,94,0.12);color:#16a34a">Healthy</span>
+            </div>
+            <div class="cloud-tile-val">99.97%</div>
+            <div class="cloud-tile-sub">Uptime — 30 days</div>
+          </div>
+          <div class="cloud-tile">
+            <div class="cloud-tile-top">
+              <span class="cloud-tile-name">Azure West EU</span>
+              <span class="cloud-tile-status" style="background:rgba(251,191,36,0.14);color:#b45309">Maint.</span>
+            </div>
+            <div class="cloud-tile-val">Sat 2AM</div>
+            <div class="cloud-tile-sub">Next window</div>
+          </div>
+          <div class="cloud-tile">
+            <div class="cloud-tile-top">
+              <span class="cloud-tile-name">GCP us-central</span>
+              <span class="cloud-tile-status" style="background:rgba(34,197,94,0.12);color:#16a34a">Healthy</span>
+            </div>
+            <div class="cloud-tile-val">$4.2k</div>
+            <div class="cloud-tile-sub">Spend today ↑ 18%</div>
+          </div>
+          <div class="cloud-tile">
+            <div class="cloud-tile-top">
+              <span class="cloud-tile-name">Conflicts</span>
+              <span class="cloud-tile-status" style="background:rgba(239,68,68,0.12);color:#ef4444">Alert</span>
+            </div>
+            <div class="cloud-tile-val">1</div>
+            <div class="cloud-tile-sub">AWS ↔ Azure overlap</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 06: Compliance ── -->
+  <div class="dd-block" id="compliance">
+    <div class="dd-label" style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.22);color:#a855f7">
+      <i class="fa-solid fa-shield-halved"></i> Use Case 06 — Compliance Audits
+    </div>
+    <div class="dd-block-grid dd-block-grid--flip">
+      <div class="dd-text">
+        <div class="dd-eyebrow">The Scenario</div>
+        <h2 class="dd-h2">The auditor wants evidence that every vendor incident was handled within your stated policy.</h2>
+        <p class="dd-sub">Audit prep used to mean three weeks of digging through Slack threads and email chains. Tacbot maintains an immutable, timestamped log of every vendor event, action taken, and resolution — exportable in minutes.</p>
+        <div class="dd-flow">
+          <div class="dd-flow-item dd-flow-item--problem">
+            <span class="dd-flow-icon"><i class="fa-solid fa-xmark"></i></span>
+            Without Tacbot: GRC team spends 3 weeks reconstructing vendor incident timelines from Slack, email, and memory. Still has gaps.
+          </div>
+          <div class="dd-flow-item dd-flow-item--solution">
+            <span class="dd-flow-icon"><i class="fa-solid fa-check"></i></span>
+            With Tacbot: full vendor audit log available in 2 clicks. Every incident, every action, every SLA data point — timestamped and exportable to CSV or PDF.
+          </div>
+        </div>
+        <div class="dd-metrics">
+          <div class="dd-metric"><div class="dd-metric-num">3w→2h</div><div class="dd-metric-lbl">Audit prep time</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">100%</div><div class="dd-metric-lbl">Event traceability</div></div>
+          <div class="dd-metric"><div class="dd-metric-num">SOC2</div><div class="dd-metric-lbl">Ready out of box</div></div>
+        </div>
+      </div>
+      <div class="dd-visual">
+        <div class="dv-tag">Audit Log — Export Ready</div>
+        <div class="incident-timeline">
+          <div class="it-row">
+            <div class="it-time">Apr 3</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#697dfb"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">AWS maintenance window acknowledged</div>
+              <div class="it-detail">By: Tacbot AI · Response time: 4s · Policy: &lt;60s ✓</div>
+              <div class="it-badge it-badge--auto">Policy Met</div>
+            </div>
+          </div>
+          <div class="it-row">
+            <div class="it-time">Apr 9</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#ef4444"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">PagerDuty SLA breach detected</div>
+              <div class="it-detail">Resolution time: 4h 12m · SLA target: 4h · Breach logged</div>
+              <div class="it-badge it-badge--alert">Breach Logged</div>
+            </div>
+          </div>
+          <div class="it-row">
+            <div class="it-time">Apr 9</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#697dfb"></div><div class="it-line"></div></div>
+            <div class="it-body">
+              <div class="it-event">Vendor breach notice sent to PagerDuty</div>
+              <div class="it-detail">Auto-generated · Included evidence log · Sent: 02:58 AM</div>
+              <div class="it-badge it-badge--auto">Auto-notified</div>
+            </div>
+          </div>
+          <div class="it-row">
+            <div class="it-time">Apr 15</div>
+            <div class="it-dot-col"><div class="it-dot" style="background:#22c55e"></div></div>
+            <div class="it-body">
+              <div class="it-event">Quarterly audit export generated</div>
+              <div class="it-detail">47 events · 100% documented · PDF + CSV</div>
+              <div class="it-badge it-badge--resolved">Export Ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ PERSONAS ═══════════════════════ -->
+<section class="persona-section">
+  <div class="persona-header">
+    <div class="persona-eyebrow">Who It's For</div>
+    <h2 class="persona-title">Built for every person in the ops chain.</h2>
+    <p class="persona-sub">From the on-call engineer to the CTO in the board meeting — Tacbot gives each role exactly what they need.</p>
+  </div>
+  <div class="persona-grid">
+    <div class="persona-card">
+      <div class="persona-avatar"><img src="https://i.pravatar.cc/104?img=53" alt="DevOps Engineer"></div>
+      <div class="persona-role">DevOps / SRE</div>
+      <div class="persona-name">The On-Call Engineer</div>
+      <p class="persona-quote">"I need to know if it's us or the vendor in 60 seconds — not after digging through 4 portals."</p>
+      <div class="persona-uses">
+        <div class="persona-use">Real-time vendor signal correlation</div>
+        <div class="persona-use">Slack-native incident acknowledgment</div>
+        <div class="persona-use">Maintenance window alerts before they hit</div>
+      </div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-avatar"><img src="https://i.pravatar.cc/104?img=47" alt="IT Director"></div>
+      <div class="persona-role">IT Director</div>
+      <div class="persona-name">The Ops Leader</div>
+      <p class="persona-quote">"My team spends 6 hours a day on vendor admin. That time should be on product. I need this automated."</p>
+      <div class="persona-uses">
+        <div class="persona-use">Unified vendor health dashboard</div>
+        <div class="persona-use">Team workload reduction via AI triage</div>
+        <div class="persona-use">SLA compliance reporting for leadership</div>
+      </div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-avatar"><img src="https://i.pravatar.cc/104?img=12" alt="CTO"></div>
+      <div class="persona-role">CTO / VP Engineering</div>
+      <div class="persona-name">The Executive</div>
+      <p class="persona-quote">"I need to walk into renewal negotiations with data, not intuition. And I need to see vendor risk before it becomes a board topic."</p>
+      <div class="persona-uses">
+        <div class="persona-use">Vendor scorecard for contract leverage</div>
+        <div class="persona-use">QoQ performance trends by vendor</div>
+        <div class="persona-use">Executive risk dashboard</div>
+      </div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-avatar"><img src="https://i.pravatar.cc/104?img=32" alt="Procurement Manager"></div>
+      <div class="persona-role">Procurement / Finance</div>
+      <div class="persona-name">The Negotiator</div>
+      <p class="persona-quote">"I used to renew contracts based on 'vibes'. Now I go in with 90 days of receipts — and it shows."</p>
+      <div class="persona-uses">
+        <div class="persona-use">30/7/1-day renewal reminders</div>
+        <div class="persona-use">Exportable vendor report cards</div>
+        <div class="persona-use">SLA breach evidence for negotiations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CTA ═══════════════════════ -->
+<section class="ai-summary-section">
+  <div class="ai-summary-container">
+    <h2 class="ai-summary-title">Ask For AI Summary</h2>
+    <p class="ai-summary-sub">Want to know what it's really like to work with us and the impact we create? Select your favorite AI below and let it tell you everything.</p>
+    <div class="ai-summary-icons">
+      <a href="https://claude.ai/new?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--claude" aria-label="Ask Claude">
+        <img src="https://api.iconify.design/simple-icons/claude.svg?color=%23ffffff" alt="Claude" width="26" height="26">
+      </a>
+      <a href="https://chat.openai.com/?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--chatgpt" aria-label="Ask ChatGPT">
+        <img src="https://api.iconify.design/simple-icons/openai.svg?color=%23ffffff" alt="ChatGPT" width="26" height="26">
+      </a>
+      <a href="https://www.perplexity.ai/search?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--perplexity" aria-label="Ask Perplexity">
+        <img src="https://api.iconify.design/simple-icons/perplexity.svg?color=%23ffffff" alt="Perplexity" width="26" height="26">
+      </a>
+      <a href="https://gemini.google.com/app?q=As+a+CTO%2FCIO%2FVP+of+Infrastructure%2FProduct+Head+at+an+enterprise%2C+I+want+to+understand+what+makes+Tacbot+the+partner+of+choice+for+autonomous+enterprise+IT+orchestration.+Summarize+the+key+offerings%2C+values%2C+and+positioning+from+all+available+sources+-+covering+measurable+impact" target="_blank" rel="noopener" class="ai-icon ai-icon--gemini" aria-label="Ask Gemini">
+        <img src="https://api.iconify.design/simple-icons/googlegemini.svg?color=%23ffffff" alt="Gemini" width="26" height="26">
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="uc-cta">
+  <div class="uc-cta-glow"></div>
+  <div class="uc-cta-inner">
+    <h2 class="uc-cta-title">Which scenario sounds like your team?</h2>
+    <p class="uc-cta-sub">Tell us your biggest vendor challenge in a 20-minute call and we'll show you exactly how Tacbot solves it — with your own vendor data.</p>
+    <div class="uc-cta-actions">
+      <a href="contact.html" class="btn-primary">Book a Demo <span class="btn-arrow">→</span></a>
+      <a href="contact.html" class="btn-secondary">See Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="site-footer new-footer" data-theme="dark">
+  <div class="nf-top">
+    <div class="nf-left">
+      <div class="nf-logo">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-light">
+        <img src="Assets/Logo-white.svg" alt="Tacbot" class="logo-dark">
+      </div>
+      <h3 class="nf-heading">Book a Call For Free Consultation</h3>
+      <p class="nf-desc">Experienced team delivering exceptional digital solutions tailored to your brand.</p>
+      <a href="contact.html" class="nf-cta">Contact Us &rarr;</a>
+    </div>
+    <div class="nf-right">
+      <div class="nf-col">
+        <h4>Platform</h4>
+        <a href="index.html">Home</a>
+        <!-- <a href="product.html">Product</a> -->
+        <a href="platform.html">Platform</a>
+        <a href="integrations.html">Integrations</a>
+<!--
+        <a href="use-cases.html">Use Cases</a>
+-->
+      </div>
+      <div class="nf-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nf-col">
+        <h4>Our Social Handles</h4>
+        <div class="nf-socials">
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="nf-soc-link"><i class="fa-brands fa-instagram"></i></a>
+          <span class="nf-soc-divider"></span>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+            <span class="theme-toggle-icon">
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nf-bottom">
+    <div class="nf-bottom-left">@2026 Tacbot. All Rights Reserved.</div>
+    <div class="nf-bottom-right">
+      <a href="#">Privacy Policy</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Terms of Service</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Security</a>
+      <span class="nf-bottom-separator">&bull;</span>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  /* ── Nav ── */
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 30); }, { passive: true });
+
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks  = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navLinks.addEventListener('click', e => {
+      if (e.target.tagName === 'A') {
+        hamburger.classList.remove('open'); navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+      }
+    });
+  }
+
+  /* ── Theme ── */
+  const themeBtn = document.getElementById('themeToggle');
+  const html     = document.documentElement;
+  const getPreferred = () => {
+    const saved = localStorage.getItem('tacbot-theme');
+    if (saved) return saved;
+    return 'light';
+  };
+  const saved = getPreferred();
+  html.setAttribute('data-theme', saved);
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('tacbot-theme', next);
+    });
+  }
+
+  /* ── Smooth scroll for pill nav ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ── Scroll reveal ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.ov-card, .dd-block, .persona-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    obs.observe(el);
+  });
+})();
+</script>
+</body>
+</html>

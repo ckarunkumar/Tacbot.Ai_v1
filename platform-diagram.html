@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Vendor Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; background: transparent; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .canvas {
+      position: relative;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+    }
+
+    .conn-svg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; overflow: visible; z-index: 0;
+    }
+
+    /* ── HUB — extreme left, partially clipped ── */
+    .hub {
+      position: absolute;
+      left: -2%;
+      top: 42%;
+      transform: translateY(-50%);
+      z-index: 4;
+      width: clamp(130px, 13vw, 185px);
+      border-radius: clamp(10px, 1vw, 16px);
+      padding: clamp(10px, 1.1vh, 18px) clamp(12px, 1.3vw, 22px);
+      background: linear-gradient(145deg, #4f6ef7 0%, #1e3a8a 100%);
+      box-shadow: 0 8px 32px rgba(79,110,247,0.38), 0 0 0 1px rgba(255,255,255,0.15) inset;
+      display: flex; flex-direction: row; align-items: center;
+      gap: clamp(8px, 0.8vw, 12px);
+    }
+    .hub-pulse {
+      position: absolute; inset: -5px;
+      border-radius: calc(clamp(10px, 1vw, 16px) + 5px);
+      border: 1.5px solid rgba(79,110,247,0.28);
+      animation: hubRing 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hub-pulse::after {
+      content: ''; position: absolute; inset: -5px;
+      border-radius: calc(clamp(10px, 1vw, 16px) + 10px);
+      border: 1px solid rgba(79,110,247,0.12);
+      animation: hubRing 2.8s ease-in-out 0.5s infinite;
+    }
+    @keyframes hubRing {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50%       { transform: scale(1.18); opacity: 0; }
+    }
+    .hub-logo { width: clamp(20px, 2.2vmin, 28px); height: auto; object-fit: contain; flex-shrink: 0; }
+    .hub-text  { display: flex; flex-direction: column; gap: 2px; }
+    .hub-name  { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.01em; }
+    .hub-sub   { font-size: clamp(8px, 0.5vw, 10px); font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── MAIN CARDS (hub-connected) ── */
+    .pcard {
+      position: absolute;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(100,116,139,0.18);
+      border-radius: clamp(8px, 0.8vw, 13px);
+      padding: clamp(8px, 0.8vh, 12px) clamp(10px, 1vw, 16px);
+      min-width: clamp(100px, 10vw, 150px);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      backdrop-filter: blur(14px);
+      cursor: grab; z-index: 5;
+      opacity: 0; transform: scale(0.92) translateY(4px);
+      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s;
+    }
+    .pcard.shown { opacity: 1; transform: scale(1) translateY(0); }
+    .pcard:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.11); }
+    .pcard--itsm  { border-left: 2.5px solid rgba(139,92,246,0.5); }
+    .pcard--vendor { border-left: 2.5px solid rgba(16,185,129,0.5); }
+    .pcard-cat { display: block; font-size: clamp(8px, 0.5vw, 10px); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; opacity: 0.75; }
+    .pcard--itsm .pcard-cat  { color: #6d28d9; }
+    .pcard--vendor .pcard-cat { color: #059669; }
+    .pcard-title { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; color: #1e2a3a; line-height: 1.2; letter-spacing: -0.01em; }
+
+    /* ── ITSM BADGES ── */
+    .pbadge {
+      position: absolute;
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(100,116,139,0.18);
+      border-radius: 100px;
+      padding: clamp(3px, 0.3vh, 5px) clamp(8px, 0.8vw, 14px);
+      font-size: clamp(11px, 0.9vw, 13px); font-weight: 500;
+      color: #475569; white-space: nowrap;
+      cursor: grab; z-index: 5;
+      opacity: 0; transform: scale(0.9);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      backdrop-filter: blur(8px);
+    }
+    .pbadge.shown { opacity: 1; transform: scale(1); }
+    .pbadge--itsm { border-color: rgba(139,92,246,0.28); background: rgba(139,92,246,0.05); color: #6d28d9; }
+    .pbadge i { font-size: 0.9em; }
+
+    /* ── CATEGORY GROUP CARDS — two-layer vendor grouping ── */
+    .cat-group {
+      position: absolute;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(100,116,139,0.18);
+      border-radius: 12px;
+      padding: 8px 10px 10px;
+      min-width: clamp(130px, 13vw, 185px);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      backdrop-filter: blur(14px);
+      cursor: grab; z-index: 5;
+      opacity: 0; transform: scale(0.92) translateY(4px);
+      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s;
+    }
+    .cat-group.shown { opacity: 1; transform: scale(1) translateY(0); }
+    .cat-group:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.11); }
+
+    /* Layer 1 — category label */
+    .cat-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #64748b;
+      margin-bottom: 7px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(100,116,139,0.14);
+    }
+
+    /* Layer 2 — vendor logo tiles row */
+    .cat-vendors {
+      display: flex; flex-direction: row; flex-wrap: wrap;
+      gap: 4px;
+      max-width: 170px;
+    }
+    .vendor-tile {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(100,116,139,0.14);
+      border-radius: 6px;
+      padding: 3px 7px 3px 3px;
+      font-size: clamp(9px, 0.75vw, 11px); font-weight: 600;
+      color: #334155; white-space: nowrap;
+    }
+    /* Vendor logo avatar */
+    .v-logo {
+      width: 20px; height: 20px; border-radius: 5px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 8px; font-weight: 900; color: #fff;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .v-logo img { width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; border-radius: 5px; }
+
+    /* dark mode */
+    [data-theme="dark"] .pcard,
+    [data-theme="dark"] .cat-group {
+      background: rgba(15,23,42,0.65);
+      border-color: rgba(100,116,139,0.22);
+    }
+    [data-theme="dark"] .pcard-title { color: #f1f5f9; }
+    [data-theme="dark"] .cat-label { color: #94a3b8; border-bottom-color: rgba(100,116,139,0.2); }
+    [data-theme="dark"] .vendor-tile {
+      background: rgba(30,42,60,0.8);
+      border-color: rgba(100,116,139,0.2);
+      color: #cbd5e1;
+    }
+    [data-theme="dark"] .pbadge {
+      background: rgba(15,23,42,0.6);
+      color: #94a3b8;
+    }
+    [data-theme="dark"] .pbadge--itsm {
+      background: rgba(139,92,246,0.08);
+      color: #c084fc;
+      border-color: rgba(192,132,252,0.3);
+    }
+    [data-theme="dark"] .pcard--itsm .pcard-cat { color: #c084fc; }
+    [data-theme="dark"] .pcard--vendor .pcard-cat { color: #34d399; }
+  </style>
+</head>
+<body>
+<div class="canvas" id="canvas">
+  <svg class="conn-svg" id="connSvg"></svg>
+
+  <!-- ── HUB ── -->
+  <div class="hub" id="hub">
+    <div class="hub-pulse"></div>
+    <img src="Assets/Robot-white.svg" class="hub-logo" alt="Tacbot">
+    <div class="hub-text">
+      <span class="hub-name">Tacbot</span>
+      <span class="hub-sub">Orchestrator</span>
+    </div>
+  </div>
+
+  <!-- ── MAIN CARDS ── -->
+  <div class="pcard pcard--vendor" id="vendors-card" data-to="hub">
+    <span class="pcard-cat">Vendor Platform</span>
+    <h3 class="pcard-title">Vendors</h3>
+  </div>
+
+  <div class="pcard pcard--itsm" id="itsm-card" data-to="hub">
+    <span class="pcard-cat">ITSM</span>
+    <h3 class="pcard-title">ITSM Integration</h3>
+  </div>
+
+  <!-- ── ITSM BADGES ── -->
+  <span class="pbadge pbadge--itsm" id="snow" data-parent="itsm-card">
+    <img src="Assets/servicenow.svg" style="width:14px;height:14px;object-fit:contain;" alt=""> ServiceNow
+  </span>
+  <span class="pbadge pbadge--itsm" id="jira" data-parent="itsm-card">
+    <i class="fa-brands fa-jira" style="color:#0052cc"></i> Jira
+  </span>
+
+  <!-- ── CATEGORY GROUP: Network ── -->
+  <div class="cat-group" id="cat-network" data-parent="vendors-card">
+    <div class="cat-label"><i class="fa-solid fa-network-wired" style="margin-right:4px"></i>Network</div>
+    <div class="cat-vendors">
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#6366f1">AR</span>Arista
+      </span>
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#049fd9">CI</span>Cisco
+      </span>
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#c71e22">JU</span>Juniper
+      </span>
+    </div>
+  </div>
+
+  <!-- ── CATEGORY GROUP: Circuits ── -->
+  <div class="cat-group" id="cat-circuits" data-parent="vendors-card">
+    <div class="cat-label"><i class="fa-solid fa-bolt" style="margin-right:4px"></i>Circuits</div>
+    <div class="cat-vendors">
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#cd040b">VZ</span>Verizon
+      </span>
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#009fdb">AT</span>AT&amp;T
+      </span>
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#00938f">CO</span>Colt
+      </span>
+    </div>
+  </div>
+
+  <!-- ── CATEGORY GROUP: Cloud ── -->
+  <div class="cat-group" id="cat-cloud" data-parent="vendors-card">
+    <div class="cat-label"><i class="fa-solid fa-cloud" style="margin-right:4px"></i>Cloud</div>
+    <div class="cat-vendors">
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#fff; border:1px solid #eee">
+          <img src="Assets/aws.svg" alt="AWS">
+        </span>AWS
+      </span>
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#fff; border:1px solid #eee">
+          <img src="Assets/azure.svg" alt="Azure">
+        </span>Azure
+      </span>
+      <span class="vendor-tile">
+        <span class="v-logo" style="background:#fff; border:1px solid #eee">
+          <img src="Assets/google-cloud.svg" alt="Google Cloud" onerror="this.parentElement.style.background='#4285F4';this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#fff\'>GC</span>'">
+        </span>Google Cloud
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  const SVGNS  = 'http://www.w3.org/2000/svg';
+  const canvas = document.getElementById('canvas');
+  const svg    = document.getElementById('connSvg');
+  const hub    = document.getElementById('hub');
+
+  const POS = {
+    /* Vendors card — left-center relay */
+    'vendors-card':  { cx: 36.0, cy: 38.0 },
+
+    /* Category groups — right column, well-spaced vertically */
+    'cat-network':   { cx: 82.0, cy: 13.0 },
+    'cat-circuits':  { cx: 82.0, cy: 44.0 },
+    'cat-cloud':     { cx: 82.0, cy: 74.0 },
+
+    /* ITSM card — bottom left, well clear of categories */
+    'itsm-card':     { cx: 30.0, cy: 78.0 },
+
+    /* ITSM badges — bottom row, spread apart */
+    'snow':          { cx: 12.0, cy: 91.0 },
+    'jira':          { cx: 48.0, cy: 91.0 },
+  };
+
+  let packets = [];
+  let dragEl = null, dragOffX = 0, dragOffY = 0;
+
+  function box(el) {
+    const cr = canvas.getBoundingClientRect();
+    const er = el.getBoundingClientRect();
+    return {
+      l: er.left-cr.left, r: er.right-cr.left,
+      t: er.top-cr.top,   b: er.bottom-cr.top,
+      cx: er.left-cr.left+er.width/2,
+      cy: er.top-cr.top+er.height/2,
+    };
+  }
+
+  function nearest(fb, tb) {
+    const dx = tb.cx-fb.cx, dy = tb.cy-fb.cy;
+    if (Math.abs(dx) >= Math.abs(dy)) {
+      return dx > 0
+        ? { fa:{x:fb.r,y:fb.cy}, ta:{x:tb.l,y:tb.cy} }
+        : { fa:{x:fb.l,y:fb.cy}, ta:{x:tb.r,y:tb.cy} };
+    } else {
+      return dy > 0
+        ? { fa:{x:fb.cx,y:fb.b}, ta:{x:tb.cx,y:tb.t} }
+        : { fa:{x:fb.cx,y:fb.t}, ta:{x:tb.cx,y:tb.b} };
+    }
+  }
+
+  function bezierPath(from, to) {
+    const dx = to.x-from.x, dy = to.y-from.y;
+    let c1, c2;
+    if (Math.abs(dx) >= Math.abs(dy)) {
+      const mx=(from.x+to.x)/2; c1={x:mx,y:from.y}; c2={x:mx,y:to.y};
+    } else {
+      const my=(from.y+to.y)/2; c1={x:from.x,y:my}; c2={x:to.x,y:my};
+    }
+    const p = document.createElementNS(SVGNS,'path');
+    p.setAttribute('d',`M ${from.x} ${from.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${to.x} ${to.y}`);
+    const theme = document.documentElement.dataset.theme || 'light';
+    p.setAttribute('stroke', theme === 'dark' ? '#64748b' : '#94a3b8');
+    p.setAttribute('stroke-opacity','1');
+    p.setAttribute('stroke-dasharray','5 8');
+    p.setAttribute('stroke-linecap','round');
+    p.setAttribute('fill','none');
+    p.setAttribute('stroke-width','2');
+    svg.appendChild(p);
+    return {from,to,c1,c2};
+  }
+
+  function addDot(conn, dir, color) {
+    const dot = document.createElementNS(SVGNS,'circle');
+    dot.setAttribute('r','3.5');
+    dot.setAttribute('fill', color);
+    dot.style.filter = `drop-shadow(0 0 5px ${color})`;
+    svg.appendChild(dot);
+    packets.push({conn,el:dot,t:Math.random(),speed:0.0038+Math.random()*0.0025,dir});
+  }
+
+  function build() {
+    svg.innerHTML = '';
+    packets = [];
+    const hb = box(hub);
+    const BLUE  = '#6366f1';
+    const GREEN = '#10b981';
+
+    /* Cards → hub */
+    document.querySelectorAll('.pcard[data-to="hub"]').forEach(card => {
+      const {fa,ta} = nearest(box(card), hb);
+      const conn = bezierPath(fa, ta);
+      addDot(conn,  1, BLUE);
+      addDot(conn, -1, GREEN);
+    });
+
+    /* Category groups → vendors-card */
+    document.querySelectorAll('.cat-group[data-parent]').forEach(grp => {
+      const parent = document.getElementById(grp.dataset.parent);
+      if (!parent) return;
+      const {fa,ta} = nearest(box(grp), box(parent));
+      const conn = bezierPath(fa, ta);
+      addDot(conn,  1, BLUE);
+      addDot(conn, -1, GREEN);
+    });
+
+    /* ITSM badges → itsm-card */
+    document.querySelectorAll('.pbadge[data-parent]').forEach(badge => {
+      const parent = document.getElementById(badge.dataset.parent);
+      if (!parent) return;
+      const {fa,ta} = nearest(box(badge), box(parent));
+      const conn = bezierPath(fa, ta);
+      addDot(conn,  1, BLUE);
+      addDot(conn, -1, GREEN);
+    });
+  }
+
+  function applyPositions() {
+    const vw = canvas.offsetWidth;
+    const vh = canvas.offsetHeight;
+    const allNodes = [
+      ...document.querySelectorAll('.pcard'),
+      ...document.querySelectorAll('.cat-group'),
+      ...document.querySelectorAll('.pbadge'),
+    ];
+    allNodes.forEach(el => {
+      const p = POS[el.id];
+      if (!p) return;
+      const er = el.getBoundingClientRect();
+      el.style.left = (p.cx/100*vw - er.width/2)  + 'px';
+      el.style.top  = (p.cy/100*vh - er.height/2) + 'px';
+    });
+  }
+
+  /* Drag support */
+  function onMouseDown(e) {
+    dragEl = e.currentTarget;
+    const er = dragEl.getBoundingClientRect();
+    dragOffX = e.clientX - er.left;
+    dragOffY = e.clientY - er.top;
+    dragEl.style.zIndex = '20';
+    dragEl.style.cursor = 'grabbing';
+    e.preventDefault();
+  }
+  document.addEventListener('mousemove', e => {
+    if (!dragEl) return;
+    const cr = canvas.getBoundingClientRect();
+    dragEl.style.left = (e.clientX-cr.left-dragOffX) + 'px';
+    dragEl.style.top  = (e.clientY-cr.top-dragOffY)  + 'px';
+    build();
+  });
+  document.addEventListener('mouseup', () => {
+    if (!dragEl) return;
+    dragEl.style.zIndex = '5';
+    dragEl.style.cursor = 'grab';
+    dragEl = null;
+    build();
+  });
+
+  function initDraggable() {
+    const allNodes = [
+      ...document.querySelectorAll('.pcard'),
+      ...document.querySelectorAll('.cat-group'),
+      ...document.querySelectorAll('.pbadge'),
+    ];
+    allNodes.forEach(el => {
+      el.style.position = 'absolute';
+      el.style.zIndex   = '5';
+      el.style.cursor   = 'grab';
+      el.addEventListener('mousedown', onMouseDown);
+    });
+    applyPositions();
+    allNodes.forEach((el, i) =>
+      setTimeout(() => el.classList.add('shown'), 80 + i * 65)
+    );
+    build();
+  }
+
+  function bezierPt(c, t) {
+    const u = 1-t;
+    return {
+      x: u*u*u*c.from.x + 3*u*u*t*c.c1.x + 3*u*t*t*c.c2.x + t*t*t*c.to.x,
+      y: u*u*u*c.from.y + 3*u*u*t*c.c1.y + 3*u*t*t*c.c2.y + t*t*t*c.to.y,
+    };
+  }
+
+  function tick() {
+    packets.forEach(pk => {
+      pk.t += pk.speed * pk.dir;
+      if (pk.t > 1) pk.t = 0;
+      if (pk.t < 0) pk.t = 1;
+      const pt = bezierPt(pk.conn, pk.t);
+      pk.el.setAttribute('cx', pt.x);
+      pk.el.setAttribute('cy', pt.y);
+    });
+    requestAnimationFrame(tick);
+  }
+
+  function syncTheme() {
+    try {
+      const t = window.parent.document.documentElement.dataset.theme || 'light';
+      document.documentElement.dataset.theme = t;
+      build();
+    } catch(e) {}
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(initDraggable, 120);
+    requestAnimationFrame(tick);
+    syncTheme();
+    try {
+      new MutationObserver(syncTheme).observe(
+        window.parent.document.documentElement,
+        { attributes: true, attributeFilter: ['data-theme'] }
+      );
+    } catch(e) {}
+  });
+
+  window.addEventListener('resize', () => {
+    applyPositions();
+    setTimeout(build, 80);
+  });
+})();
+</script>
+</body>
+</html>

@@ -251,16 +251,11 @@
     </div>
 
     <div class="ct-hero-right">
-      <form class="ct-form" id="contact-form" action="https://formsubmit.co/ajax/info@tacbot.com" method="POST">
+      <form class="ct-form" id="contact-form" action="contact.php" method="POST">
         <div class="ct-form-header">
           <h2 class="ct-form-title">Send us a message</h2>
           <p class="ct-form-sub">Fill in the details and we'll get back to you shortly.</p>
         </div>
-
-        <input type="hidden" name="_subject" value="New message from Tacbot contact form">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_cc" value="murali@tacbot.com,ashwin@tacbot.com">
 
         <div id="ctFormFields">
           <div class="ct-form-group">
@@ -459,7 +454,13 @@
       headers: { 'Accept': 'application/json' }
     })
       .then(res => {
-        if (!res.ok) throw new Error('Request failed');
+        if (!res.ok) {
+          return res.json().then(err => {
+            throw new Error(err.message || 'Request failed');
+          }).catch(() => {
+            throw new Error('Server error occurred');
+          });
+        }
         return res.json();
       })
       .then(data => {
@@ -471,8 +472,8 @@
           throw new Error(data.message || 'Not sent');
         }
       })
-      .catch(() => {
-        status.textContent = 'Something went wrong. Please email us directly instead.';
+      .catch((err) => {
+        status.textContent = err.message || 'Something went wrong. Please email us directly instead.';
         status.className = 'ct-form-status is-error';
       })
       .finally(() => {

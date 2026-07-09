@@ -18,7 +18,6 @@ TACbot is a marketing/product landing page with:
 ## Key Files
 
 - `script.js` — main logic (globe, network canvas, GSAP animations, scroll triggers)
-- `patch.js` — patches the Ecosystem Hub-Spoke section in script.js
 - `Assets/Logo-white.svg` — brand wordmark
 
 ## Core Abstractions
@@ -30,6 +29,5 @@ TACbot is a marketing/product landing page with:
 
 ## Architecture Notes
 
-- `patch.js` replaces the Ecosystem section in `script.js` (confirmed extracted relationship)
 - Hub-spoke pattern + animated packet flow used in both Network Canvas and Ecosystem section
 - GSAP ScrollTrigger is the scroll reveal mechanism across: calendar demo, scorecard, CTA, ecosystem, edge reveals

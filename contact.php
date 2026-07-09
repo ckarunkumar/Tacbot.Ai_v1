@@ -30,7 +30,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 // Recipient email configuration
 $to = 'info@tacbot.com';
-$cc = ['murali@tacbot.com', 'ashwin@tacbot.com'];
 
 // Subject
 $subject = "New message from Tacbot contact form: $topic";
@@ -48,9 +47,7 @@ $headers[] = 'MIME-Version: 1.0';
 $headers[] = 'Content-type: text/plain; charset=utf-8';
 $headers[] = 'From: Tacbot Form <no-reply@tacbot.com>';
 $headers[] = "Reply-To: $name <$email>";
-if (!empty($cc)) {
-    $headers[] = 'Cc: ' . implode(', ', $cc);
-}
+
 
 // Send Email
 $mail_sent = @mail($to, $subject, $email_content, implode("\r\n", $headers));

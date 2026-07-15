@@ -1,67 +1,51 @@
 <?php
+
+
+// Sanitize & Validate Input
+function clean_input($data) {
+    return htmlspecialchars(strip_tags(trim($data)));
+}
+
 header('Content-Type: application/json');
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['success' => false, 'message' => 'Method Not Allowed']);
+$name = isset($_POST['name']) ? clean_input($_POST['name']) : '';
+$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+if (!$email) {
+    echo json_encode(['success' => false, 'message' => 'Invalid email']);
     exit;
 }
+$phone = isset($_POST['phone']) ? clean_input($_POST['phone']) : '';
+$topic = isset($_POST['topic']) ? clean_input($_POST['topic']) : '';
+$message = isset($_POST['message']) ? clean_input($_POST['message']) : '';
 
-// Retrieve and sanitize input fields
-$name = isset($_POST['name']) ? strip_tags(trim($_POST['name'])) : '';
-$email = isset($_POST['email']) ? filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL) : '';
-$company = isset($_POST['company']) ? strip_tags(trim($_POST['company'])) : '';
-$topic = isset($_POST['topic']) ? strip_tags(trim($_POST['topic'])) : '';
-$message = isset($_POST['message']) ? strip_tags(trim($_POST['message'])) : '';
-
-// Validate required fields
-if (empty($name) || empty($email) || empty($message)) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Please fill in all required fields.']);
-    exit;
-}
-
-// Validate email format
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'Please enter a valid email address.']);
-    exit;
-}
-
-// Recipient email configuration
-$to = 'info@tacbot.com';
-
-// Subject
-$subject = "New message from Tacbot contact form: $topic";
+// Email Configuration
+$recipient = "arun@orangy.design"; // Change this to your email
+$subject = "New Contact Form Submission";
+// From must be a mailbox on this server's own domain, or most mail
+// providers (Gmail, etc.) will silently drop the message as spoofed
+// since it fails SPF/DKIM alignment. The visitor's address goes in
+// Reply-To instead so replies still go to them.
+$sendingDomain = $_SERVER['SERVER_NAME'] ?? 'tacbot.com';
+$headers = "From: Tacbot Contact Form <no-reply@$sendingDomain>\r\n";
+$headers .= "Reply-To: $name <$email>\r\n";
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
 // Email Body
-$email_content = "Name: $name\n";
-$email_content .= "Email: $email\n";
-$email_content .= "Company: $company\n";
-$email_content .= "Topic: $topic\n\n";
-$email_content .= "Message:\n$message\n";
+$body = "You have received a new message:\n\n";
+$body .= "Name: $name\n";
+$body .= "Email: $email\n";
+$body .= "Phone: $phone\n";
+$body .= "Topic: $topic\n";
+$body .= "Message:\n$message\n";
 
-// Headers
-$headers = [];
-$headers[] = 'MIME-Version: 1.0';
-$headers[] = 'Content-type: text/plain; charset=utf-8';
-$headers[] = 'From: Tacbot Form <no-reply@tacbot.com>';
-$headers[] = "Reply-To: $name <$email>";
-
-
-// Send Email
-$mail_sent = @mail($to, $subject, $email_content, implode("\r\n", $headers));
-
-if ($mail_sent) {
+// Send the email
+if (mail($recipient, $subject, $body, $headers)) {
     echo json_encode(['success' => true]);
 } else {
-    $error = error_get_last();
-    $err_msg = isset($error['message']) ? $error['message'] : 'PHP mail() function failed. Make sure your server is configured to send mail (SMTP/sendmail).';
-    
-    // Log the error locally for debugging
-    error_log("[" . date('Y-m-d H:i:s') . "] Mail failed: " . $err_msg . "\n", 3, __DIR__ . '/contact_error.log');
-    
-    http_response_code(500);
-    echo json_encode(['success' => false, 'message' => $err_msg]);
+    echo json_encode(['success' => false, 'message' => 'Error sending message. Please try again later.']);
 }
+
+
+
+
 ?>

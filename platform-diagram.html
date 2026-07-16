@@ -8,177 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; overflow: hidden; background: transparent; }
-    body { font-family: 'Inter', system-ui, sans-serif; }
-
-    .canvas {
-      position: relative;
-      width: 100vw; height: 100vh;
-      overflow: hidden;
-    }
-
-    .conn-svg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      pointer-events: none; overflow: visible; z-index: 0;
-    }
-
-    /* ── HUB — extreme left, partially clipped ── */
-    .hub {
-      position: absolute;
-      left: -2%;
-      top: 42%;
-      transform: translateY(-50%);
-      z-index: 4;
-      width: clamp(130px, 13vw, 185px);
-      border-radius: clamp(10px, 1vw, 16px);
-      padding: clamp(10px, 1.1vh, 18px) clamp(12px, 1.3vw, 22px);
-      background: linear-gradient(145deg, #4f6ef7 0%, #1e3a8a 100%);
-      box-shadow: 0 8px 32px rgba(79,110,247,0.38), 0 0 0 1px rgba(255,255,255,0.15) inset;
-      display: flex; flex-direction: row; align-items: center;
-      gap: clamp(8px, 0.8vw, 12px);
-    }
-    .hub-pulse {
-      position: absolute; inset: -5px;
-      border-radius: calc(clamp(10px, 1vw, 16px) + 5px);
-      border: 1.5px solid rgba(79,110,247,0.28);
-      animation: hubRing 2.8s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .hub-pulse::after {
-      content: ''; position: absolute; inset: -5px;
-      border-radius: calc(clamp(10px, 1vw, 16px) + 10px);
-      border: 1px solid rgba(79,110,247,0.12);
-      animation: hubRing 2.8s ease-in-out 0.5s infinite;
-    }
-    @keyframes hubRing {
-      0%, 100% { transform: scale(1); opacity: 0.8; }
-      50%       { transform: scale(1.18); opacity: 0; }
-    }
-    .hub-logo { width: clamp(20px, 2.2vmin, 28px); height: auto; object-fit: contain; flex-shrink: 0; }
-    .hub-text  { display: flex; flex-direction: column; gap: 2px; }
-    .hub-name  { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.01em; }
-    .hub-sub   { font-size: clamp(8px, 0.5vw, 10px); font-weight: 500; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
-
-    /* ── MAIN CARDS (hub-connected) ── */
-    .pcard {
-      position: absolute;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(100,116,139,0.18);
-      border-radius: clamp(8px, 0.8vw, 13px);
-      padding: clamp(8px, 0.8vh, 12px) clamp(10px, 1vw, 16px);
-      min-width: clamp(100px, 10vw, 150px);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      backdrop-filter: blur(14px);
-      cursor: grab; z-index: 5;
-      opacity: 0; transform: scale(0.92) translateY(4px);
-      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s;
-    }
-    .pcard.shown { opacity: 1; transform: scale(1) translateY(0); }
-    .pcard:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.11); }
-    .pcard--itsm  { border-left: 2.5px solid rgba(139,92,246,0.5); }
-    .pcard--vendor { border-left: 2.5px solid rgba(16,185,129,0.5); }
-    .pcard-cat { display: block; font-size: clamp(8px, 0.5vw, 10px); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px; opacity: 0.75; }
-    .pcard--itsm .pcard-cat  { color: #6d28d9; }
-    .pcard--vendor .pcard-cat { color: #059669; }
-    .pcard-title { font-size: clamp(12px, 1.2vw, 16px); font-weight: 700; color: #1e2a3a; line-height: 1.2; letter-spacing: -0.01em; }
-
-    /* ── ITSM BADGES ── */
-    .pbadge {
-      position: absolute;
-      display: inline-flex; align-items: center; gap: 5px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(100,116,139,0.18);
-      border-radius: 100px;
-      padding: clamp(3px, 0.3vh, 5px) clamp(8px, 0.8vw, 14px);
-      font-size: clamp(11px, 0.9vw, 13px); font-weight: 500;
-      color: #475569; white-space: nowrap;
-      cursor: grab; z-index: 5;
-      opacity: 0; transform: scale(0.9);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      backdrop-filter: blur(8px);
-    }
-    .pbadge.shown { opacity: 1; transform: scale(1); }
-    .pbadge--itsm { border-color: rgba(139,92,246,0.28); background: rgba(139,92,246,0.05); color: #6d28d9; }
-    .pbadge i { font-size: 0.9em; }
-
-    /* ── CATEGORY GROUP CARDS — two-layer vendor grouping ── */
-    .cat-group {
-      position: absolute;
-      background: rgba(255,255,255,0.78);
-      border: 1px solid rgba(100,116,139,0.18);
-      border-radius: 12px;
-      padding: 8px 10px 10px;
-      min-width: clamp(130px, 13vw, 185px);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-      backdrop-filter: blur(14px);
-      cursor: grab; z-index: 5;
-      opacity: 0; transform: scale(0.92) translateY(4px);
-      transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s;
-    }
-    .cat-group.shown { opacity: 1; transform: scale(1) translateY(0); }
-    .cat-group:hover { box-shadow: 0 6px 28px rgba(0,0,0,0.11); }
-
-    /* Layer 1 — category label */
-    .cat-label {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: #64748b;
-      margin-bottom: 7px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid rgba(100,116,139,0.14);
-    }
-
-    /* Layer 2 — vendor logo tiles row */
-    .cat-vendors {
-      display: flex; flex-direction: row; flex-wrap: wrap;
-      gap: 4px;
-      max-width: 170px;
-    }
-    .vendor-tile {
-      display: inline-flex; align-items: center; gap: 4px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(100,116,139,0.14);
-      border-radius: 6px;
-      padding: 3px 7px 3px 3px;
-      font-size: clamp(9px, 0.75vw, 11px); font-weight: 600;
-      color: #334155; white-space: nowrap;
-    }
-    /* Vendor logo avatar */
-    .v-logo {
-      width: 20px; height: 20px; border-radius: 5px;
-      display: inline-flex; align-items: center; justify-content: center;
-      font-size: 8px; font-weight: 900; color: #fff;
-      flex-shrink: 0; overflow: hidden;
-    }
-    .v-logo img { width: 100%; height: 100%; object-fit: contain; padding: 2px; background: #fff; border-radius: 5px; }
-
-    /* dark mode */
-    [data-theme="dark"] .pcard,
-    [data-theme="dark"] .cat-group {
-      background: rgba(15,23,42,0.65);
-      border-color: rgba(100,116,139,0.22);
-    }
-    [data-theme="dark"] .pcard-title { color: #f1f5f9; }
-    [data-theme="dark"] .cat-label { color: #94a3b8; border-bottom-color: rgba(100,116,139,0.2); }
-    [data-theme="dark"] .vendor-tile {
-      background: rgba(30,42,60,0.8);
-      border-color: rgba(100,116,139,0.2);
-      color: #cbd5e1;
-    }
-    [data-theme="dark"] .pbadge {
-      background: rgba(15,23,42,0.6);
-      color: #94a3b8;
-    }
-    [data-theme="dark"] .pbadge--itsm {
-      background: rgba(139,92,246,0.08);
-      color: #c084fc;
-      border-color: rgba(192,132,252,0.3);
-    }
-    [data-theme="dark"] .pcard--itsm .pcard-cat { color: #c084fc; }
-    [data-theme="dark"] .pcard--vendor .pcard-cat { color: #34d399; }
-  </style>
+  <link rel="stylesheet" href="assets/css/pages/platform-diagram.css">
 </head>
 <body>
 <div class="canvas" id="canvas">
@@ -187,7 +17,7 @@
   <!-- ── HUB ── -->
   <div class="hub" id="hub">
     <div class="hub-pulse"></div>
-    <img src="Assets/Robot-white.svg" class="hub-logo" alt="Tacbot">
+    <img src="assets/images/icons/Robot-white.svg" class="hub-logo" alt="Tacbot">
     <div class="hub-text">
       <span class="hub-name">Tacbot</span>
       <span class="hub-sub">Orchestrator</span>
@@ -207,61 +37,61 @@
 
   <!-- ── ITSM BADGES ── -->
   <span class="pbadge pbadge--itsm" id="snow" data-parent="itsm-card">
-    <img src="Assets/servicenow.svg" style="width:14px;height:14px;object-fit:contain;" alt=""> ServiceNow
+    <img class="js-platform-diagram-style-1" src="assets/images/integrations/servicenow.svg" alt=""> ServiceNow
   </span>
   <span class="pbadge pbadge--itsm" id="jira" data-parent="itsm-card">
-    <i class="fa-brands fa-jira" style="color:#0052cc"></i> Jira
+    <i class="fa-brands fa-jira js-platform-diagram-style-2"></i> Jira
   </span>
 
   <!-- ── CATEGORY GROUP: Network ── -->
   <div class="cat-group" id="cat-network" data-parent="vendors-card">
-    <div class="cat-label"><i class="fa-solid fa-network-wired" style="margin-right:4px"></i>Network</div>
+    <div class="cat-label"><i class="fa-solid fa-network-wired js-platform-diagram-style-3"></i>Network</div>
     <div class="cat-vendors">
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#6366f1">AR</span>Arista
+        <span class="v-logo js-platform-diagram-style-4">AR</span>Arista
       </span>
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#049fd9">CI</span>Cisco
+        <span class="v-logo js-platform-diagram-style-5">CI</span>Cisco
       </span>
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#c71e22">JU</span>Juniper
+        <span class="v-logo js-platform-diagram-style-6">JU</span>Juniper
       </span>
     </div>
   </div>
 
   <!-- ── CATEGORY GROUP: Circuits ── -->
   <div class="cat-group" id="cat-circuits" data-parent="vendors-card">
-    <div class="cat-label"><i class="fa-solid fa-bolt" style="margin-right:4px"></i>Circuits</div>
+    <div class="cat-label"><i class="fa-solid fa-bolt js-platform-diagram-style-3"></i>Circuits</div>
     <div class="cat-vendors">
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#cd040b">VZ</span>Verizon
+        <span class="v-logo js-platform-diagram-style-7">VZ</span>Verizon
       </span>
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#009fdb">AT</span>AT&amp;T
+        <span class="v-logo js-platform-diagram-style-8">AT</span>AT&amp;T
       </span>
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#00938f">CO</span>Colt
+        <span class="v-logo js-platform-diagram-style-9">CO</span>Colt
       </span>
     </div>
   </div>
 
   <!-- ── CATEGORY GROUP: Cloud ── -->
   <div class="cat-group" id="cat-cloud" data-parent="vendors-card">
-    <div class="cat-label"><i class="fa-solid fa-cloud" style="margin-right:4px"></i>Cloud</div>
+    <div class="cat-label"><i class="fa-solid fa-cloud js-platform-diagram-style-3"></i>Cloud</div>
     <div class="cat-vendors">
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#fff; border:1px solid #eee">
-          <img src="Assets/aws.svg" alt="AWS">
+        <span class="v-logo js-platform-diagram-style-10">
+          <img src="assets/images/integrations/aws.svg" alt="AWS">
         </span>AWS
       </span>
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#fff; border:1px solid #eee">
-          <img src="Assets/azure.svg" alt="Azure">
+        <span class="v-logo js-platform-diagram-style-10">
+          <img src="assets/images/integrations/azure.svg" alt="Azure">
         </span>Azure
       </span>
       <span class="vendor-tile">
-        <span class="v-logo" style="background:#fff; border:1px solid #eee">
-          <img src="Assets/google-cloud.svg" alt="Google Cloud" onerror="this.parentElement.style.background='#4285F4';this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#fff\'>GC</span>'">
+        <span class="v-logo js-platform-diagram-style-10">
+          <img src="assets/images/integrations/google-cloud.svg" alt="Google Cloud" onerror="this.parentElement.style.background='#4285F4';this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#fff\'>GC</span>'">
         </span>Google Cloud
       </span>
     </div>

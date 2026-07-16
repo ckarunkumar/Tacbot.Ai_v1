@@ -7,8 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tacbot-diagram.css">
+  <link rel="stylesheet" href="assets/css/pages/tacbot-diagram.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/pages/tacbot-diagram.css">
 </head>
 <body>
 <div class="canvas" id="canvas">
@@ -17,19 +18,19 @@
   <!-- Group Containers / Background Zones -->
   <div class="zone-bg zone-bg--customer">
     <div class="zone-header">
-      <span class="zone-dot" style="background: var(--blue);"></span>
+      <span class="zone-dot js-tacbot-diagram-style-1"></span>
       Customer
     </div>
   </div>
   <div class="zone-bg zone-bg--vendors">
     <div class="zone-header">
-      <span class="zone-dot" style="background: var(--teal);"></span>
+      <span class="zone-dot js-tacbot-diagram-style-2"></span>
       Vendors
     </div>
   </div>
   <div class="zone-bg zone-bg--ai-platform">
     <div class="zone-header">
-      <span class="zone-dot" style="background: var(--purple);"></span>
+      <span class="zone-dot js-tacbot-diagram-style-3"></span>
       AI Platform
     </div>
   </div>
@@ -37,7 +38,7 @@
   <!-- Hub — fixed center -->
   <div class="hub" id="hub">
     <div class="hub-pulse"></div>
-    <img src="Assets/Robot-white.svg" class="hub-logo" alt="Tacbot">
+    <img src="assets/images/icons/Robot-white.svg" class="hub-logo" alt="Tacbot">
     <div class="hub-text">
       <span class="hub-name">Tacbot</span>
       <span class="hub-sub">Orchestrator</span>

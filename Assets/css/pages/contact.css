@@ -1,0 +1,137 @@
+/* ═══════════════════════════════════════════
+   GLOBAL LOCATIONS — ported verbatim from careers.html
+═══════════════════════════════════════════ */
+.global-section {
+  background: #060912;
+  padding: 120px var(--px) 140px;
+  position: relative;
+  overflow: hidden;
+}
+.global-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.global-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 72px;
+  position: relative;
+  z-index: 1;
+}
+.global-title {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+}
+.global-title em {
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: #60a5fa;
+  font-weight: 400;
+}
+.global-sub {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+/* ── MAP CONTAINER ── */
+.map-container {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  aspect-ratio: 12 / 6.5;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.map-container.shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+#mapCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.map-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+.marker-dot {
+  width: 9px;
+  height: 9px;
+  background: #6366f1; /* Brand blue */
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.25);
+  animation: markerGlow 2.5s infinite;
+}
+@keyframes markerGlow {
+  0%, 100% { box-shadow: 0 0 10px #6366f1, 0 0 0 4px rgba(99, 102, 241, 0.25); }
+  50% { box-shadow: 0 0 16px #6366f1, 0 0 0 7px rgba(99, 102, 241, 0.4); }
+}
+.marker-label {
+  position: absolute;
+  background: #ffffff;
+  color: #0c111d;
+  font-size: clamp(10px, 1.2vw, 13px);
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 8px 12px -3px rgba(12, 17, 29, 0.08), 0 3px 5px -2px rgba(12, 17, 29, 0.03);
+  pointer-events: auto;
+  border: 1px solid rgba(12, 17, 29, 0.06);
+}
+.marker-label--left {
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.marker-label--left::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #ffffff;
+}
+.marker-label--right {
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.marker-label--right::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #ffffff;
+}
+@media (max-width: 768px) {
+  .global-section { padding: 64px 20px 80px; }
+  .global-header { margin-bottom: 48px; }
+  .marker-label { padding: 5px 10px; }
+}
+@media (max-width: 480px) {
+  .global-section { padding: 48px 14px 64px; }
+  .global-header { margin-bottom: 36px; }
+}
+[data-theme="light"] .global-section { background: var(--bg); }
+[data-theme="light"] .global-title { color: var(--text-primary); }
+[data-theme="light"] .global-title em { color: #2563eb; }

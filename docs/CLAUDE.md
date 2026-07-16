@@ -1,9 +1,5 @@
 # TACbot Project
 
-## Understanding the Codebase
-
-Read `graphify-out/GRAPH_REPORT.md` to understand project structure before making changes. It contains the knowledge graph, community clusters, and key abstractions.
-
 ## Project Overview (from graph)
 
 TACbot is a marketing/product landing page with:

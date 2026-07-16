@@ -794,14 +794,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const vi = 1 + Math.floor(Math.random() * VENDORS.length);
     const toHub = Math.random() < 0.5;
     packets.push({ from: toHub ? vi : 0, to: toHub ? 0 : vi, t: 0,
-      speed: 0.0038 + Math.random() * 0.0025, color: nodes[vi].color });
+      speed: 0.007 + Math.random() * 0.005, color: nodes[vi].color });
   }
 
   for (let i = 0; i < 6; i++) {
     const vi = 1 + Math.floor(Math.random() * VENDORS.length);
     const fromHub = Math.random() < 0.5;
     packets.push({ from: fromHub ? 0 : vi, to: fromHub ? vi : 0,
-      t: Math.random(), speed: 0.0038 + Math.random() * 0.0025,
+      t: Math.random(), speed: 0.007 + Math.random() * 0.005,
       color: nodes[vi]?.color || '#6366f1' });
   }
 

@@ -177,7 +177,7 @@
     dot.setAttribute('fill', color);
     dot.style.filter = `drop-shadow(0 0 5px ${color})`;
     svg.appendChild(dot);
-    packets.push({conn,el:dot,t:Math.random(),speed:0.0038+Math.random()*0.0025,dir});
+    packets.push({conn,el:dot,t:Math.random(),speed:0.007+Math.random()*0.005,dir});
   }
 
   function build() {

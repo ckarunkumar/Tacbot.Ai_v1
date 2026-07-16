@@ -212,7 +212,7 @@
 [data-theme="light"] .notif-vendor { color: rgba(13,21,39,0.75); }
 [data-theme="light"] .notif-subject { color: var(--text-muted); }
 [data-theme="light"] .notif-item { border-bottom-color: rgba(22,50,91,0.06); }
-[data-theme="light"] .portal-chip { color: var(--text-muted); }
+[data-theme="light"] .portal-chip { color: var(--text-secondary); border-color: rgba(15, 23, 42, 0.15); }
 [data-theme="light"] .portal-chip:hover { color: var(--text-primary); }
 [data-theme="light"] .sla-chart-labels { color: var(--text-subtle); }
 [data-theme="light"] .sla-chart-bottom { color: var(--text-subtle); }
@@ -389,7 +389,7 @@
 [data-theme="dark"] .notif-vendor     { color: rgba(255,255,255,0.75); }
 [data-theme="dark"] .notif-subject    { color: rgba(255,255,255,0.4); }
 [data-theme="dark"] .notif-item       { border-bottom-color: rgba(255,255,255,0.05); }
-[data-theme="dark"] .portal-chip      { color: rgba(255,255,255,0.4); }
+[data-theme="dark"] .portal-chip      { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.15); }
 [data-theme="dark"] .sla-chart-labels { color: rgba(255,255,255,0.25); }
 [data-theme="dark"] .sla-chart-bottom { color: rgba(255,255,255,0.25); }
 [data-theme="dark"] .sla-line         { stroke: #697dfb; }

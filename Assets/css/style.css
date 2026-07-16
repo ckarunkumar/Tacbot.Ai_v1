@@ -811,7 +811,7 @@ h1 { font-size: clamp(34px, 5.2vw, 58px); font-weight: 800; line-height: 1.05; l
 .card-sla-inner { display: flex; flex-direction: column; gap: 16px; }
 .sla-text { display: flex; flex-direction: column; }
 .sla-text .card-tag  { align-self: flex-start; }
-.sla-text .card-desc { font-size: 12px; margin-top: 12px; margin-bottom: 10px; }
+.sla-text .card-desc { margin-top: 12px; margin-bottom: 10px; }
 .sla-text .sla-miss-badge { align-self: flex-start; }
 .sla-miss-badge {
   margin-top: 16px;

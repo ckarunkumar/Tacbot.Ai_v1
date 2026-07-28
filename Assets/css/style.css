@@ -1,5 +1,15 @@
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 [id] { scroll-margin-top: 80px; }
 
 /* ── THEME VARIABLES ──────────────────────────────────── */
@@ -329,6 +339,7 @@ html { scroll-behavior: smooth; }
   border-color: rgba(22,50,91,0.1);
   box-shadow: 0 2px 16px rgba(22,50,91,0.06), 0 1px 4px rgba(22,50,91,0.04);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .problem-section--light .bento-card:hover {
   border-color: rgba(22,50,91,0.2);
@@ -463,7 +474,7 @@ html { scroll-behavior: smooth; }
 .no-transitions * {
   transition: none !important;
 }
-body { background: var(--bg); color: var(--text-primary); font-family: 'Inter', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; transition: background-color 0.3s ease, color 0.3s ease; }
+body { background: var(--bg); color: var(--text-primary); font-family: 'Inter', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-overflow-scrolling: touch; transition: background-color 0.3s ease, color 0.3s ease; }
 
 /* ── NAV ─────────────────────────────────────────────── */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 12px var(--px); transition: background-color 0.4s; }

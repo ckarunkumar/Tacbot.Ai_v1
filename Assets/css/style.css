@@ -598,22 +598,35 @@ img.logo-light { display: block; }
    this block, rings flank it left/right, exactly like the full
    Ecosystem Integrations diagram. */
 .hero-diagram-wrap {
-  position: relative; width: 100%; max-width: 100%;
-  flex: 1 1 0;
-  min-height: 360px;
-  max-height: clamp(360px, calc(100svh - 360px), 620px);
-  margin: 0 auto; z-index: 1;
-  border-radius: 16px 16px 0 0; overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: clamp(460px, 50vh, 620px);
+  min-height: 460px;
+  flex: 0 0 auto;
+  margin: 0 auto;
+  z-index: 1;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
 }
 .hero-diagram-iframe {
-  width: 100%; height: 100%; border: none;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  border: none;
   border-radius: 16px 16px 0 0;
   display: block;
   background: transparent;
 }
 /* Tablet */
 @media (max-width: 1024px) {
-  .hero-diagram-wrap { min-height: 300px; max-height: clamp(300px, calc(100svh - 400px), 520px); }
+  .hero-diagram-wrap {
+    height: clamp(380px, 45vh, 520px);
+    min-height: 380px;
+  }
+  .hero-diagram-iframe {
+    min-height: 380px;
+  }
 }
 /* Mobile: drop the diagram, keep a clean text-only hero */
 @media (max-width: 720px) {

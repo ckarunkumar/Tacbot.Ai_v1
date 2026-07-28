@@ -744,9 +744,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d');
 
   const VENDORS = [
-    { name: 'AWS',        iconId: 'amazonaws',      color: '#f59e0b', localColor: 'Assets/images/integrations/aws.svg',         localWhite: 'Assets/images/integrations/aws.svg' },
-    { name: 'Azure',      iconId: 'microsoftazure', color: '#3b82f6', localColor: 'Assets/images/integrations/azure.svg',       localWhite: 'Assets/images/integrations/azure.svg' },
-    { name: 'ServiceNow', iconId: 'servicenow',     color: '#22c55e', localColor: 'Assets/images/integrations/servicenow.svg',  localWhite: 'Assets/images/integrations/servicenow.svg' },
+    { name: 'AWS',        iconId: 'amazonaws',      color: '#f59e0b', localColor: 'assets/images/integrations/aws.svg',         localWhite: 'assets/images/integrations/aws.svg' },
+    { name: 'Azure',      iconId: 'microsoftazure', color: '#3b82f6', localColor: 'assets/images/integrations/azure.svg',       localWhite: 'assets/images/integrations/azure.svg' },
+    { name: 'ServiceNow', iconId: 'servicenow',     color: '#22c55e', localColor: 'assets/images/integrations/servicenow.svg',  localWhite: 'assets/images/integrations/servicenow.svg' },
     { name: 'Jira',       iconId: 'jira',           color: '#6366f1' },
     { name: 'Datadog',    iconId: 'datadog',        color: '#a855f7' },
     { name: 'PagerDuty',  iconId: 'pagerduty',      color: '#ef4444' },

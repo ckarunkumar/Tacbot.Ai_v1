@@ -14,7 +14,7 @@ TACbot is a marketing/product landing page with:
 ## Key Files
 
 - `script.js` — main logic (globe, network canvas, GSAP animations, scroll triggers)
-- `Assets/Logo-white.svg` — brand wordmark
+- `assets/Logo-white.svg` — brand wordmark
 
 ## Core Abstractions
 

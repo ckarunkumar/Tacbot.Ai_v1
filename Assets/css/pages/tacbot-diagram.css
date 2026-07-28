@@ -1,4 +1,7 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body, button, input, select, textarea { font-family: 'Inter', sans-serif; }
+.fa-solid, .fas { font-family: "Font Awesome 6 Free" !important; font-weight: 900; }
+.fa-brands, .fab { font-family: "Font Awesome 6 Brands" !important; font-weight: 400; }
 
 :root {
   /* ── ITSM + Monitoring (violet — distinct from Tacbot hub's blue) ── */

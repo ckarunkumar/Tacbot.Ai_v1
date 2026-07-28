@@ -2,9 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+body, button, input, select, textarea {
+  font-family: 'Inter', sans-serif;
+}
+.fa-solid, .fas { font-family: "Font Awesome 6 Free" !important; font-weight: 900; }
+.fa-brands, .fab { font-family: "Font Awesome 6 Brands" !important; font-weight: 400; }
+.fa-regular, .far { font-family: "Font Awesome 6 Free" !important; font-weight: 400; }
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;

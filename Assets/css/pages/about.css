@@ -72,6 +72,7 @@
   margin: 0 auto 36px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.02);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 .ab-hero-quote p {
   font-size: 16px;

@@ -6,10 +6,9 @@
   <title>Tacbot Orchestrator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/pages/tacbot-diagram.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Assets/css/pages/tacbot-diagram.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="assets/css/pages/tacbot-diagram.css">
 </head>
 <body>
 <div class="canvas" id="canvas">
@@ -38,7 +37,7 @@
   <!-- Hub — fixed center -->
   <div class="hub" id="hub">
     <div class="hub-pulse"></div>
-    <img src="assets/images/icons/Robot-white.svg" class="hub-logo" alt="Tacbot">
+    <img src="Assets/images/icons/Robot-white.svg" class="hub-logo" alt="Tacbot">
     <div class="hub-text">
       <span class="hub-name">Tacbot</span>
       <span class="hub-sub">Orchestrator</span>
@@ -298,24 +297,28 @@
 
   function syncTheme() {
     try {
-      const t = window.parent.document.documentElement.dataset.theme || 'light';
-      document.documentElement.dataset.theme = t;
-      build();
+      if (window.parent && window.parent.document) {
+        const t = window.parent.document.documentElement.dataset.theme || 'light';
+        document.documentElement.dataset.theme = t;
+        build();
+      }
     } catch (e) {
       console.warn("Could not sync theme with parent window:", e);
     }
   }
-  syncTheme();
-  try {
-    new MutationObserver(syncTheme).observe(
-      window.parent.document.documentElement,
-      { attributes: true, attributeFilter: ['data-theme'] }
-    );
-  } catch (e) {}
 
   window.addEventListener('load', () => {
     setTimeout(initDraggable, 120);
     requestAnimationFrame(tick);
+    syncTheme();
+    try {
+      if (window.parent && window.parent.document) {
+        new MutationObserver(syncTheme).observe(
+          window.parent.document.documentElement,
+          { attributes: true, attributeFilter: ['data-theme'] }
+        );
+      }
+    } catch (e) {}
   });
   window.addEventListener('resize', () => {
     applyPositions();

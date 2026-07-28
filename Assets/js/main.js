@@ -744,9 +744,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d');
 
   const VENDORS = [
-    { name: 'AWS',        iconId: 'amazonaws',      color: '#f59e0b', localColor: 'assets/images/integrations/aws.svg',         localWhite: 'assets/images/integrations/aws.svg' },
-    { name: 'Azure',      iconId: 'microsoftazure', color: '#3b82f6', localColor: 'assets/images/integrations/azure.svg',       localWhite: 'assets/images/integrations/azure.svg' },
-    { name: 'ServiceNow', iconId: 'servicenow',     color: '#22c55e', localColor: 'assets/images/integrations/servicenow.svg',  localWhite: 'assets/images/integrations/servicenow.svg' },
+    { name: 'AWS',        iconId: 'amazonaws',      color: '#f59e0b', localColor: 'Assets/images/integrations/aws.svg',         localWhite: 'Assets/images/integrations/aws.svg' },
+    { name: 'Azure',      iconId: 'microsoftazure', color: '#3b82f6', localColor: 'Assets/images/integrations/azure.svg',       localWhite: 'Assets/images/integrations/azure.svg' },
+    { name: 'ServiceNow', iconId: 'servicenow',     color: '#22c55e', localColor: 'Assets/images/integrations/servicenow.svg',  localWhite: 'Assets/images/integrations/servicenow.svg' },
     { name: 'Jira',       iconId: 'jira',           color: '#6366f1' },
     { name: 'Datadog',    iconId: 'datadog',        color: '#a855f7' },
     { name: 'PagerDuty',  iconId: 'pagerduty',      color: '#ef4444' },
@@ -1418,18 +1418,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Dropdown click handler
   document.querySelectorAll('.nav-trigger').forEach(trigger => {
     trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+      const isMobile = window.innerWidth <= 768;
+      const href = trigger.getAttribute('href');
+      const isAnchorOnly = !href || href === '#' || href === 'javascript:void(0)';
+      
       const navItem = trigger.closest('.nav-item');
-      
-      // Close other dropdowns
-      document.querySelectorAll('.nav-item').forEach(item => {
-        if (item !== navItem) {
-          item.classList.remove('active-dropdown');
+      if (navItem && (isMobile || isAnchorOnly || e.target.classList.contains('nav-caret'))) {
+        if (isAnchorOnly || isMobile) {
+          e.preventDefault();
         }
-      });
-      
-      navItem.classList.toggle('active-dropdown');
+        e.stopPropagation();
+        
+        // Close other dropdowns
+        document.querySelectorAll('.nav-item').forEach(item => {
+          if (item !== navItem) {
+            item.classList.remove('active-dropdown');
+          }
+        });
+        
+        navItem.classList.toggle('active-dropdown');
+      }
     });
   });
 

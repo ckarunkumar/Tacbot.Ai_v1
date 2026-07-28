@@ -6,9 +6,9 @@
   <title>Unified Vendor Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/pages/platform-diagram.css">
+  <link rel="stylesheet" href="Assets/css/pages/platform-diagram.css">
 </head>
 <body>
 <div class="canvas" id="canvas">
@@ -17,7 +17,7 @@
   <!-- ── HUB ── -->
   <div class="hub" id="hub">
     <div class="hub-pulse"></div>
-    <img src="assets/images/icons/Robot-white.svg" class="hub-logo" alt="Tacbot">
+    <img src="Assets/images/icons/Robot-white.svg" class="hub-logo" alt="Tacbot">
     <div class="hub-text">
       <span class="hub-name">Tacbot</span>
       <span class="hub-sub">Orchestrator</span>
@@ -37,7 +37,7 @@
 
   <!-- ── ITSM BADGES ── -->
   <span class="pbadge pbadge--itsm" id="snow" data-parent="itsm-card">
-    <img class="js-platform-diagram-style-1" src="assets/images/integrations/servicenow.svg" alt=""> ServiceNow
+    <img class="js-platform-diagram-style-1" src="Assets/images/integrations/servicenow.svg" alt=""> ServiceNow
   </span>
   <span class="pbadge pbadge--itsm" id="jira" data-parent="itsm-card">
     <i class="fa-brands fa-jira js-platform-diagram-style-2"></i> Jira
@@ -81,17 +81,17 @@
     <div class="cat-vendors">
       <span class="vendor-tile">
         <span class="v-logo js-platform-diagram-style-10">
-          <img src="assets/images/integrations/aws.svg" alt="AWS">
+          <img src="Assets/images/integrations/aws.svg" alt="AWS">
         </span>AWS
       </span>
       <span class="vendor-tile">
         <span class="v-logo js-platform-diagram-style-10">
-          <img src="assets/images/integrations/azure.svg" alt="Azure">
+          <img src="Assets/images/integrations/azure.svg" alt="Azure">
         </span>Azure
       </span>
       <span class="vendor-tile">
         <span class="v-logo js-platform-diagram-style-10">
-          <img src="assets/images/integrations/google-cloud.svg" alt="Google Cloud" onerror="this.parentElement.style.background='#4285F4';this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#fff\'>GC</span>'">
+          <img src="Assets/images/integrations/google-cloud.svg" alt="Google Cloud" onerror="this.parentElement.style.background='#4285F4';this.outerHTML='<span style=\'font-size:8px;font-weight:900;color:#fff\'>GC</span>'">
         </span>Google Cloud
       </span>
     </div>
@@ -299,9 +299,11 @@
 
   function syncTheme() {
     try {
-      const t = window.parent.document.documentElement.dataset.theme || 'light';
-      document.documentElement.dataset.theme = t;
-      build();
+      if (window.parent && window.parent.document) {
+        const t = window.parent.document.documentElement.dataset.theme || 'light';
+        document.documentElement.dataset.theme = t;
+        build();
+      }
     } catch(e) {}
   }
 
@@ -310,10 +312,12 @@
     requestAnimationFrame(tick);
     syncTheme();
     try {
-      new MutationObserver(syncTheme).observe(
-        window.parent.document.documentElement,
-        { attributes: true, attributeFilter: ['data-theme'] }
-      );
+      if (window.parent && window.parent.document) {
+        new MutationObserver(syncTheme).observe(
+          window.parent.document.documentElement,
+          { attributes: true, attributeFilter: ['data-theme'] }
+        );
+      }
     } catch(e) {}
   });
 

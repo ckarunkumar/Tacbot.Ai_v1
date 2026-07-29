@@ -153,6 +153,7 @@
 .dd-metric-lbl { font-size: 12px; font-weight: 500; color: var(--text-muted); }
 
 /* Visual panels */
+.dd-visual-col { display: flex; flex-direction: column; gap: 20px; }
 .dd-visual {
   background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
   padding: 28px; position: relative; overflow: hidden;

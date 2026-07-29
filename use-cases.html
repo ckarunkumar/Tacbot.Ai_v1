@@ -159,50 +159,52 @@
             With Tacbot: vendor's degraded event appears in your signal feed 45 seconds after it fires — correlated with your Datadog alert automatically.
           </div>
         </div>
+      </div>
+      <div class="dd-visual-col">
+        <div class="dd-visual">
+          <div class="dv-tag">Live Incident Timeline</div>
+          <div class="incident-timeline">
+            <div class="it-row">
+              <div class="it-time">02:41</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-15"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">Datadog alert fired — API p99 latency &gt;5s</div>
+                <div class="it-detail">Affecting: checkout service, 3 regions</div>
+              </div>
+            </div>
+            <div class="it-row">
+              <div class="it-time">02:42</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">Tacbot correlated with AWS signal</div>
+                <div class="it-detail">AWS us-east-1 network degradation event detected</div>
+                <div class="it-badge it-badge--auto">Auto-correlated</div>
+              </div>
+            </div>
+            <div class="it-row">
+              <div class="it-time">02:43</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">On-call engineer notified via Slack + PagerDuty</div>
+                <div class="it-detail">Context pre-loaded: vendor event, affected resources, SLA status</div>
+                <div class="it-badge it-badge--auto">Auto-routed</div>
+              </div>
+            </div>
+            <div class="it-row">
+              <div class="it-time">03:01</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-17"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">AWS degradation resolved — latency normalised</div>
+                <div class="it-detail">Incident auto-closed. SLA breach logged for scorecard.</div>
+                <div class="it-badge it-badge--resolved">Resolved</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="dd-metrics">
           <div class="dd-metric"><div class="dd-metric-num">90s</div><div class="dd-metric-lbl">Mean detection time</div></div>
           <div class="dd-metric"><div class="dd-metric-num">74%</div><div class="dd-metric-lbl">Fewer vendor escalations</div></div>
           <div class="dd-metric"><div class="dd-metric-num">3.2×</div><div class="dd-metric-lbl">Faster MTTR</div></div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="dv-tag">Live Incident Timeline</div>
-        <div class="incident-timeline">
-          <div class="it-row">
-            <div class="it-time">02:41</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-15"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">Datadog alert fired — API p99 latency &gt;5s</div>
-              <div class="it-detail">Affecting: checkout service, 3 regions</div>
-            </div>
-          </div>
-          <div class="it-row">
-            <div class="it-time">02:42</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">Tacbot correlated with AWS signal</div>
-              <div class="it-detail">AWS us-east-1 network degradation event detected</div>
-              <div class="it-badge it-badge--auto">Auto-correlated</div>
-            </div>
-          </div>
-          <div class="it-row">
-            <div class="it-time">02:43</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">On-call engineer notified via Slack + PagerDuty</div>
-              <div class="it-detail">Context pre-loaded: vendor event, affected resources, SLA status</div>
-              <div class="it-badge it-badge--auto">Auto-routed</div>
-            </div>
-          </div>
-          <div class="it-row">
-            <div class="it-time">03:01</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-17"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">AWS degradation resolved — latency normalised</div>
-              <div class="it-detail">Incident auto-closed. SLA breach logged for scorecard.</div>
-              <div class="it-badge it-badge--resolved">Resolved</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -228,50 +230,52 @@
             With Tacbot: one shared onboarding checklist auto-assigned by role. Tacbot auto-validates API credentials and creates the first SLA baseline on day one.
           </div>
         </div>
+      </div>
+      <div class="dd-visual-col">
+        <div class="dd-visual">
+          <div class="dv-tag">Vendor Onboarding — Datadog</div>
+          <div class="onboard-list">
+            <div class="ob-item">
+              <div class="ob-check ob-check--done"><i class="fa-solid fa-check js-use-cases-style-19"></i></div>
+              <span class="ob-text done">Vendor contract signed &amp; uploaded</span>
+              <span class="ob-who">Procurement</span>
+            </div>
+            <div class="ob-item">
+              <div class="ob-check ob-check--done"><i class="fa-solid fa-check js-use-cases-style-19"></i></div>
+              <span class="ob-text done">Security questionnaire reviewed</span>
+              <span class="ob-who">Security</span>
+            </div>
+            <div class="ob-item">
+              <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt js-use-cases-style-19"></i></div>
+              <span class="ob-text">API credentials validated</span>
+              <span class="ob-who">Auto</span>
+            </div>
+            <div class="ob-item">
+              <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt js-use-cases-style-19"></i></div>
+              <span class="ob-text">SLA baseline established (90-day window)</span>
+              <span class="ob-who">Auto</span>
+            </div>
+            <div class="ob-item">
+              <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt js-use-cases-style-19"></i></div>
+              <span class="ob-text">Monitoring configured in Tacbot</span>
+              <span class="ob-who">Auto</span>
+            </div>
+            <div class="ob-item">
+              <div class="ob-check ob-check--pending"><i class="fa-solid fa-clock js-use-cases-style-19"></i></div>
+              <span class="ob-text">On-call escalation policy linked</span>
+              <span class="ob-who">IT Ops</span>
+            </div>
+            <div class="ob-item">
+              <div class="ob-check ob-check--pending"><i class="fa-solid fa-clock js-use-cases-style-19"></i></div>
+              <span class="ob-text">Runbook published to team wiki</span>
+              <span class="ob-who">Platform</span>
+            </div>
+          </div>
+        </div>
         <div class="dd-metrics">
           <div class="dd-metric"><div class="dd-metric-num">2d</div><div class="dd-metric-lbl">Avg onboarding time</div></div>
           <div class="dd-metric"><div class="dd-metric-num">12</div><div class="dd-metric-lbl">Teams synced automatically</div></div>
           <div class="dd-metric"><div class="dd-metric-num">0</div><div class="dd-metric-lbl">Missed setup steps</div></div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="dv-tag">Vendor Onboarding — Datadog</div>
-        <div class="onboard-list">
-          <div class="ob-item">
-            <div class="ob-check ob-check--done"><i class="fa-solid fa-check js-use-cases-style-19"></i></div>
-            <span class="ob-text done">Vendor contract signed &amp; uploaded</span>
-            <span class="ob-who">Procurement</span>
-          </div>
-          <div class="ob-item">
-            <div class="ob-check ob-check--done"><i class="fa-solid fa-check js-use-cases-style-19"></i></div>
-            <span class="ob-text done">Security questionnaire reviewed</span>
-            <span class="ob-who">Security</span>
-          </div>
-          <div class="ob-item">
-            <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt js-use-cases-style-19"></i></div>
-            <span class="ob-text">API credentials validated</span>
-            <span class="ob-who">Auto</span>
-          </div>
-          <div class="ob-item">
-            <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt js-use-cases-style-19"></i></div>
-            <span class="ob-text">SLA baseline established (90-day window)</span>
-            <span class="ob-who">Auto</span>
-          </div>
-          <div class="ob-item">
-            <div class="ob-check ob-check--auto"><i class="fa-solid fa-bolt js-use-cases-style-19"></i></div>
-            <span class="ob-text">Monitoring configured in Tacbot</span>
-            <span class="ob-who">Auto</span>
-          </div>
-          <div class="ob-item">
-            <div class="ob-check ob-check--pending"><i class="fa-solid fa-clock js-use-cases-style-19"></i></div>
-            <span class="ob-text">On-call escalation policy linked</span>
-            <span class="ob-who">IT Ops</span>
-          </div>
-          <div class="ob-item">
-            <div class="ob-check ob-check--pending"><i class="fa-solid fa-clock js-use-cases-style-19"></i></div>
-            <span class="ob-text">Runbook published to team wiki</span>
-            <span class="ob-who">Platform</span>
-          </div>
         </div>
       </div>
     </div>
@@ -297,45 +301,47 @@
             With Tacbot: every SLA data point is captured, scored, and exportable as a PDF report you can hand directly to the vendor in a renewal meeting.
           </div>
         </div>
+      </div>
+      <div class="dd-visual-col">
+        <div class="dd-visual">
+          <div class="dv-tag">SLA Compliance — Last 90 Days</div>
+          <div class="sla-snap">
+            <div class="sla-snap-row">
+              <span class="sla-snap-vendor">AWS</span>
+              <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-21"></div></div>
+              <span class="sla-snap-pct js-use-cases-style-22">99.8%</span>
+              <span class="sla-snap-status sla-ok">Met</span>
+            </div>
+            <div class="sla-snap-row">
+              <span class="sla-snap-vendor">Azure</span>
+              <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-23"></div></div>
+              <span class="sla-snap-pct js-use-cases-style-22">99.5%</span>
+              <span class="sla-snap-status sla-ok">Met</span>
+            </div>
+            <div class="sla-snap-row">
+              <span class="sla-snap-vendor">Datadog</span>
+              <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-24"></div></div>
+              <span class="sla-snap-pct js-use-cases-style-25">99.1%</span>
+              <span class="sla-snap-status sla-warn">At Risk</span>
+            </div>
+            <div class="sla-snap-row">
+              <span class="sla-snap-vendor">PagerDuty</span>
+              <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-26"></div></div>
+              <span class="sla-snap-pct js-use-cases-style-2">97.8%</span>
+              <span class="sla-snap-status sla-fail">Breached</span>
+            </div>
+            <div class="sla-snap-row">
+              <span class="sla-snap-vendor">ServiceNow</span>
+              <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-27"></div></div>
+              <span class="sla-snap-pct js-use-cases-style-22">99.6%</span>
+              <span class="sla-snap-status sla-ok">Met</span>
+            </div>
+          </div>
+        </div>
         <div class="dd-metrics">
           <div class="dd-metric"><div class="dd-metric-num">$340k</div><div class="dd-metric-lbl">Avg savings per renewal</div></div>
           <div class="dd-metric"><div class="dd-metric-num">100%</div><div class="dd-metric-lbl">SLA events documented</div></div>
           <div class="dd-metric"><div class="dd-metric-num">8</div><div class="dd-metric-lbl">Dimensions scored</div></div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="dv-tag">SLA Compliance — Last 90 Days</div>
-        <div class="sla-snap">
-          <div class="sla-snap-row">
-            <span class="sla-snap-vendor">AWS</span>
-            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-21"></div></div>
-            <span class="sla-snap-pct js-use-cases-style-22">99.8%</span>
-            <span class="sla-snap-status sla-ok">Met</span>
-          </div>
-          <div class="sla-snap-row">
-            <span class="sla-snap-vendor">Azure</span>
-            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-23"></div></div>
-            <span class="sla-snap-pct js-use-cases-style-22">99.5%</span>
-            <span class="sla-snap-status sla-ok">Met</span>
-          </div>
-          <div class="sla-snap-row">
-            <span class="sla-snap-vendor">Datadog</span>
-            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-24"></div></div>
-            <span class="sla-snap-pct js-use-cases-style-25">99.1%</span>
-            <span class="sla-snap-status sla-warn">At Risk</span>
-          </div>
-          <div class="sla-snap-row">
-            <span class="sla-snap-vendor">PagerDuty</span>
-            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-26"></div></div>
-            <span class="sla-snap-pct js-use-cases-style-2">97.8%</span>
-            <span class="sla-snap-status sla-fail">Breached</span>
-          </div>
-          <div class="sla-snap-row">
-            <span class="sla-snap-vendor">ServiceNow</span>
-            <div class="sla-snap-bar-wrap"><div class="sla-snap-bar js-use-cases-style-27"></div></div>
-            <span class="sla-snap-pct js-use-cases-style-22">99.6%</span>
-            <span class="sla-snap-status sla-ok">Met</span>
-          </div>
         </div>
       </div>
     </div>
@@ -361,40 +367,42 @@
             With Tacbot: 30-day alert triggers. Team exports PDF scorecard. Enters negotiation with documented breach evidence. Saves $340K.
           </div>
         </div>
+      </div>
+      <div class="dd-visual-col">
+        <div class="dd-visual">
+          <div class="dv-tag">Upcoming Renewals</div>
+          <div class="renewal-list">
+            <div class="renewal-row">
+              <span class="renewal-vendor">PagerDuty</span>
+              <span class="renewal-date">Renews Apr 3, 2025</span>
+              <span class="renewal-days renewal-days--urgent">12 days</span>
+            </div>
+            <div class="renewal-row">
+              <span class="renewal-vendor">Datadog</span>
+              <span class="renewal-date">Renews Apr 18, 2025</span>
+              <span class="renewal-days renewal-days--warn">27 days</span>
+            </div>
+            <div class="renewal-row">
+              <span class="renewal-vendor">Zendesk</span>
+              <span class="renewal-date">Renews May 11, 2025</span>
+              <span class="renewal-days renewal-days--ok">50 days</span>
+            </div>
+            <div class="renewal-row">
+              <span class="renewal-vendor">ServiceNow</span>
+              <span class="renewal-date">Renews Jun 1, 2025</span>
+              <span class="renewal-days renewal-days--ok">71 days</span>
+            </div>
+            <div class="renewal-row">
+              <span class="renewal-vendor">Salesforce</span>
+              <span class="renewal-date">Renews Jul 22, 2025</span>
+              <span class="renewal-days renewal-days--ok">122 days</span>
+            </div>
+          </div>
+        </div>
         <div class="dd-metrics">
           <div class="dd-metric"><div class="dd-metric-num">30d</div><div class="dd-metric-lbl">Advance warning</div></div>
           <div class="dd-metric"><div class="dd-metric-num">0</div><div class="dd-metric-lbl">Missed renewals</div></div>
           <div class="dd-metric"><div class="dd-metric-num">22%</div><div class="dd-metric-lbl">Avg cost reduction</div></div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="dv-tag">Upcoming Renewals</div>
-        <div class="renewal-list">
-          <div class="renewal-row">
-            <span class="renewal-vendor">PagerDuty</span>
-            <span class="renewal-date">Renews Apr 3, 2025</span>
-            <span class="renewal-days renewal-days--urgent">12 days</span>
-          </div>
-          <div class="renewal-row">
-            <span class="renewal-vendor">Datadog</span>
-            <span class="renewal-date">Renews Apr 18, 2025</span>
-            <span class="renewal-days renewal-days--warn">27 days</span>
-          </div>
-          <div class="renewal-row">
-            <span class="renewal-vendor">Zendesk</span>
-            <span class="renewal-date">Renews May 11, 2025</span>
-            <span class="renewal-days renewal-days--ok">50 days</span>
-          </div>
-          <div class="renewal-row">
-            <span class="renewal-vendor">ServiceNow</span>
-            <span class="renewal-date">Renews Jun 1, 2025</span>
-            <span class="renewal-days renewal-days--ok">71 days</span>
-          </div>
-          <div class="renewal-row">
-            <span class="renewal-vendor">Salesforce</span>
-            <span class="renewal-date">Renews Jul 22, 2025</span>
-            <span class="renewal-days renewal-days--ok">122 days</span>
-          </div>
         </div>
       </div>
     </div>
@@ -420,47 +428,49 @@
             With Tacbot: conflict flagged Thursday. Azure window rescheduled autonomously. GCP cost spike surfaced 6 hours after it fires. Weekend stays quiet.
           </div>
         </div>
+      </div>
+      <div class="dd-visual-col">
+        <div class="dd-visual">
+          <div class="dv-tag">Multi-Cloud Health — Now</div>
+          <div class="cloud-grid">
+            <div class="cloud-tile">
+              <div class="cloud-tile-top">
+                <span class="cloud-tile-name">AWS us-east-1</span>
+                <span class="cloud-tile-status js-use-cases-style-30">Healthy</span>
+              </div>
+              <div class="cloud-tile-val">99.97%</div>
+              <div class="cloud-tile-sub">Uptime — 30 days</div>
+            </div>
+            <div class="cloud-tile">
+              <div class="cloud-tile-top">
+                <span class="cloud-tile-name">Azure West EU</span>
+                <span class="cloud-tile-status js-use-cases-style-31">Maint.</span>
+              </div>
+              <div class="cloud-tile-val">Sat 2AM</div>
+              <div class="cloud-tile-sub">Next window</div>
+            </div>
+            <div class="cloud-tile">
+              <div class="cloud-tile-top">
+                <span class="cloud-tile-name">GCP us-central</span>
+                <span class="cloud-tile-status js-use-cases-style-30">Healthy</span>
+              </div>
+              <div class="cloud-tile-val">$4.2k</div>
+              <div class="cloud-tile-sub">Spend today ↑ 18%</div>
+            </div>
+            <div class="cloud-tile">
+              <div class="cloud-tile-top">
+                <span class="cloud-tile-name">Conflicts</span>
+                <span class="cloud-tile-status js-use-cases-style-32">Alert</span>
+              </div>
+              <div class="cloud-tile-val">1</div>
+              <div class="cloud-tile-sub">AWS ↔ Azure overlap</div>
+            </div>
+          </div>
+        </div>
         <div class="dd-metrics">
           <div class="dd-metric"><div class="dd-metric-num">3</div><div class="dd-metric-lbl">Clouds unified</div></div>
           <div class="dd-metric"><div class="dd-metric-num">0</div><div class="dd-metric-lbl">Weekend incidents</div></div>
           <div class="dd-metric"><div class="dd-metric-num">6h</div><div class="dd-metric-lbl">Avg cost anomaly detection</div></div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="dv-tag">Multi-Cloud Health — Now</div>
-        <div class="cloud-grid">
-          <div class="cloud-tile">
-            <div class="cloud-tile-top">
-              <span class="cloud-tile-name">AWS us-east-1</span>
-              <span class="cloud-tile-status js-use-cases-style-30">Healthy</span>
-            </div>
-            <div class="cloud-tile-val">99.97%</div>
-            <div class="cloud-tile-sub">Uptime — 30 days</div>
-          </div>
-          <div class="cloud-tile">
-            <div class="cloud-tile-top">
-              <span class="cloud-tile-name">Azure West EU</span>
-              <span class="cloud-tile-status js-use-cases-style-31">Maint.</span>
-            </div>
-            <div class="cloud-tile-val">Sat 2AM</div>
-            <div class="cloud-tile-sub">Next window</div>
-          </div>
-          <div class="cloud-tile">
-            <div class="cloud-tile-top">
-              <span class="cloud-tile-name">GCP us-central</span>
-              <span class="cloud-tile-status js-use-cases-style-30">Healthy</span>
-            </div>
-            <div class="cloud-tile-val">$4.2k</div>
-            <div class="cloud-tile-sub">Spend today ↑ 18%</div>
-          </div>
-          <div class="cloud-tile">
-            <div class="cloud-tile-top">
-              <span class="cloud-tile-name">Conflicts</span>
-              <span class="cloud-tile-status js-use-cases-style-32">Alert</span>
-            </div>
-            <div class="cloud-tile-val">1</div>
-            <div class="cloud-tile-sub">AWS ↔ Azure overlap</div>
-          </div>
         </div>
       </div>
     </div>
@@ -486,51 +496,53 @@
             With Tacbot: full vendor audit log available in 2 clicks. Every incident, every action, every SLA data point — timestamped and exportable to CSV or PDF.
           </div>
         </div>
+      </div>
+      <div class="dd-visual-col">
+        <div class="dd-visual">
+          <div class="dv-tag">Audit Log — Export Ready</div>
+          <div class="incident-timeline">
+            <div class="it-row">
+              <div class="it-time">Apr 3</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">AWS maintenance window acknowledged</div>
+                <div class="it-detail">By: Tacbot AI · Response time: 4s · Policy: &lt;60s ✓</div>
+                <div class="it-badge it-badge--auto">Policy Met</div>
+              </div>
+            </div>
+            <div class="it-row">
+              <div class="it-time">Apr 9</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-15"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">PagerDuty SLA breach detected</div>
+                <div class="it-detail">Resolution time: 4h 12m · SLA target: 4h · Breach logged</div>
+                <div class="it-badge it-badge--alert">Breach Logged</div>
+              </div>
+            </div>
+            <div class="it-row">
+              <div class="it-time">Apr 9</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
+              <div class="it-body">
+                <div class="it-event">Vendor breach notice sent to PagerDuty</div>
+                <div class="it-detail">Auto-generated · Included evidence log · Sent: 02:58 AM</div>
+                <div class="it-badge it-badge--auto">Auto-notified</div>
+              </div>
+            </div>
+            <div class="it-row">
+              <div class="it-time">Apr 15</div>
+              <div class="it-dot-col"><div class="it-dot js-use-cases-style-17"></div></div>
+              <div class="it-body">
+                <div class="it-event">Quarterly audit export generated</div>
+                <div class="it-detail">47 events · 100% documented · PDF + CSV</div>
+                <div class="it-badge it-badge--resolved">Export Ready</div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="dd-metrics">
           <div class="dd-metric"><div class="dd-metric-num">3w→2h</div><div class="dd-metric-lbl">Audit prep time</div></div>
           <div class="dd-metric"><div class="dd-metric-num">100%</div><div class="dd-metric-lbl">Event traceability</div></div>
           <div class="dd-metric"><div class="dd-metric-num">SOC2</div><div class="dd-metric-lbl">Ready out of box</div></div>
-        </div>
-      </div>
-      <div class="dd-visual">
-        <div class="dv-tag">Audit Log — Export Ready</div>
-        <div class="incident-timeline">
-          <div class="it-row">
-            <div class="it-time">Apr 3</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">AWS maintenance window acknowledged</div>
-              <div class="it-detail">By: Tacbot AI · Response time: 4s · Policy: &lt;60s ✓</div>
-              <div class="it-badge it-badge--auto">Policy Met</div>
-            </div>
-          </div>
-          <div class="it-row">
-            <div class="it-time">Apr 9</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-15"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">PagerDuty SLA breach detected</div>
-              <div class="it-detail">Resolution time: 4h 12m · SLA target: 4h · Breach logged</div>
-              <div class="it-badge it-badge--alert">Breach Logged</div>
-            </div>
-          </div>
-          <div class="it-row">
-            <div class="it-time">Apr 9</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-16"></div><div class="it-line"></div></div>
-            <div class="it-body">
-              <div class="it-event">Vendor breach notice sent to PagerDuty</div>
-              <div class="it-detail">Auto-generated · Included evidence log · Sent: 02:58 AM</div>
-              <div class="it-badge it-badge--auto">Auto-notified</div>
-            </div>
-          </div>
-          <div class="it-row">
-            <div class="it-time">Apr 15</div>
-            <div class="it-dot-col"><div class="it-dot js-use-cases-style-17"></div></div>
-            <div class="it-body">
-              <div class="it-event">Quarterly audit export generated</div>
-              <div class="it-detail">47 events · 100% documented · PDF + CSV</div>
-              <div class="it-badge it-badge--resolved">Export Ready</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

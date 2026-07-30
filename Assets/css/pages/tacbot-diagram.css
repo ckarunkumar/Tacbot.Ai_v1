@@ -4,27 +4,27 @@ body, button, input, select, textarea { font-family: 'Inter', sans-serif; }
 .fa-brands, .fab { font-family: "Font Awesome 6 Brands" !important; font-weight: 400; }
 
 :root {
-  /* ── ITSM + Monitoring (violet — distinct from Tacbot hub's blue) ── */
+  /* ── ITSM + Monitoring (violet — distinct high contrast) ── */
   --blue:      #8b5cf6;
-  --blue-bdr:  rgba(139,92,246,0.3);
-  --blue-bg:   rgba(139,92,246,0.06);
-  --blue-text: #6d28d9;
+  --blue-bdr:  rgba(147, 51, 234, 0.45);
+  --blue-bg:   #f3e8ff;
+  --blue-text: #581c87;
 
-  /* ── Ops + Vendor Platforms (teal/emerald) ── */
+  /* ── Ops + Vendor Platforms (teal/emerald — high contrast) ── */
   --teal:      #10b981;
-  --teal-bdr:  rgba(16,185,129,0.3);
-  --teal-bg:   rgba(16,185,129,0.06);
-  --teal-text: #059669;
+  --teal-bdr:  rgba(16, 185, 129, 0.45);
+  --teal-bg:   #ecfdf5;
+  --teal-text: #064e3b;
 
-  /* ── LLM (same blue family as the Tacbot hub) ── */
-  --purple:    #3a56d4;
-  --pur-bdr:   rgba(79,110,247,0.3);
-  --pur-bg:    rgba(79,110,247,0.06);
+  /* ── LLM (cobalt blue — high contrast) ── */
+  --purple:    #2563eb;
+  --pur-bdr:   rgba(59, 130, 246, 0.45);
+  --pur-bg:    #eff6ff;
 
   /* ── General ── */
   --green:     #10b981;
-  --text:      #1e2a3a;
-  --text-sub:  #64748b;
+  --text:      #0f172a;
+  --text-sub:  #334155;
   --card-bg:   #ffffff;
   --card-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
   --badge-bg:  #ffffff;
@@ -33,28 +33,28 @@ body, button, input, select, textarea { font-family: 'Inter', sans-serif; }
 [data-theme="dark"] {
   /* ── ITSM + Monitoring (violet) ── */
   --blue:      #c084fc;
-  --blue-bdr:  rgba(192,132,252,0.25);
-  --blue-bg:   rgba(192,132,252,0.04);
-  --blue-text: #e9d5ff;
+  --blue-bdr:  rgba(192, 132, 252, 0.45);
+  --blue-bg:   rgba(88, 28, 135, 0.55);
+  --blue-text: #f3e8ff;
 
   /* ── Ops + Vendor Platforms (teal) ── */
   --teal:      #34d399;
-  --teal-bdr:  rgba(52,211,153,0.25);
-  --teal-bg:   rgba(52,211,153,0.04);
-  --teal-text: #a7f3d0;
+  --teal-bdr:  rgba(52, 211, 153, 0.45);
+  --teal-bg:   rgba(6, 78, 59, 0.55);
+  --teal-text: #ecfdf5;
 
-  /* ── LLM (purple) ── */
-  --purple:    #818cf8;
-  --pur-bdr:   rgba(129,140,248,0.25);
-  --pur-bg:    rgba(129,140,248,0.04);
+  /* ── LLM (purple/blue) ── */
+  --purple:    #60a5fa;
+  --pur-bdr:   rgba(96, 165, 250, 0.45);
+  --pur-bg:    rgba(30, 58, 138, 0.55);
 
   /* ── General ── */
   --green:     #34d399;
   --text:      #f8fafc;
-  --text-sub:  #94a3b8;
-  --card-bg:   rgba(15, 23, 42, 0.72);
+  --text-sub:  #cbd5e1;
+  --card-bg:   rgba(15, 23, 42, 0.85);
   --card-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  --badge-bg:  rgba(15,23,42,0.55);
+  --badge-bg:  rgba(15,23,42,0.75);
 }
 
 html, body {
@@ -258,7 +258,7 @@ body {
   border-radius: 100px;
   padding: clamp(2px, 0.28vh, 5px) clamp(7px, 0.65vw, 12px);
   font-size: clamp(12px, 0.95vw, 15px);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-sub);
   white-space: nowrap;
   cursor: default;
@@ -349,6 +349,122 @@ body {
   text-transform: uppercase;
 }
 
+
+/* ── MOBILE RESPONSIVE STYLES (SPACIOUS TREE STRUCTURE) ── */
+@media (max-width: 768px) {
+  .canvas {
+    min-height: 840px;
+    padding: 12px 4px;
+    touch-action: pan-y;
+  }
+  .zone-bg {
+    display: none !important;
+  }
+  .pcard {
+    padding: 6px 10px;
+    min-width: 95px;
+    max-width: 140px;
+    border-radius: 9px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .pcard-title {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    white-space: normal !important;
+    text-align: left !important;
+    line-height: 1.2 !important;
+  }
+  .pcard-cat {
+    font-size: 9.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+    text-align: left !important;
+  }
+  .pbadge {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    width: fit-content !important;
+    max-width: 95px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 3.5px 8px !important;
+    border-radius: 9px !important;
+    white-space: normal !important;
+    text-align: left !important;
+    line-height: 1.12 !important;
+    word-break: break-word !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  }
+  .hub {
+    position: absolute !important;
+    left: 50% !important;
+    top: 4% !important;
+    transform: translateX(-50%) !important;
+    width: 140px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    gap: 9px;
+    z-index: 10;
+  }
+  .hub-name {
+    font-size: 14.5px !important;
+    font-weight: 800 !important;
+    white-space: normal !important;
+    text-align: left !important;
+  }
+  .hub-sub {
+    font-size: 9.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em;
+    text-align: left !important;
+  }
+  .hub-logo {
+    width: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas {
+    min-height: 800px;
+    padding: 8px 2px;
+  }
+  .pcard {
+    padding: 5px 8px;
+    min-width: 85px;
+    max-width: 125px;
+    border-radius: 8px;
+  }
+  .pcard-title {
+    font-size: 12px !important;
+  }
+  .pcard-cat {
+    font-size: 8.5px !important;
+  }
+  .pbadge {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 3.5px 7px !important;
+    max-width: 95px !important;
+  }
+  .hub {
+    width: 128px;
+    padding: 6px 10px;
+    gap: 7px;
+    top: 3.5% !important;
+  }
+  .hub-name {
+    font-size: 13.5px !important;
+  }
+  .hub-sub {
+    font-size: 8.5px !important;
+  }
+  .hub-logo {
+    width: 18px;
+  }
+}
 
 /* ── EXTRACTED INLINE STYLES FOR TACBOT-DIAGRAM.HTML ── */
 .js-tacbot-diagram-style-1 { background: var(--blue); }

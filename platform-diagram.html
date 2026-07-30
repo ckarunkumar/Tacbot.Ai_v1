@@ -106,7 +106,7 @@
   const svg    = document.getElementById('connSvg');
   const hub    = document.getElementById('hub');
 
-  const POS = {
+  const POS_DESKTOP = {
     /* Vendors card — left-center relay */
     'vendors-card':  { cx: 36.0, cy: 38.0 },
 
@@ -121,6 +121,21 @@
     /* ITSM badges — bottom row, spread apart */
     'snow':          { cx: 12.0, cy: 91.0 },
     'jira':          { cx: 48.0, cy: 91.0 },
+  };
+
+  const POS_MOBILE = {
+    /* Tier 1: Cards (cy: 16%) */
+    'itsm-card':     { cx: 24.0, cy: 16.0 },
+    'vendors-card':  { cx: 76.0, cy: 16.0 },
+
+    /* Tier 2: ITSM Badges & Network Category (cy: 42%) */
+    'snow':          { cx: 12.0, cy: 42.0 },
+    'jira':          { cx: 36.0, cy: 42.0 },
+    'cat-network':   { cx: 76.0, cy: 42.0 },
+
+    /* Tier 3: Circuits & Cloud Categories (cy: 74%) */
+    'cat-circuits':  { cx: 24.0, cy: 74.0 },
+    'cat-cloud':     { cx: 76.0, cy: 74.0 },
   };
 
   let packets = [];
@@ -158,26 +173,42 @@
     } else {
       const my=(from.y+to.y)/2; c1={x:from.x,y:my}; c2={x:to.x,y:my};
     }
+    const isMobile = canvas.offsetWidth < 650;
     const p = document.createElementNS(SVGNS,'path');
     p.setAttribute('d',`M ${from.x} ${from.y} C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${to.x} ${to.y}`);
     const theme = document.documentElement.dataset.theme || 'light';
     p.setAttribute('stroke', theme === 'dark' ? '#64748b' : '#94a3b8');
     p.setAttribute('stroke-opacity','1');
-    p.setAttribute('stroke-dasharray','5 8');
+    p.setAttribute('stroke-dasharray', isMobile ? '3 5' : '5 8');
     p.setAttribute('stroke-linecap','round');
     p.setAttribute('fill','none');
-    p.setAttribute('stroke-width','2');
+    p.setAttribute('stroke-width', isMobile ? '1.0' : '2');
     svg.appendChild(p);
     return {from,to,c1,c2};
   }
 
   function addDot(conn, dir, color) {
+    const isMobile = canvas.offsetWidth < 650;
     const dot = document.createElementNS(SVGNS,'circle');
-    dot.setAttribute('r','3.5');
+    dot.setAttribute('r', isMobile ? '2.2' : '3.5');
     dot.setAttribute('fill', color);
-    dot.style.filter = `drop-shadow(0 0 5px ${color})`;
+    dot.style.filter = isMobile ? `drop-shadow(0 0 3px ${color})` : `drop-shadow(0 0 5px ${color})`;
     svg.appendChild(dot);
     packets.push({conn,el:dot,t:Math.random(),speed:0.007+Math.random()*0.005,dir});
+  }
+
+  function treeAnchors(fb, tb) {
+    if (fb.cy > tb.cy) {
+      return {
+        fa: { x: fb.cx, y: fb.t },
+        ta: { x: tb.cx, y: tb.b }
+      };
+    } else {
+      return {
+        fa: { x: fb.cx, y: fb.b },
+        ta: { x: tb.cx, y: tb.t }
+      };
+    }
   }
 
   function build() {
@@ -186,46 +217,67 @@
     const hb = box(hub);
     const BLUE  = '#6366f1';
     const GREEN = '#10b981';
+    const isMobile = canvas.offsetWidth < 650;
 
-    /* Cards → hub */
-    document.querySelectorAll('.pcard[data-to="hub"]').forEach(card => {
-      const {fa,ta} = nearest(box(card), hb);
-      const conn = bezierPath(fa, ta);
-      addDot(conn,  1, BLUE);
-      addDot(conn, -1, GREEN);
-    });
+    if (isMobile) {
+      /* Mobile Tree Connections */
+      const connections = [
+        { from: document.getElementById('itsm-card'), to: hub },
+        { from: document.getElementById('vendors-card'), to: hub },
+        { from: document.getElementById('snow'), to: document.getElementById('itsm-card') },
+        { from: document.getElementById('jira'), to: document.getElementById('itsm-card') },
+        { from: document.getElementById('cat-network'), to: document.getElementById('vendors-card') },
+        { from: document.getElementById('cat-circuits'), to: document.getElementById('itsm-card') },
+        { from: document.getElementById('cat-cloud'), to: document.getElementById('vendors-card') },
+      ];
 
-    /* Category groups → vendors-card */
-    document.querySelectorAll('.cat-group[data-parent]').forEach(grp => {
-      const parent = document.getElementById(grp.dataset.parent);
-      if (!parent) return;
-      const {fa,ta} = nearest(box(grp), box(parent));
-      const conn = bezierPath(fa, ta);
-      addDot(conn,  1, BLUE);
-      addDot(conn, -1, GREEN);
-    });
+      connections.forEach(({from, to}) => {
+        if (!from || !to) return;
+        const {fa, ta} = treeAnchors(box(from), box(to));
+        const conn = bezierPath(fa, ta);
+        addDot(conn, 1, BLUE);
+        addDot(conn, -1, GREEN);
+      });
+    } else {
+      /* Desktop Connections */
+      document.querySelectorAll('.pcard[data-to="hub"]').forEach(card => {
+        const {fa,ta} = nearest(box(card), hb);
+        const conn = bezierPath(fa, ta);
+        addDot(conn,  1, BLUE);
+        addDot(conn, -1, GREEN);
+      });
 
-    /* ITSM badges → itsm-card */
-    document.querySelectorAll('.pbadge[data-parent]').forEach(badge => {
-      const parent = document.getElementById(badge.dataset.parent);
-      if (!parent) return;
-      const {fa,ta} = nearest(box(badge), box(parent));
-      const conn = bezierPath(fa, ta);
-      addDot(conn,  1, BLUE);
-      addDot(conn, -1, GREEN);
-    });
+      document.querySelectorAll('.cat-group[data-parent]').forEach(grp => {
+        const parent = document.getElementById(grp.dataset.parent);
+        if (!parent) return;
+        const {fa,ta} = nearest(box(grp), box(parent));
+        const conn = bezierPath(fa, ta);
+        addDot(conn,  1, BLUE);
+        addDot(conn, -1, GREEN);
+      });
+
+      document.querySelectorAll('.pbadge[data-parent]').forEach(badge => {
+        const parent = document.getElementById(badge.dataset.parent);
+        if (!parent) return;
+        const {fa,ta} = nearest(box(badge), box(parent));
+        const conn = bezierPath(fa, ta);
+        addDot(conn,  1, BLUE);
+        addDot(conn, -1, GREEN);
+      });
+    }
   }
 
   function applyPositions() {
     const vw = canvas.offsetWidth;
     const vh = canvas.offsetHeight;
+    const posMap = (vw < 650) ? POS_MOBILE : POS_DESKTOP;
     const allNodes = [
       ...document.querySelectorAll('.pcard'),
       ...document.querySelectorAll('.cat-group'),
       ...document.querySelectorAll('.pbadge'),
     ];
     allNodes.forEach(el => {
-      const p = POS[el.id];
+      const p = posMap[el.id];
       if (!p) return;
       const er = el.getBoundingClientRect();
       el.style.left = (p.cx/100*vw - er.width/2)  + 'px';
@@ -233,8 +285,9 @@
     });
   }
 
-  /* Drag support */
+  /* Drag support (Desktop only; disabled on mobile view) */
   function onMouseDown(e) {
+    if (canvas.offsetWidth < 650) return;
     dragEl = e.currentTarget;
     const er = dragEl.getBoundingClientRect();
     dragOffX = e.clientX - er.left;
@@ -243,6 +296,18 @@
     dragEl.style.cursor = 'grabbing';
     e.preventDefault();
   }
+
+  function onTouchStart(e) {
+    if (canvas.offsetWidth < 650) return;
+    if (e.touches.length !== 1) return;
+    dragEl = e.currentTarget;
+    const touch = e.touches[0];
+    const er = dragEl.getBoundingClientRect();
+    dragOffX = touch.clientX - er.left;
+    dragOffY = touch.clientY - er.top;
+    dragEl.style.zIndex = '20';
+  }
+
   document.addEventListener('mousemove', e => {
     if (!dragEl) return;
     const cr = canvas.getBoundingClientRect();
@@ -250,15 +315,34 @@
     dragEl.style.top  = (e.clientY-cr.top-dragOffY)  + 'px';
     build();
   });
+
+  document.addEventListener('touchmove', e => {
+    if (!dragEl || e.touches.length !== 1) return;
+    const touch = e.touches[0];
+    const cr = canvas.getBoundingClientRect();
+    dragEl.style.left = (touch.clientX - cr.left - dragOffX) + 'px';
+    dragEl.style.top  = (touch.clientY - cr.top - dragOffY)  + 'px';
+    build();
+  }, { passive: true });
+
   document.addEventListener('mouseup', () => {
     if (!dragEl) return;
+    const isMobile = canvas.offsetWidth < 650;
     dragEl.style.zIndex = '5';
-    dragEl.style.cursor = 'grab';
+    dragEl.style.cursor = isMobile ? 'default' : 'grab';
+    dragEl = null;
+    build();
+  });
+
+  document.addEventListener('touchend', () => {
+    if (!dragEl) return;
+    dragEl.style.zIndex = '5';
     dragEl = null;
     build();
   });
 
   function initDraggable() {
+    const isMobile = canvas.offsetWidth < 650;
     const allNodes = [
       ...document.querySelectorAll('.pcard'),
       ...document.querySelectorAll('.cat-group'),
@@ -267,8 +351,9 @@
     allNodes.forEach(el => {
       el.style.position = 'absolute';
       el.style.zIndex   = '5';
-      el.style.cursor   = 'grab';
+      el.style.cursor   = isMobile ? 'default' : 'grab';
       el.addEventListener('mousedown', onMouseDown);
+      el.addEventListener('touchstart', onTouchStart, { passive: true });
     });
     applyPositions();
     allNodes.forEach((el, i) =>

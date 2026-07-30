@@ -521,6 +521,7 @@
   .score-vendor-row { gap: 8px; }
   .score-name { min-width: 60px; font-size: 11px; }
   .score-val { font-size: 12px; min-width: 28px; }
+  .js-platform-style-1, .js-platform-style-2 { min-height: 820px; }
 }
 @media (max-width: 480px) {
   .plat-hero { padding: 88px 14px 44px; }
@@ -529,6 +530,7 @@
   .mini-cal-grid { gap: 2px; }
   .mc-cell { font-size: 10px; border-radius: 4px; }
   .cal-event-chip { padding: 5px 8px; font-size: 11px; }
+  .js-platform-style-1, .js-platform-style-2 { min-height: 800px; }
 }
 
 /* ── EXTRACTED INLINE STYLES FOR PLATFORM.HTML ── */
